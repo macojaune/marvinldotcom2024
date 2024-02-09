@@ -1,0 +1,30 @@
+---
+import {getCollection} from "astro:content";
+import List from "../../components/List.astro";
+import ListItem from "../../components/ListItem.astro";
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Section from "../../components/Section.astro";
+import {group} from "radash";
+const clientProjects = await getCollection('project', ({data}) => data.isClient);
+const myProjects = await getCollection('project', ({data}) => !data.isClient);
+---
+
+<Layout>
+	<Section>
+		<SectionTitle title="Projets Clients"/>
+		<List>
+			{clientProjects.map(cp =>
+					<ListItem title={cp.data.title} desc={cp.data.description} url={`/projet/${cp.slug}`}/>
+			)}
+		</List>
+	</Section>
+	<Section>
+		<SectionTitle title="Mes projets"/>
+		<List>
+			{myProjects.map(cp =>
+					<ListItem title={cp.data.title} desc={cp.data.description} url={`/projet/${cp.slug}`}/>
+			)}
+		</List>
+	</Section>
+</Layout>

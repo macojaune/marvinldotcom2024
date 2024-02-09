@@ -7,4 +7,4 @@ interface Props {
 
 const { title, url, target} = Astro.props
 ---
-<a class="text-sm text-l/tertiary dark:text-d/tertiary hover:text-l/primary dark:hover:text-d/primary active:text-l/primary dark:active:text-d/primary focus:text-l/primary dark:focus:text-d/primary focus-visible:text-l/primary dark:focus-visible:text-d/primary outline-none" href={url} target={target}>{title}</a>
+<a class="text-sm text-l/tertiary dark:text-d/primary hover:text-l/bg dark:hover:text-d/secondary dark:hover:bg-d/tertiary hover:bg-l/tertiary active:text-l/primary dark:active:text-d/primary focus:text-l/primary dark:focus:text-d/primary focus-visible:text-l/primary dark:focus-visible:text-d/primary outline-none" href={url} target={target}>{title}</a>

@@ -1,36 +1,41 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Story from "../components/Story.astro";
 import SectionTitle from "../components/SectionTitle.astro";
-import { persona } from "../persona";
+import {persona} from "../persona";
 import List from "../components/List.astro";
 import ListItem from "../components/ListItem.astro";
 import Section from "../components/Section.astro";
-const fullName = persona.firstName + " " + persona.secondName;
+import Story from "../components/Story.astro";
+import {getCollection} from 'astro:content'
+// Resolve an array of references
+const projects = await getCollection("project");
+const articles = await getCollection("blog");
 ---
 
-<Layout title={fullName} desc={persona.description}>
-  <Header title={fullName} description={persona.description} />
-  <Story story={persona.story} />
-  <Section>
-    <SectionTitle title="Books" />
-    <List>
-      {
-        persona.sections.books.map((e) => (
-          <ListItem title={e.title} desc={e.desc} url={e.url} />
-        ))
-      }
-    </List>
-  </Section>
-  <Section>
-    <SectionTitle title="Experience" />
-    <List>
-      {
-        persona.sections.experience.map((e) => (
-          <ListItem title={e.title} desc={e.desc} url={e.url} />
-        ))
-      }
-    </List>
-  </Section>
+<Layout title={persona.firstName} desc={persona.description}>
+	<Header title={persona.firstName} description={persona.description}/>
+	<Story/>
+	{projects ?
+			<Section>
+				<SectionTitle title="Projets"/>
+				<List>
+					{
+						projects.slice(0, 3).map(({data: {title, description}, slug}) => (
+								<ListItem title={title} desc={description} url={'/projets/' + slug}/>
+						))
+					}
+				</List>
+			</Section> : null}
+	{articles ?
+			<Section>
+				<SectionTitle title="Articles"/>
+				<List>
+					{
+						articles.map(({data, slug}) => (
+								<ListItem title={data.title} desc={data.description} url={'/blog/' + slug}/>
+						))
+					}
+				</List>
+			</Section> : null}
 </Layout>

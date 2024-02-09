@@ -1,9 +1,16 @@
 ---
 import { nav } from "../nav";
 import Link from "./Link.astro";
+const current = Astro.url.pathname
+
+const isActive = (n:{url:string})=>{
+	if(n.url==="/" && current==="/")
+		return true
+	return n.url !== "/" && current.startsWith(n.url);
+
+}
 ---
 <nav class="w-full flex justify-start gap-2">
-    {nav.map((n) => (
-        <Link target="_self" title={n.title} url={n.url} />
+    {nav.map((n) => (!isActive(n) ?<Link target="_self" title={n.title} url={n.url} />:<span class="dark:text-d/primary text-sm underline underline-offset-8">{n.title}</span>
     ))}
 </nav>

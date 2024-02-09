@@ -11,10 +11,10 @@ import {ViewTransitions}from 'astro:transitions'
 ---
 
 <!doctype html>
-<html lang="fr" class="">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -30,17 +30,17 @@ import {ViewTransitions}from 'astro:transitions'
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={desc} />
     <title>{title}</title>
-    <ViewTransitions/>
+    <ViewTransitions />
   </head>
   <body class="bg-l/bg dark:bg-d/bg antialiased w-full h-full p-4 md:p-0">
     <div
       class="w-full m-auto max-w-xl min-h-screen flex flex-col justify-center items-start gap-8"
     >
-       <Navigation />
+      <Navigation />
       <main class="space-y-4">
         <slot />
       </main>
-      <Footer />
+      <!--<Footer />-->
     </div>
   </body>
 </html>
