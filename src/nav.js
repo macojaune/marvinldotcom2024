@@ -13,10 +13,10 @@ export const nav = [
     title: "blog",
     url: "/blog",
   },
-  {
-    title: "open",
-    url: "/data",
-  },
+  // {
+  //   title: "open",
+  //   url: "/data",
+  // },
 ];
 
 // Don't forget to save upon changing the contents of the file ;)
