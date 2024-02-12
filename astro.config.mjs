@@ -9,6 +9,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), compress(), robotsTxt(), react()],
-  output: "server",
+  output: "hybrid",
   adapter: netlify()
 });
