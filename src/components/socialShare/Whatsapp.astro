@@ -8,7 +8,7 @@ interface Props {
   description?: string;
   via?: string;
 }
-const { url = Astro.request.url, description, via } = Astro.props;
+const { url = Astro.url, description, via } = Astro.props;
 
 let URL = `whatsapp://send?text=`;
 

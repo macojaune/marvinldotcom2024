@@ -43,13 +43,13 @@ import BottomLine from "../components/BottomLine.astro";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
-    <meta property="og:url" content={Astro.request.url} />
+    <meta property="og:url" content={Astro.url} />
     <meta property="og:site_name" content="MarvinL.com" />
 
     {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
-    <meta property="twitter:site" content={Astro.request.url} />
+    <meta property="twitter:site" content={Astro.url} />
     <meta property="twitter:description" content={desc} />
 
     <title>{title}</title>
