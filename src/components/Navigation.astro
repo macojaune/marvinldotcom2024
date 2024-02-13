@@ -13,7 +13,7 @@ const isActive = (n: { url: string }) => {
   {
     nav.map((n) =>
       !isActive(n) ? (
-        <Link target="_self" url={n.url} noDecorate>
+        <Link target="_self" url={n.url} noDecorate title={n.title}>
           {n.title}
         </Link>
       ) : (

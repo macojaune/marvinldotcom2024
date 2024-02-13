@@ -16,9 +16,27 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const json = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: `${entry.data.title} − Un projet MarvinL.com`,
+  image: "",
+  author: {
+    "@type": "",
+    name: "",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "MarvinL.com",
+  },
+  datePublished: new Date(entry.data.createdAt).toLocaleDateString(),
+  dateModified: new Date(entry.data.updatedAt).toLocaleDateString(),
+};
 ---
 
 <ContentLayout title={entry.data.title} desc={entry.data.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+
   <div class="flex flex-row items-center justify-between">
     <Link url="/projets">
       <svg

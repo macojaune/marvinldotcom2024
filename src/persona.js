@@ -22,6 +22,7 @@ export const persona = {
     },
   ],
   seo: {
+    title: "MarvinL.com − Développement Web en Freelance depuis la Guadeloupe",
     description:
       "Salut ! Bienvenue sur mon blog, où je partage ma passion pour le business et la tech ! Je suis" +
       " Marvin, un développeur web en freelance qui travaille en remote depuis la Guadeloupe depuis bientôt 15ans. Rejoins-moi pour explorer ensemble les dernières tendances du développement web, les astuces pour réussir en tant que freelance et les secrets pour concilier travail et vie insulaire. Prépare-toi à être inspiré et à découvrir un univers où le business et la technologie se rencontrent d'une manière unique. Alors, qu'attends-tu ? Viens faire un tour sur MarvinL.com et laisse-toi emporter par l'aventure !",

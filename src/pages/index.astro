@@ -18,13 +18,13 @@ const articles = await getCollection("blog", ({ data }) =>
 );
 ---
 
-<Layout title={persona.firstName} desc={persona.description}>
+<Layout title={persona.seo.title} desc={persona.seo.description}>
   <Header title={persona.firstName} description={persona.description} />
   <Story />
   {
     projects ? (
       <Section>
-        <SectionTitle title="Projets" />
+        <SectionTitle As="h2" title="Projets" />
         <List>
           {projects
             .slice(0, 5)
@@ -38,7 +38,7 @@ const articles = await getCollection("blog", ({ data }) =>
             ))}
           {projects.length - 5 > 0 && (
             <p class="mt-2 w-full text-center text-sm">
-              <Link url="/projets">
+              <Link url="/projets" title="Projets">
                 {projects.length - 5} autre{projects.length - 5 > 1 ? "s" : ""}
                 projet{projects.length - 5 > 1 ? "s" : ""}
                 <svg
@@ -64,7 +64,7 @@ const articles = await getCollection("blog", ({ data }) =>
   {
     articles ? (
       <Section>
-        <SectionTitle title="Articles" />
+        <SectionTitle As="h2" title="Articles" />
         <List>
           {articles.map(({ data, slug }) => (
             <ListItem
@@ -76,7 +76,7 @@ const articles = await getCollection("blog", ({ data }) =>
           ))}
           {articles.length - 3 > 0 && (
             <p class="mt-2 w-full text-center text-sm">
-              <Link url="/blog">
+              <Link url="/blog" title="Blog">
                 {articles.length - 3} autre{articles.length - 3 > 1 ? "s" : ""}
                 article{articles.length - 3 > 1 ? "s" : ""}
                 <svg

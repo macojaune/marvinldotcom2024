@@ -2,11 +2,18 @@
 interface Props {
   url: string;
   target: string;
+  title?: string;
   noDecorate?: boolean;
   invert?: boolean;
 }
 
-const { url, target, noDecorate = false, invert = false } = Astro.props;
+const {
+  url,
+  target,
+  noDecorate = false,
+  invert = false,
+  title = url,
+} = Astro.props;
 ---
 
 <a
@@ -21,6 +28,7 @@ const { url, target, noDecorate = false, invert = false } = Astro.props;
     !noDecorate && invert && "decoration-l/tertiary",
     !noDecorate && "underline decoration-l/primary dark:decoration-d/tertiary",
   ]}
+  title={title}
   href={url}
   target={target}
 >

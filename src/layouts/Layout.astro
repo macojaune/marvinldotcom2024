@@ -16,7 +16,6 @@ import BottomLine from "../components/BottomLine.astro";
 <html lang="fr" class="">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link
       rel="apple-touch-icon"
@@ -29,6 +28,7 @@ import BottomLine from "../components/BottomLine.astro";
       sizes="32x32"
       href="/favicon/favicon-32x32.png"
     />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
     <link
       rel="icon"
       type="image/png"
@@ -43,13 +43,44 @@ import BottomLine from "../components/BottomLine.astro";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
+    <meta property="og:url" content={Astro.request.url} />
+    <meta property="og:site_name" content="MarvinL.com" />
 
     {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
+    <meta property="twitter:site" content={Astro.request.url} />
     <meta property="twitter:description" content={desc} />
+
     <title>{title}</title>
     <ViewTransitions />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MarvinL.com",
+        "image": "",
+        "@id": "https://www.marvinl.com",
+        "url": "https://www.marvinl.com",
+        "telephone": "",
+        "priceRange": "520-",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Petit-Bourg",
+          "postalCode": "97170",
+          "addressCountry": "GP"
+        },
+        "sameAs": [
+          "https://facebook.com/marvinldotcom",
+          "https://twitter.com/macojaune",
+          "https://instagram.com/macojaune",
+          "https://youtube.com/@macojaune",
+          "https://www.linkedin.com/in/marvinlondinfer/",
+          "https://www.marvinl.com"
+        ]
+      }
+    </script>
   </head>
   <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
     <div

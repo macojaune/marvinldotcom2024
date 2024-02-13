@@ -32,12 +32,30 @@ const description = `Découvre ${entry.data.title}, le dernier projet web conçu
   " performance optimale, offrant une plateforme web qui dépasse tes attentes. Explore les fonctionnalités uniques" +
   " et les solutions sur mesure qui font de ${entry.data.title} une référence dans son domaine. Rejoins mon" +
   " aventure digitale et découvre comment MarvinL.com donne vie à tes idées en ligne.`;
+const json = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: `${entry.data.title} − Un projet MarvinL.com`,
+  image: "",
+  author: {
+    "@type": "",
+    name: "",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "MarvinL.com",
+  },
+  datePublished: new Date(entry.data.createdAt).toLocaleDateString(),
+  dateModified: new Date(entry.data.updatedAt).toLocaleDateString(),
+};
 ---
 
 <ContentLayout
   title={entry.data.title + " − Un projet MarvinL.com"}
   desc={description}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+
   <div class="flex flex-row items-center justify-between">
     <Link url="/projets">
       <svg
@@ -65,8 +83,11 @@ const description = `Découvre ${entry.data.title}, le dernier projet web conçu
       "prose-h1:w-fit prose-h1:px-3 prose-h1:text-l/bg dark:prose-h1:text-d/secondary" +
         " prose-h1:py-2" +
         " prose-h1:bg-l/primary dark:prose-h1:bg-d/tertiary", //H1
+
       " prose-h2:text-l/primary dark:prose-h2:text-d/primary", //H2
+
       " prose-p:text-l/primary dark:prose-p:text-d/primary", //P
+
       "dark:prose-a:text-d/secondary" + " dark:hover:prose-a:bg-d/tertiary",
       "prose-a:text-l/tertiary prose-a:outline-none hover:prose-a:bg-l/tertiary" +
         " hover:prose-a:text-l/bg focus:prose-a:text-l/primary" +
@@ -74,6 +95,7 @@ const description = `Découvre ${entry.data.title}, le dernier projet web conçu
         " dark:hover:prose-a:text-d/secondary dark:focus:prose-a:text-d/primary dark:focus-visible:prose-a:text-d/primary" +
         " prose-a:underline prose-a:decoration-l/tertiary dark:prose-a:decoration-d/tertiary" +
         " dark:active:prose-a:text-d/primary", //Links
+
       "prose-ul:flex prose-ul:w-full prose-ul:list-none prose-ul:flex-col prose-ul:justify-start" +
         " prose-ul:items-start" +
         " prose-ul:gap-1" +
