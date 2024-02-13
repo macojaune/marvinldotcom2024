@@ -9,10 +9,10 @@ export const nav = [
     title: "projets",
     url: "/projets",
   },
-  {
-    title: "blog",
-    url: "/blog",
-  },
+  // {
+  //   title: "blog",
+  //   url: "/blog",
+  // },
   // {
   //   title: "open",
   //   url: "/data",

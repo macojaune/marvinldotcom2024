@@ -62,7 +62,7 @@ const articles = await getCollection("blog", ({ data }) =>
     ) : null
   }
   {
-    articles ? (
+    articles.length > 0 ? (
       <Section>
         <SectionTitle As="h2" title="Articles" />
         <List>
