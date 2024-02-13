@@ -48,6 +48,47 @@ import BottomLine from "../components/BottomLine.astro";
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={desc} />
     <title>{title}</title>
+    <!-- Matomo Tag Manager -->
+    <script>
+      var _mtm = (window._mtm = window._mtm || []);
+      _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" });
+      (function () {
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = "https://www.analytics.marvinl.com/js/container_OzwXYrSK.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Tag Manager -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MarvinL.com",
+        "image": "",
+        "@id": "https://www.marvinl.com",
+        "url": "https://www.marvinl.com",
+        "telephone": "",
+        "priceRange": "520-",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Petit-Bourg",
+          "postalCode": "97170",
+          "addressCountry": "GP"
+        },
+        "sameAs": [
+          "https://facebook.com/marvinldotcom",
+          "https://twitter.com/macojaune",
+          "https://instagram.com/macojaune",
+          "https://youtube.com/@macojaune",
+          "https://www.linkedin.com/in/marvinlondinfer/",
+          "https://www.marvinl.com"
+        ]
+      }
+    </script>
     <ViewTransitions />
   </head>
   <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
