@@ -54,20 +54,6 @@ import BottomLine from "../components/BottomLine.astro";
 
     <title>{title}</title>
     <ViewTransitions />
-    <!-- Matomo Tag Manager -->
-    <script>
-      var _mtm = (window._mtm = window._mtm || []);
-      _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" });
-      (function () {
-        var d = document,
-          g = d.createElement("script"),
-          s = d.getElementsByTagName("script")[0];
-        g.async = true;
-        g.src = "https://www.analytics.marvinl.com/js/container_OzwXYrSK.js";
-        s.parentNode.insertBefore(g, s);
-      })();
-    </script>
-    <!-- End Matomo Tag Manager -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -95,6 +81,21 @@ import BottomLine from "../components/BottomLine.astro";
         ]
       }
     </script>
+    <!-- Matomo Tag Manager -->
+    <script is:inline>
+      var _mtm = (window._mtm = window._mtm || []);
+      _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" });
+      (function () {
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src =
+          "https://www.analytics.marvinl.com/js/container_OzwXYrSK_dev_ebdd7cd680c5315887623cbb.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Tag Manager -->
   </head>
   <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
     <div
@@ -107,5 +108,31 @@ import BottomLine from "../components/BottomLine.astro";
       <Footer />
       <BottomLine />
     </div>
+    <script>
+      window.axeptioSettings = {
+        clientId: "65cb08d7c71bfd77d142e82d",
+      };
+      window._axcb = window._axcb || [];
+      window._mtm = window._mtm || [];
+      window._axcb.push(function (sdk) {
+        sdk.on("cookies:complete", function (choices) {
+          let axeptio_Matomo = [];
+          for (let vendor in choices) {
+            if (vendor != "$$completed" && choices[vendor] == true) {
+              _mtm.push({ event: `axeptio_activate_${vendor}` });
+              axeptio_Matomo.push(vendor);
+            }
+          }
+          _mtm.push({ axeptio_Matomo: axeptio_Matomo });
+        });
+      });
+      (function (d, s) {
+        var t = d.getElementsByTagName(s)[0],
+          e = d.createElement(s);
+        e.async = true;
+        e.src = "//static.axept.io/sdk.js";
+        t.parentNode.insertBefore(e, t);
+      })(document, "script");
+    </script>
   </body>
 </html>
