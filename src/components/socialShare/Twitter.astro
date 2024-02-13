@@ -1,0 +1,34 @@
+---
+import type ButtonProps from "./types";
+
+type Props = ButtonProps;
+
+const { url = Astro.request.url, description, via } = Astro.props;
+
+let URL = `https://twitter.com/intent/tweet?url=${url}`;
+
+if (description) URL += `&text=${description}`;
+if (via) URL += `&via=${via}`;
+---
+
+<a
+  class="text-l/secondary dark:text-d/secondary hover:dark:text-d/tertiary"
+  target="_blank"
+  href={URL}
+  rel="noopener noreferrer"
+>
+  <slot>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+    >
+      <title>Twitter</title>
+      <path
+        fill="currentColor"
+        d="M23.812 4.562c-.875.375-1.812.625-2.812.75a4.019 4.019 0 0 0 1.688-2.219c-.75.438-1.562.75-2.438.938A4.036 4.036 0 0 0 15.688 3c-2.25 0-4.062 1.875-4.062 4.156 0 .312.062.625.188.938-3.375-.188-6.375-1.875-8.375-4.438-.375.625-.562 1.375-.562 2.188 0 1.438.688 2.688 1.688 3.438a4.08 4.08 0 0 1-1.875-.5v.062c0 2 1.375 3.688 3.188 4.062a4.083 4.083 0 0 1-1.875.062c.562 1.438 2.188 2.438 4.125 2.438-1.5 1.25-3.375 2.062-5.375 2.062-.375 0-.75 0-1.125-.062 1.938 1.25 4.25 2 6.75 2 8.125 0 12.562-6.75 12.562-12.594 0-.188 0-.375-.012-.562.875-.625 1.625-1.438 2.219-2.375z"
+      ></path>
+    </svg>
+  </slot>
+</a>

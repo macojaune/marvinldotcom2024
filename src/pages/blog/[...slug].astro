@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import SocialShare from "../../components/socialShare/SocialShare.astro";
+import Link from "../../components/Link.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog", ({ data }) => {
@@ -18,5 +19,26 @@ const { Content } = await entry.render();
 ---
 
 <ContentLayout title={entry.data.title} desc={entry.data.description}>
+  <div class="flex flex-row items-center justify-between">
+    <Link url="/projets">
+      <svg
+        slot="before"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        class="h-4 w-4"
+      >
+        <path
+          fillRule="evenodd"
+          d="M14 8a.75.75 0 0 1-.75.75H4.56l1.22 1.22a.75.75 0 1 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 1.06L4.56 7.25h8.69A.75.75 0 0 1 14 8Z"
+          clipRule="evenodd"></path>
+      </svg>
+      retour
+    </Link>
+    <SocialShare
+      description={`Découvre ${entry.data.title}, le dernier projet conçu par MarvinL.com. Développeur web en freelance depuis la Guadeloupe.`}
+      title={entry.data.title + " − Un projet MarvinL.com"}
+    />
+  </div>
   <Content />
 </ContentLayout>

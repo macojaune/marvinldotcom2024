@@ -1,5 +1,5 @@
 ---
-title: "Créolissime.com"
+title: "Créolissime"
 description: "Refonte d'un site e-commerce de bijoux créoles"
 technos: [Next.js, Tailwind CSS, React, Typescript, Algolia InstantSearch, AWS, Symfony, Prestashop, Wordpress, 
           Docker, Datadog, BrowserStack, StoryBlock, Figma, Jira, Bitbucket, Scrum]

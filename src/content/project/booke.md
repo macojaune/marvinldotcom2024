@@ -1,5 +1,5 @@
 ---
-title: "Booke.fr"
+title: "Booké"
 description: "Site de réservation de portraits photo corporate"
 technos:
   - Gatsby.js

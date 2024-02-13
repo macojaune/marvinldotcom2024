@@ -9,6 +9,7 @@ const { title, desc } = Astro.props;
 import Navigation from "../components/Navigation.astro";
 import { ViewTransitions } from "astro:transitions";
 import ContentFooter from "../components/ContentFooter.astro";
+import BottomLine from "../components/BottomLine.astro";
 ---
 
 <!doctype html>
@@ -58,6 +59,7 @@ import ContentFooter from "../components/ContentFooter.astro";
         <slot />
       </main>
       <!--<ContentFooter />-->
+      <BottomLine />
     </div>
   </body>
 </html>

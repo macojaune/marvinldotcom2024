@@ -1,4 +1,5 @@
 ---
+import SocialShare from "../components/socialShare/SocialShare.astro";
 interface Props {
   title: string;
   desc: string;
@@ -8,6 +9,7 @@ const { title, desc } = Astro.props;
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import BottomLine from "../components/BottomLine.astro";
 ---
 
 <!doctype html>
@@ -58,6 +60,7 @@ import { ViewTransitions } from "astro:transitions";
         <slot />
       </main>
       <Footer />
+      <BottomLine />
     </div>
   </body>
 </html>
