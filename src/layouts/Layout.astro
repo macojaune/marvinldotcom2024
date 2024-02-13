@@ -7,7 +7,7 @@ interface Props {
 const { title, desc } = Astro.props;
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import {ViewTransitions}from 'astro:transitions'
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -16,7 +16,24 @@ import {ViewTransitions}from 'astro:transitions'
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={desc} />
 
@@ -30,13 +47,13 @@ import {ViewTransitions}from 'astro:transitions'
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={desc} />
     <title>{title}</title>
-    <ViewTransitions/>
+    <ViewTransitions />
   </head>
-  <body class="bg-l/bg dark:bg-d/bg antialiased w-full h-full p-4 md:p-0">
+  <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
     <div
-      class="w-full m-auto max-w-xl min-h-screen flex flex-col justify-center items-start gap-8"
+      class="m-auto flex min-h-screen w-full max-w-xl flex-col items-start justify-center gap-8"
     >
-       <Navigation />
+      <Navigation />
       <main class="space-y-4">
         <slot />
       </main>

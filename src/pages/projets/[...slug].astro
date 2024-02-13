@@ -1,17 +1,84 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Link from "../../components/Link.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import Section from "../../components/Section.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import List from "../../components/List.astro";
+import ListItem from "../../components/ListItem.astro";
+import ContentFooter from "../../components/ContentFooter.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
- const projectEntries = await getCollection('project');
- return projectEntries.map(entry => ({
-   params: { slug: entry.slug }, props: { entry },
- }));
+  const projectEntries = await getCollection("project", ({ data }) => {
+    return import.meta.env.PROD ? data.isDraft !== true : true;
+  });
+  return projectEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const description = `Découvre le dernier projet web innovant signé ${entry.data.title}, conçu par l'expert en" +
+  " développement web MarvinL.com. Plonge dans une expérience en ligne immersive et fonctionnelle, où chaque pixel" +
+  " est méticuleusement conçu pour captiver ton audience. ${entry.data.title} allie une esthétique moderne à une" +
+  " performance optimale, offrant une plateforme web qui dépasse tes attentes. Explore les fonctionnalités uniques" +
+  " et les solutions sur mesure qui font de ${entry.data.title} une référence dans son domaine. Rejoins mon" +
+  " aventure digitale et découvre comment MarvinL.com donne vie à tes idées en ligne.`;
 ---
-<Layout title={entry.data.title} desc={entry.data.description}>
-<Content/>
-</Layout>
+
+<ContentLayout
+  title={entry.data.title + " − Un projet MarvinL.com"}
+  desc={description}
+>
+  <Link url="/projets">
+    <svg
+      slot="before"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="h-4 w-4"
+    >
+      <path
+        fillRule="evenodd"
+        d="M14 8a.75.75 0 0 1-.75.75H4.56l1.22 1.22a.75.75 0 1 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 1.06L4.56 7.25h8.69A.75.75 0 0 1 14 8Z"
+        clipRule="evenodd"></path>
+    </svg>
+    retour
+  </Link>
+  <div
+    class:list={[
+      "prose",
+      "prose-h1:text-l/bg dark:prose-h1:text-d/secondary prose-h1:w-fit prose-h1:px-3" +
+        " prose-h1:py-2" +
+        " prose-h1:bg-l/primary dark:prose-h1:bg-d/tertiary", //H1
+      " dark:prose-h2:text-d/primary prose-h2:text-l/primary", //H2
+      " dark:prose-p:text-d/primary prose-p:text-l/primary", //P
+      "dark:prose-a:text-d/secondary" + " dark:hover:prose-a:bg-d/tertiary",
+      "prose-a:text-l/tertiary prose-a:outline-none hover:prose-a:bg-l/tertiary" +
+        " hover:prose-a:text-l/bg focus:prose-a:text-l/primary" +
+        " focus-visible:prose-a:text-l/primary active:prose-a:text-l/primary dark:prose-a:text-d/primary dark:hover:prose-a:bg-d/tertiary" +
+        " dark:hover:prose-a:text-d/secondary dark:focus:prose-a:text-d/primary dark:focus-visible:prose-a:text-d/primary" +
+        " prose-a:underline dark:prose-a:decoration-d/tertiary prose-a:decoration-l/tertiary" +
+        " dark:active:prose-a:text-d/primary", //Links
+      "prose-ul:w-full prose-ul:list-none prose-ul:flex prose-ul:flex-col prose-ul:justify-start" +
+        " prose-ul:items-start" +
+        " prose-ul:gap-1" +
+        "prose-li:flex prose-li:items-start prose-li:justify-start prose-li:text-base prose-li:px-3" +
+        " dark:prose-li:text-d/primary dark:prose-li:bg-d/secondary", //Lists
+    ]}
+  >
+    <Content />
+  </div>
+  <Section>
+    <SectionTitle title="Technologies utilisées" />
+    <ul
+      class="flex w-full flex-row flex-wrap items-start justify-start gap-x-2 gap-y-1"
+    >
+      {entry.data.technos.map((t) => <ListItem title={t} isProject />)}
+    </ul>
+  </Section>
+  <ContentFooter />
+</ContentLayout>

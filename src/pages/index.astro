@@ -2,40 +2,97 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import SectionTitle from "../components/SectionTitle.astro";
-import {persona} from "../persona";
+import { persona } from "../persona";
 import List from "../components/List.astro";
 import ListItem from "../components/ListItem.astro";
 import Section from "../components/Section.astro";
 import Story from "../components/Story.astro";
-import {getCollection} from 'astro:content'
+import { getCollection } from "astro:content";
+import Link from "../components/Link.astro";
 // Resolve an array of references
 const projects = await getCollection("project");
 const articles = await getCollection("blog");
 ---
 
 <Layout title={persona.firstName} desc={persona.description}>
-	<Header title={persona.firstName} description={persona.description}/>
-	<Story/>
-	{projects ?
-			<Section>
-				<SectionTitle title="Projets"/>
-				<List>
-					{
-						projects.slice(0, 3).map(({data: {title, description}, slug}) => (
-								<ListItem title={title} desc={description} url={'/projets/' + slug}/>
-						))
-					}
-				</List>
-			</Section> : null}
-	{articles ?
-			<Section>
-				<SectionTitle title="Articles"/>
-				<List>
-					{
-						articles.map(({data, slug}) => (
-								<ListItem title={data.title} desc={data.description} url={'/blog/' + slug}/>
-						))
-					}
-				</List>
-			</Section> : null}
+  <Header title={persona.firstName} description={persona.description} />
+  <Story />
+  {
+    projects ? (
+      <Section>
+        <SectionTitle title="Projets" />
+        <List>
+          {projects
+            .slice(0, 5)
+            .map(({ data: { title, description, createdAt }, slug }) => (
+              <ListItem
+                title={title}
+                desc={description}
+                url={"/projets/" + slug}
+                date={createdAt}
+              />
+            ))}
+          {projects.length - 5 > 0 && (
+            <p class="mt-2 w-full text-center text-sm">
+              <Link url="/projets">
+                {projects.length - 5} autre{projects.length - 5 > 1 ? "s" : ""}
+                projet{projects.length - 5 > 1 ? "s" : ""}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                  slot="after"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </p>
+          )}
+        </List>
+      </Section>
+    ) : null
+  }
+  {
+    articles ? (
+      <Section>
+        <SectionTitle title="Articles" />
+        <List>
+          {articles.map(({ data, slug }) => (
+            <ListItem
+              title={data.title}
+              desc={data.description}
+              url={"/blog/" + slug}
+              date={data.createdAt}
+            />
+          ))}
+          {articles.length - 3 > 0 && (
+            <p class="mt-2 w-full text-center text-sm">
+              <Link url="/blog">
+                {articles.length - 3} autre{articles.length - 3 > 1 ? "s" : ""}
+                article{articles.length - 3 > 1 ? "s" : ""}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                  slot="after"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </p>
+          )}
+        </List>
+      </Section>
+    ) : null
+  }
 </Layout>

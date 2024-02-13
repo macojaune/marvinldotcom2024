@@ -1,23 +1,30 @@
 ---
+import Link from "./Link.astro";
+---
 
-import Link from "./Link.astro";---
 <article class="text-base text-l/secondary dark:text-d/primary">
-	<p>
-		<b class="text-2xl font-bold">2024!</b> C'est l'heure de refondre ce site internet. 15ans que j'évolue en tant que
-		développeur freelance, il serait temps de passer du "cordonnier mal chaussé" à autre chose.
-		<i class="dark:text-d/secondary">Peut-être une jolie paire de chaussures minimalistes ?</i>
-	</p>
-	<p class="mt-2">
-		MarvinL.com ne te dit surement pas grand chose, mais tu connais peut-être la
-		facette <Link title="@macojaune" url="https://macojaune.com" target="_blank"/> des réseaux sociaux.
-	</p>
-	<p>
-		Disons que MarvinL.com c’est l'entité officielle de mon activité. <br>
-		Je suis Développeur Web Fullstack, entrepreneur et <u>surtout</u> <i>Passionné</i>.
-	</p>
-	<p>
-		Passionné de mode sombre et de textes colorés qui défilent…
-		Je vis la nuit et me prélasse la journée, un mode de vie complètement à l'opposé de ce qu'attendaient mes derniers patrons.
-		<br>J'aime créer,résoudre les problèmes,tester des idées saugrenues…
-	</p>
+  <p>
+    <b class="text-2xl font-bold">2024!</b> C'est l'heure de refondre ce site internet.
+    15ans que j'évolue en tant que développeur freelance, il serait temps de passer
+    du "cordonnier mal chaussé" à autre chose.
+    <i class="text-l/secondary dark:text-d/tertiary"
+      >Peut-être une jolie paire de chaussures minimalistes ?</i
+    >
+  </p>
+  <p class="mt-2">
+    MarvinL.com ne te dit surement pas grand chose, mais tu connais peut-être la
+    facette <Link url="https://macojaune.com" target="_blank">@macojaune</Link> des
+    réseaux sociaux.
+  </p>
+  <p>
+    Disons que MarvinL.com c’est l'entité officielle de mon activité. <br />
+    Je suis Développeur Web Fullstack, entrepreneur et <u>surtout</u>
+    <i>Passionné</i>.
+  </p>
+  <p>
+    Passionné de mode sombre et de textes colorés qui défilent… Je vis la nuit
+    et me prélasse la journée, un mode de vie complètement à l'opposé de ce
+    qu'attendaient mes derniers patrons.
+    <br />J'aime créer,résoudre les problèmes,tester des idées saugrenues…
+  </p>
 </article>

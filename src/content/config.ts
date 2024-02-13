@@ -4,7 +4,11 @@ const projectCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    technos: z.array(z.string()),
     isClient: z.boolean(),
+    isDraft: z.boolean(),
+    updatedAt: z.date(),
+    createdAt: z.date(),
   }),
 });
 const blogCollection = defineCollection({
@@ -13,6 +17,9 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     date: z.date(),
+    isDraft: z.boolean(),
+    updatedAt: z.date(),
+    createdAt: z.date(),
   }),
 });
 

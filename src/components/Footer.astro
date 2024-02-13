@@ -3,17 +3,27 @@ import { persona } from "../persona";
 import Link from "./Link.astro";
 ---
 
-<footer class="bg-l/primary dark:bg-d/secondary p-3">
-  <h3 class="text-l/bg dark:text-d/secondary w-fit py-1 px-3 bg-l/secondary dark:bg-d/tertiary text-xl font-bold mb-2">Discutons</h3>
+<footer class="w-full bg-l/primary p-3 dark:bg-d/secondary">
+  <h3
+    class="mb-2 w-fit bg-l/secondary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary"
+  >
+    Discutons
+  </h3>
   <p class="text-l/bg dark:text-d/tertiary">
     tu peux m'envoyer un fax :
-    <Link target="_self" title={persona.email.replace('@','[@]')} url={`mailto:${persona.email}`} />
+    <Link target="_self" url={`mailto:${persona.email}`} invert>
+      {persona.email.replace("@", "[@]")}
+    </Link>
   </p>
-  <p class="w-full dark:text-d/tertiary text-l/bg ">
+  <p class="text-l/bg dark:text-d/tertiary">
     ou me faire vibrer sur les réseaux :
     {
       persona.contacts.map((c) => (
-      <span class="text-l/tertiary dark:text-d/tertiary after:content-['_−_'] last:after:content-none uppercase"><Link target="_blank" title={c.title} url={c.url} /></span>
+        <span class="uppercase text-l/bg after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
+          <Link target="_blank" url={c.url} invert>
+            {c.title}
+          </Link>
+        </span>
       ))
     }
   </p>

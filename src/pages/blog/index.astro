@@ -1,30 +1,45 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 import List from "../../components/List.astro";
 import ListItem from "../../components/ListItem.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import Section from "../../components/Section.astro";
-import {group} from "radash";
+import { group } from "radash";
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import { persona } from "../../persona";
 
-const allBlogPosts = await getCollection('blog');
-const byDate = group(allBlogPosts, ({data: {date}}) => {
-	const d = new Date(date).toLocaleString('fr-fr', {month: "short", year: 'numeric'})
-	return d
-})
+const allBlogPosts = await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.isDraft !== true : true;
+});
+const byDate = group(allBlogPosts, ({ data: { date } }) => {
+  const d = new Date(date).toLocaleString("fr-fr", {
+    month: "short",
+    year: "numeric",
+  });
+  return d;
+});
 ---
 
-<ContentLayout>
-	<Section>
-		<SectionTitle title="Articles"/>
-		{Object.keys(byDate).map(d =>
-				<>
-					<p class="dark:text-d/primary dark:bg-d/secondary p-1 w-fit font-bold capitalize">{d}</p>
-					<List >
-						{byDate[d].map(b =>
-								<ListItem title={b.data.title} desc={b.data.description} url={`/blog/${b.slug}`}/>
-						)}
-					</List>
-				</>)}
-	</Section>
+<ContentLayout title="Le blog — MarvinL.com" desc={persona.seo.description}>
+  <Section>
+    <SectionTitle title="Articles" />
+    {
+      Object.keys(byDate).map((d) => (
+        <>
+          <p class="w-fit p-1 font-bold capitalize dark:bg-d/secondary dark:text-d/primary">
+            {d}
+          </p>
+          <List>
+            {byDate[d].map((b) => (
+              <ListItem
+                title={b.data.title}
+                desc={b.data.description}
+                url={`/blog/${b.slug}`}
+              />
+            ))}
+          </List>
+        </>
+      ))
+    }
+  </Section>
 </ContentLayout>
