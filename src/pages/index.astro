@@ -9,6 +9,7 @@ import Section from "../components/Section.astro";
 import Story from "../components/Story.astro";
 import { getCollection } from "astro:content";
 import Link from "../components/Link.astro";
+import { sort } from "radash";
 // Resolve an array of references
 const projects = await getCollection("project", ({ data }) =>
   import.meta.env.PROD ? data.isDraft !== true : true,
@@ -16,6 +17,8 @@ const projects = await getCollection("project", ({ data }) =>
 const articles = await getCollection("blog", ({ data }) =>
   import.meta.env.PROD ? data.isDraft !== true : true,
 );
+const sortedProjects = sort(projects, (p) => p.data.createdAt, true);
+const sortedArticles = sort(articles, (p) => p.data.createdAt, true);
 ---
 
 <Layout title={persona.seo.title} desc={persona.seo.description}>
@@ -26,7 +29,7 @@ const articles = await getCollection("blog", ({ data }) =>
       <Section>
         <SectionTitle As="h2" title="Projets" />
         <List>
-          {projects
+          {sortedProjects
             .slice(0, 5)
             .map(({ data: { title, description, createdAt }, slug }) => (
               <ListItem
@@ -66,12 +69,11 @@ const articles = await getCollection("blog", ({ data }) =>
       <Section>
         <SectionTitle As="h2" title="Articles" />
         <List>
-          {articles.map(({ data, slug }) => (
+          {sortedArticles.map(({ data, slug }) => (
             <ListItem
               title={data.title}
               desc={data.description}
               url={"/blog/" + slug}
-              date={data.createdAt}
             />
           ))}
           {articles.length - 3 > 0 && (
