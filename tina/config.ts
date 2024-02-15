@@ -50,19 +50,16 @@ export default defineConfig({
             type: "boolean",
             name: "isDraft",
             label: "Brouillon",
-            required: true,
           },
           {
             type: "datetime",
             name: "createdAt",
             label: "Crée le",
-            required: true,
           },
           {
             type: "datetime",
             name: "updatedAt",
             label: "Modifié le",
-            required: true,
           },
           {
             type: "rich-text",
@@ -121,25 +118,21 @@ export default defineConfig({
             type: "boolean",
             name: "isClient",
             label: "Projet Client",
-            required: true,
           },
           {
             type: "boolean",
             name: "isDraft",
             label: "Brouillon",
-            required: true,
           },
           {
             type: "datetime",
             name: "createdAt",
             label: "Crée le",
-            required: true,
           },
           {
             type: "datetime",
             name: "updatedAt",
             label: "Modifié le",
-            required: true,
           },
           {
             type: "rich-text",
