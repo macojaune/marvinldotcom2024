@@ -118,11 +118,13 @@ export default defineConfig({
             type: "boolean",
             name: "isClient",
             label: "Projet Client",
+            required: true,
           },
           {
             type: "boolean",
             name: "isDraft",
             label: "Brouillon",
+            required: true,
           },
           {
             type: "datetime",

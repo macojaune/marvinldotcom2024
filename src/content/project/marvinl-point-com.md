@@ -8,6 +8,7 @@ technos:
   - Astro
   - Typescript
 isDraft: false
+isClient: false
 createdAt: 2024-02-08T04:00:00.000Z
 updatedAt: 2024-02-15T19:17:32.539Z
 ---
@@ -24,7 +25,7 @@ Même si les rares personnes à le visiter, me disaient qu'iels avaient bien rig
 
 ![ancienne liste de projets sur lesquels j'ai travaillé](/images/mlr2.png)
 
-(L'API du service que j'utilisais pour récupérer les miniatures des sites n'a plus l'air de fonctionner)
+_(L'API du service que j'utilisais pour récupérer les miniatures des sites n'a plus l'air de fonctionner)_
 
 Je n'avais pas à l'époque, *(et n'ai toujours pas)* de stratégie d'acquisition, ni même l'envie de chercher de nouveaux clients *(on en reparlera dans un article dédié) du coup pas de grand changements à mettre en place ce sera une refonte rapide.*
 
