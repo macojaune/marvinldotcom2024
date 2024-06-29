@@ -13,7 +13,7 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2022-09-01T00:00:00.000Z
-updatedAt: 2024-06-29T07:42:12.734Z
+updatedAt: 2024-06-29T07:45:39.178Z
 ---
 
 # Macojaune.com
@@ -50,15 +50,12 @@ l'agencement et de ce que tu affiches sur ta page d'attérrissage.
 
 Au début, avant que je crée Le Macojaune, j'aimais déjà la couleur jaune et j'avais un blog séparé, nommé
 JauneAttitude.fr.
-Depuis j'ai rappatrié mes articles vers ce site dédié et j'utilise un CMS Headless pour faciliter leur gestion : \[Tina]
-([https://tina.io](https://tina.io))
-CMS Statique ? C'est pour faire simple un back-office en ligne, qui va écrire directement des fichiers au
-niveau du
-code source de ton blog (Github dans mon cas).
-À l'opposé de Wordpress, qui va demander une base de données où
-enregistrer tes articles etc…
+Depuis j'ai rappatrié mes articles vers ce site dédié et j'utilise un CMS Headless pour faciliter leur gestion : [Tina](https://tina.io "Tina")
+CMS Statique ? C'est, pour faire simple, un back-office en ligne, qui va écrire directement des fichiers au
+niveau du code source de ton blog *(Github dans mon cas)*.
+À l'opposé de Wordpress, qui va demander une base de données où enregistrer tes articles, un serveur etc…
 
-ça me permet d'écrire des articles via mon téléphone par exemple sans avoir à ouvrir mon éditeur de code préféré
+Ça me permet d'écrire des articles via mon téléphone par exemple sans avoir à ouvrir mon éditeur de code préféré
 pour juste taper du texte. *(Et puis c'est gratuit)*
 
 Le site évolue en fonction de mes envies/besoins, du coup je reviendrai mettre cet article à jour dès que je change
@@ -73,3 +70,10 @@ J'ai récemment découvert [Tally ](https://tally.so/ "Tally"), une alternative 
 J'ai aussi intégré un iframe Pinterest pour partager les moodboards que je concocte lorsque ça me prend sur cette plateforme.
 
 Avec cet ajout j'espère pouvoir concrétiser plus de projets et surtout pouvoir aller plus loin dans ma démarche artistique que des shootings par ci par là. Travailler de réels projets et les défendre via des Expositions, Livres et autres publications.
+
+## Roadmap
+
+Les fonctionnalités à venir ? Dans le désordre :
+
+* Corriger le paiement en ligne (cassé depuis un moment)
+* Refondre la boutique de tirages : Je veux quelque chose de plus simple à gérer en terme de mise a jour et plus attrayant visuellement.
