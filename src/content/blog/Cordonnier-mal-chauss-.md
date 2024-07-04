@@ -3,7 +3,7 @@ title: Cordonnier mal chaussé ?
 description: J'ai écrit cet article en Juillet 2020…
 isDraft: true
 createdAt: 2024-06-24T23:45:48.135Z
-updatedAt: 2024-06-24T23:45:48.135Z
+updatedAt: 2024-07-04T08:01:53.441Z
 ---
 
 Salut les amis, me revoila face à un dilemme…
@@ -63,7 +63,7 @@ Je ne me vois pas faire des sites vitrines, surtout que sans stratégie ça n'a 
 La conscience tout ça…
 
 Du coup qu'est-ce qu'il me reste ? 
-Répondre a des missions freelance à distance, bosser avec des boites en france ou ailleurs ?
+Répondre à des missions freelance à distance, bosser avec des boites en France ou ailleurs ?
 C'est ce que je fais actuellement, postuler s'avère fastidieux… presque autant que pour un CDI…
 Du coup c'est beaucoup de temps à envoyer des demandes, écumer les offres et attendre d'éventuelles réponses…
 Je ne sais pas quel ratio il faut pour pouvoir baser tout son fonctionnement dessus, je dois encore étudier la chose.
