@@ -8,14 +8,16 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-07-10T03:29:11.477Z
+updatedAt: 2024-07-11T01:57:33.215Z
 ---
 
-Je partage très souvent de la musique sur les réseaux sociaux, le partage de lien via Spotify est simple et efficace mais un problème se pose pour les personnes qui ne sont pas sur Spotify. Avec tant de plateformes de streaming disponibles (Spotify, Apple Music, YouTube, etc.), c'est assez frustrant de cliquer sur un nouveau morceau qu'on veut découvrir et arriver sur une plateforme qu'on utilise pas. Obligé de faire la recherche a la main, souvent je ne prends pas le temps. J'imagine que mes abonnés font pareil.
+# AutoSongLink
+
+Je partage très souvent de la musique sur les réseaux sociaux, le partage de lien via Spotify est simple et efficace mais un problème se pose pour les personnes qui ne sont pas sur Spotify. Avec tant de plateformes de streaming disponibles (Spotify, Apple Music, YouTube, etc.), c'est assez frustrant de cliquer sur un nouveau morceau qu'on veut découvrir et arriver sur une plateforme qu'on utilise pas. Obligé de faire la recherche a la main, souvent je ne prends pas le temps. J'imagine que mes abonnés font pareil.
 
 J'ai donc pensé a une extension Chrome qui transformerait le lien spotify en lien multi plateforme en 1 clic si possible.
 
-## Qu'est-ce que cette extension Chrome ?
+## Qu'est-ce que cette extension Chrome ?
 
 J'en avais créé une à l'époque du Spot, je ne sais même plus pour quelle utilisation mais c'était quelque chose de très simple. \
 J'avais été étonné de la simplicité, c'est de l'HTML et du Javascript, avec un fichier de configuration en JSON et puis c'est tout.
@@ -26,7 +28,7 @@ Donc il y a un simple bouton tout moche et du texte pour donner de l'information
 
 Niveau style, je ne me suis pas foulé non plus. UI/UX designer qui lisez ceci, vous avez des suggestions, je suis preneur !
 
-## Pourquoi maintenant ?
+## Pourquoi maintenant ?
 
 J'ai eu l'idée il a un moment, et en cherchant je n'avais rien trouvé de tel. J'avais déjà fait une tentative il y a quelques années, en vain. Aucun service de lien multiplateforme n'exposait d'API.
 
@@ -39,7 +41,7 @@ Ce n'est pas un projet à but lucratif top secret, le code est vraiment rudiment
 
 Et j'imagine que d'autres personnes verrons des limites ou voudront améliorer l'aspect visuel ou corriger des bugs. C'est totalement bienvenu ! Le projet est disponible sur [Github](https://github.com/macojaune/auto-songlink-extension)
 
-Si vous avez des idées pour améliorer l'extension ou si vous rencontrez des problèmes, n'hésitez pas à soumettre une pull request ou à ouvrir une issue.
+Si vous avez des idées pour améliorer l'extension ou si vous rencontrez des problèmes, n'hésitez pas à soumettre une pull request ou à ouvrir une issue.
 
 ## Comment on publie une extension Chrome en fait ?
 
@@ -51,7 +53,12 @@ Bon le site de Canalbox ne veut pas me laisser voir mon compte client du coup je
 Il faut créer des images et des icones un peu comme pour les applications mobiles \
 (J'ai fait ça sur paint à l'arrache, c'est beurk)
 
-Et ensuite justifier chaque permissions demandées par l'extension, attester qu'on n'utilise pas les informations utilisateurs pour faire de la soupe et ça devrait être bon ! \
-
+Et ensuite justifier chaque permissions demandées par l'extension, attester qu'on n'utilise pas les informations utilisateurs pour faire de la soupe et ça devrait être bon ! \\
 
 Je vous tiens au courant. À suivre.
+
+Update (10/07/2024) 
+
+## C'est en ligne !
+
+Vous pouvez tester ici : [AutoSongLink]()
