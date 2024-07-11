@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-07-11T01:59:51.463Z
+updatedAt: 2024-07-11T02:00:01.087Z
 ---
 
 # AutoSongLink
@@ -63,4 +63,4 @@ Update (10/07/2024)
 
 Ça a été très rapide au final. 
 
-Vous pouvez tester ici : [AutoSongLink](chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour où vous voulez !
+Vous pouvez tester ici : [AutoSongLink](chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour !
