@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-07-11T01:57:33.215Z
+updatedAt: 2024-07-11T01:59:51.463Z
 ---
 
 # AutoSongLink
@@ -53,12 +53,14 @@ Bon le site de Canalbox ne veut pas me laisser voir mon compte client du coup je
 Il faut créer des images et des icones un peu comme pour les applications mobiles \
 (J'ai fait ça sur paint à l'arrache, c'est beurk)
 
-Et ensuite justifier chaque permissions demandées par l'extension, attester qu'on n'utilise pas les informations utilisateurs pour faire de la soupe et ça devrait être bon ! \\
+Et ensuite justifier chaque permissions demandées par l'extension, attester qu'on n'utilise pas les informations utilisateurs pour faire de la soupe et ça devrait être bon !
 
 Je vous tiens au courant. À suivre.
 
-Update (10/07/2024) 
+Update (10/07/2024)  
 
-## C'est en ligne !
+## C'est en ligne ! 
 
-Vous pouvez tester ici : [AutoSongLink]()
+Ça a été très rapide au final. 
+
+Vous pouvez tester ici : [AutoSongLink](chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour où vous voulez !
