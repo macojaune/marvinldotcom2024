@@ -1,18 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import Link from "../../components/Link.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import Section from "../../components/Section.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import ListItem from "../../components/ListItem.astro";
 import ContentFooter from "../../components/ContentFooter.astro";
-
-import Email from "../../components/socialShare/Email.astro";
-import Facebook from "../../components/socialShare/Facebook.astro";
-import LinkedIn from "../../components/socialShare/LinkedIn.astro";
-import Twitter from "../../components/socialShare/Twitter.astro";
-import Whatsapp from "../../components/socialShare/Whatsapp.astro";
 import SocialShare from "../../components/socialShare/SocialShare.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
