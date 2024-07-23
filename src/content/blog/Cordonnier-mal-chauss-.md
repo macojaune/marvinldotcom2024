@@ -1,9 +1,9 @@
 ---
 title: Cordonnier mal chaussé ?
 description: J'ai écrit cet article en Juillet 2020…
-isDraft: true
+isDraft: false
 createdAt: 2024-06-24T23:45:48.135Z
-updatedAt: 2024-07-04T08:01:53.441Z
+updatedAt: 2024-07-23T06:03:18.305Z
 ---
 
 Salut les amis, me revoila face à un dilemme…
