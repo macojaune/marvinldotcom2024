@@ -1,47 +1,55 @@
 ---
-import { persona } from "../persona";
+import {persona} from "../persona";
 import Link from "./Link.astro";
 interface ContentFooter {
-  isRoot?: boolean;
+	isRoot?: boolean;
 }
-const { isRoot = false } = Astro.props;
+const {isRoot = false} = Astro.props;
+const slots = 2
 ---
 
 <footer class="my-4">
-  {
-    !isRoot && (
-      <h2 class="font-bold text-l/tertiary dark:text-d/tertiary md:mb-3 md:text-3xl">
-        Une idée, un projet similaire ?
-      </h2>
-    )
-  }
-  <div class="bg-l/tertiary p-3 dark:bg-d/secondary">
-    <h3
-      class="mb-2 w-fit bg-l/primary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary"
-    >
-      J'ai actuellement 0/3 slots disponibles
-    </h3>
-    <p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
-      Il faudra patienter pour qu'on travaille ensemble.
-    </p>
+	{
+	  !isRoot && (
+					<h2 class="font-bold text-l/tertiary dark:text-d/tertiary md:mb-3 md:text-3xl">
+						Une idée, un projet similaire ?
+					</h2>
+	  )
+	}
+	<div class="bg-l/tertiary p-3 dark:bg-d/secondary">
+		<h3
+				class="mb-2 w-fit bg-l/primary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary"
+		>
+			J'ai actuellement {slots}/3 slots disponibles
+		</h3>
+		{slots === 0 ?
+				<><p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
+					Il faudra patienter pour qu'on travaille ensemble.
+				</p>
 
-    <p class="text-l/bg dark:text-d/tertiary">
-      En attendant tu peux m'envoyer un fax :
-      <Link target="_self" url={`mailto:${persona.email}`} invert>
-        {persona.email.replace("@", "[@]")}
-      </Link>
-    </p>
-    <p class="w-full text-l/bg dark:text-d/tertiary">
-      ou me faire vibrer sur les réseaux :
-      {
-        persona.contacts.map((c) => (
-          <span class="uppercase text-l/primary after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
+					<p class="text-l/bg dark:text-d/tertiary">
+						En attendant tu peux m'envoyer un fax :
+						<Link target="_self" url={`mailto:${persona.email}`} invert>
+							{persona.email.replace("@", "[@]")}
+						</Link>
+					</p>
+				</> :
+				<>
+					<p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">Parle moi de ton projet :
+						<Link url="#tally-open=m6RJ0B&tally-layout=modal&tally-width=440&tally-overlay=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=1000">EN CLIQUANT ICI</Link>
+					</p>
+				</>}
+		<p class="w-full text-l/bg dark:text-d/tertiary">
+			ou fais-moi vibrer sur les réseaux :
+			{
+				persona.contacts.map((c) => (
+						<span class="uppercase text-l/primary after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
             <Link target="_blank" url={c.url} invert>
               {c.title}
             </Link>
           </span>
-        ))
-      }
-    </p>
-  </div>
+				))
+			}
+		</p>
+	</div>
 </footer>
