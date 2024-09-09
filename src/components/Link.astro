@@ -5,15 +5,14 @@ interface Props {
   title?: string;
   noDecorate?: boolean;
   invert?: boolean;
+  class?: string;
 }
 
-const {
-  url,
+const {url,
   target,
   noDecorate = false,
   invert = false,
-  title = url,
-} = Astro.props;
+  title = url, class: className} = Astro.props;
 ---
 
 <a
@@ -27,6 +26,7 @@ const {
       : "text-l/tertiary  hover:bg-l/tertiary" + " hover:text-l/bg",
     !noDecorate && invert && "decoration-l/tertiary",
     !noDecorate && "underline decoration-l/primary dark:decoration-d/tertiary",
+    className,
   ]}
   title={title}
   href={url}
