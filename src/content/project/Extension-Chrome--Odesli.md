@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-07-11T02:00:01.087Z
+updatedAt: 2024-09-13T19:08:22.730Z
 ---
 
 # AutoSongLink
@@ -57,10 +57,10 @@ Et ensuite justifier chaque permissions demandées par l'extension, attester qu'
 
 Je vous tiens au courant. À suivre.
 
-Update (10/07/2024)  
+Update (10/07/2024)
 
-## C'est en ligne ! 
+## C'est en ligne !
 
-Ça a été très rapide au final. 
+Ça a été très rapide au final.
 
-Vous pouvez tester ici : [AutoSongLink](chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour !
+Vous pouvez tester ici : [AutoSongLink](https://chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour !
