@@ -8,10 +8,10 @@ technos:
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-09-13T19:08:22.730Z
+updatedAt: 2024-09-13T19:08:47.519Z
 ---
 
-# AutoSongLink
+# [AutoSongLink](https://chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr)
 
 Je partage très souvent de la musique sur les réseaux sociaux, le partage de lien via Spotify est simple et efficace mais un problème se pose pour les personnes qui ne sont pas sur Spotify. Avec tant de plateformes de streaming disponibles (Spotify, Apple Music, YouTube, etc.), c'est assez frustrant de cliquer sur un nouveau morceau qu'on veut découvrir et arriver sur une plateforme qu'on utilise pas. Obligé de faire la recherche a la main, souvent je ne prends pas le temps. J'imagine que mes abonnés font pareil.
 
