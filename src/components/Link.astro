@@ -8,11 +8,14 @@ interface Props {
   class?: string;
 }
 
-const {url,
+const {
+  url,
   target,
   noDecorate = false,
   invert = false,
-  title = url, class: className} = Astro.props;
+  title = url,
+  class: className,
+} = Astro.props;
 ---
 
 <a
@@ -22,10 +25,11 @@ const {url,
       " dark:hover:text-d/secondary dark:focus:text-d/primary dark:focus-visible:text-d/primary" +
       " dark:active:text-d/primary",
     invert
-      ? "text-l/bg hover:bg-l/tertiary hover:text-l/bg"
+      ? "bg-l/bg text-l/primary hover:bg-l/tertiary hover:text-l/bg dark:bg-d/secondary"
       : "text-l/tertiary  hover:bg-l/tertiary" + " hover:text-l/bg",
     !noDecorate && invert && "decoration-l/tertiary",
-    !noDecorate && "underline decoration-l/primary dark:decoration-d/tertiary",
+    !noDecorate &&
+      "underline decoration-l/primary underline-offset-2 dark:decoration-d/tertiary",
     className,
   ]}
   title={title}

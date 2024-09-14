@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-import typography from '@tailwindcss/typography'
+import typography from "@tailwindcss/typography";
 export default {
-  // darkMode: "class",
+  darkMode: "selector",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
@@ -13,7 +13,7 @@ export default {
         "l/bg": "#eeeeee",
         "l/primary": "#111111",
         "l/secondary": "#555555",
-        "l/tertiary": "#741D12"//"#999999",
+        "l/tertiary": "#741D12", //"#999999",
       },
     },
   },

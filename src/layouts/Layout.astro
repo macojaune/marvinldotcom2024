@@ -13,7 +13,7 @@ import BottomLine from "../components/BottomLine.astro";
 ---
 
 <!doctype html>
-<html lang="fr" class="">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -53,10 +53,10 @@ import BottomLine from "../components/BottomLine.astro";
     <meta property="twitter:description" content={desc} />
     <!--RSS-->
     <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="MarvinL.com RSS Feed"
-        href={new URL("rss.xml", Astro.site)}
+      rel="alternate"
+      type="application/rss+xml"
+      title="MarvinL.com RSS Feed"
+      href={new URL("rss.xml", Astro.site)}
     />
     <title>{title}</title>
     <ViewTransitions />
@@ -87,15 +87,18 @@ import BottomLine from "../components/BottomLine.astro";
         ]
       }
     </script>
-<script defer src="https://analytics.marvinl.com/script.js" data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
+    <script
+      defer
+      src="https://analytics.marvinl.com/script.js"
+      data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
     <script async src="https://tally.so/widgets/embed.js"></script>
   </head>
-  <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
+  <body class="h-full w-full bg-l/bg p-4 antialiased md:p-0 dark:bg-d/bg">
     <div
-      class="m-auto flex min-h-screen w-full max-w-xl flex-col items-start justify-center gap-8"
+      class="m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8"
     >
       <Navigation />
-      <main class="space-y-4">
+      <main class="w-full space-y-4">
         <slot />
       </main>
       <Footer />

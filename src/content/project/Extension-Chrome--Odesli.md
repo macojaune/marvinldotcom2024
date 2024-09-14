@@ -2,13 +2,13 @@
 title: 'Extension Chrome : AutoSongLink'
 description: >-
   Remplace rapidement les liens de partage Spotify ou Apple Music par un lien
-  Odesli.
+  Multi-plateformes.
 technos:
   - Javascript
 isClient: false
 isDraft: false
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-09-13T19:08:47.519Z
+updatedAt: 2024-09-13T19:39:47.519Z
 ---
 
 # [AutoSongLink](https://chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr)

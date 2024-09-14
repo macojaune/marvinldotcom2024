@@ -9,11 +9,18 @@ const isActive = (n: { url: string }) => {
 };
 ---
 
-<nav class="flex w-full justify-start gap-2">
+<nav class="mt-2 flex w-full items-start justify-start gap-2">
   {
     nav.map((n) =>
       !isActive(n) ? (
-        <Link target="_self" url={n.url} noDecorate title={n.title}>
+        <Link
+          target="_self"
+          url={n.url}
+          noDecorate
+          title={n.title}
+          data-astro-prefecth
+          class="block"
+        >
           {n.title}
         </Link>
       ) : (
@@ -23,4 +30,55 @@ const isActive = (n: { url: string }) => {
       ),
     )
   }
+  <button id="darkModeToggle" class="ml-auto h-fit w-fit">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="hidden h-5 w-5 dark:inline-block dark:text-d/primary"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+        d="M12 4.5V3m0 18v-1.5m9-7.5h-1.5m-15 0H3m14.303-5.303l1.061-1.061M5.636 18.364l1.06-1.06m11.668 1.06l-1.06-1.06M6.696 6.696l-1.06-1.06M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0z"
+      ></path>
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="inline-block h-5 w-5 text-l/primary dark:hidden"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M20 14.12A7.78 7.78 0 0 1 9.88 4a7.782 7.782 0 0 0 2.9 15A7.782 7.782 0 0 0 20 14.12z"
+      ></path>
+    </svg>
+  </button>
 </nav>
+<script is:inline>
+  const darkModeToggle = document.getElementById("darkModeToggle");
+
+  // Function to set the theme
+  function setTheme(isDark) {
+    document.body.classList.toggle("dark", isDark);
+    localStorage.setItem("darkMode", isDark);
+  }
+
+  // Check for saved theme preference or default to light theme
+  const savedTheme = localStorage.getItem("darkMode");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const defaultDark = savedTheme === null ? prefersDark : savedTheme === "true";
+
+  // Set initial theme
+  setTheme(defaultDark);
+
+  // Toggle theme when button is clicked
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark");
+    setTheme(isDark);
+  });
+</script>

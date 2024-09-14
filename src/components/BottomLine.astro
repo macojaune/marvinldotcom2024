@@ -2,12 +2,12 @@
 import SocialShare from "./socialShare/SocialShare.astro";
 ---
 
-<div class="flex w-full flex-row items-center justify-between">
-  <p class="hidden text-sm text-l/primary dark:text-d/secondary md:flex">
+<div class="mb-2 flex w-full flex-row items-center justify-between">
+  <p class="hidden text-sm text-l/primary md:flex dark:text-d/secondary">
     Partager
   </p>
   <span class="text-sm text-l/primary dark:text-d/primary"
-    >2024 &copy; Tous droits réservés</span
+    >{new Date().getFullYear()}&copy; Tous droits réservés</span
   >
   <SocialShare
     title="MarvinL.com − Un profil de développeur qui devrait te plaire !"
