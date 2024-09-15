@@ -9,4 +9,8 @@ export default {
       },
     },
   ],
+  semi: false,
+  jsxSingleQuote: true,
+  singleQuote: true,
+  trailingComma: true,
 };

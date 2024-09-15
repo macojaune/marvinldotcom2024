@@ -9,6 +9,7 @@ export const nav = [
     title: "projets",
     url: "/projets",
   },
+  {title: 'idées', url:"/ideas"}
   // {
   //   title: "blog",
   //   url: "/blog",

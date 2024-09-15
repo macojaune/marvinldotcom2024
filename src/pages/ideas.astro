@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { ProjectBracket } from "../components/ProjectComparison";
+import ProjectCard from "../components/ProjectCard";
+import SectionTitle from "../components/SectionTitle.astro";
+import { persona } from "../persona";
+
+const projectIdeas = await Astro.locals.db.query.project.findMany({
+  with: { votes: true },
+  where: (project, { eq }) => eq(project.active, false),
+});
+const activeProject = await Astro.locals.db.query.project.findFirst({
+  where: (project, { eq }) => eq(project.active, true),
+});
+---
+
+<Layout title={persona.seo.title} desc={persona.seo.description}>
+  <Header title={persona.firstName} description={persona.description} />
+  {
+    activeProject && (
+    <><SectionTitle As="h2" title="Le projet en cours" />
+      <ProjectCard project={activeProject} isCurrent client:load /></>
+    )
+  }
+  <ProjectBracket projects={projectIdeas} activeProjectId={activeProject.id} client:load />
+</Layout>

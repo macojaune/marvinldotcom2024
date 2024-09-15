@@ -13,9 +13,7 @@ const {
   target,
   noDecorate = false,
   invert = false,
-  title = url,
-  class: className,
-} = Astro.props;
+  title = url, class: className,...rest} = Astro.props;
 ---
 
 <a
@@ -35,6 +33,7 @@ const {
   title={title}
   href={url}
   target={target}
+  {rest}
 >
   <slot name="before" />
   <slot />
