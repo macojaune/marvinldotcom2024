@@ -64,7 +64,7 @@ const isActive = (n: { url: string }) => {
 
   // Function to set the theme
   function setTheme(isDark) {
-    document.body.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("darkMode", isDark);
   }
 
@@ -78,7 +78,7 @@ const isActive = (n: { url: string }) => {
 
   // Toggle theme when button is clicked
   darkModeToggle.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark");
+    const isDark = document.documentElement.classList.toggle("dark");
     setTheme(isDark);
   });
 </script>
