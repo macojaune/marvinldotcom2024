@@ -17,7 +17,7 @@ export const project = sqliteTable("project", {
   title: text("title").notNull(),
   slug: text("slug"),
   audioUrl: text("audioUrl"),
-   transcript: text("transcript", {mode:'json'}).$type<{ start: number, end: number, text: string }[]>(),
+   transcript: text("transcript", {mode:'json'}).$type<{text:string, segments:{ start: number, end: number, text: string}[] }>(),
   description: text("description"),
   url: text("url"),
   active: integer("active", { mode: "boolean" }).default(false),
