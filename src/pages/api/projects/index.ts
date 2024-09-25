@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { db } from "../../../../db";
+import {db} from "../../../db";
 
 export const POST: APIRoute = async ({ locals }) => {
   const res = await db.query.project.findMany({

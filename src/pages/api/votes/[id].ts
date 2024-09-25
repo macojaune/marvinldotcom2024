@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
-import { db } from "../../../../db";
-import { vote } from "../../../../db/schema";
+import { db } from "../../../db";
+import {vote} from "../../../db/schema";
+
 
 export const prerender = false;
 

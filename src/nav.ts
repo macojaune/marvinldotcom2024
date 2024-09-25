@@ -20,4 +20,3 @@ export const nav = [
   // },
 ];
 
-// Don't forget to save upon changing the contents of the file ;)

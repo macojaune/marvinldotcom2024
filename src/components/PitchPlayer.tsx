@@ -1,6 +1,6 @@
 import {type FC, useEffect, useRef, useState} from "react";
-import type {Project} from "../../db/schema";
 import {twMerge} from "tailwind-merge";
+import type {Project} from "../db/schema";
 
 const PitchPlayer: FC<{
 	project: Project; isResults?: boolean; isPlaying: boolean;
