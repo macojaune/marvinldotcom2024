@@ -18,12 +18,12 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const json = {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: `${entry.data.title} − Un projet MarvinL.com`,
+  "@type": "Article",
+  headline: `${entry.data.title} − Un article MarvinL.com`,
   image: "",
   author: {
     "@type": "",
-    name: "",
+    name: "MarvinL.com",
   },
   publisher: {
     "@type": "Organization",
@@ -38,7 +38,7 @@ const json = {
   <script type="application/ld+json" set:html={JSON.stringify(json)} />
 
   <div class="flex flex-row items-center justify-between">
-    <Link url="/projets">
+    <Link url="/blog">
       <svg
         slot="before"
         xmlns="http://www.w3.org/2000/svg"
@@ -54,9 +54,36 @@ const json = {
       retour
     </Link>
     <SocialShare
-      description={`Découvre ${entry.data.title}, le dernier projet conçu par MarvinL.com. Développeur web en freelance depuis la Guadeloupe.`}
-      title={entry.data.title + " − Un projet MarvinL.com"}
+      description={entry.data.description}
+      title={"Je viens de lire "+ entry.data.title + " sur le blog MarvinL.com"}
     />
   </div>
+  <div
+    class:list={[
+      "prose",
+      "prose-h1:w-fit prose-h1:px-3 prose-h1:text-l/bg dark:prose-h1:text-d/secondary" +
+        " prose-h1:py-2" +
+        " prose-h1:bg-l/primary dark:prose-h1:bg-d/tertiary", //H1
+
+      " prose-headings:text-l/primary dark:prose-headings:text-d/primary", //Headings
+
+      " prose-p:text-l/primary dark:prose-p:text-d/primary", //P
+      "prose-strong:font-bold prose-strong:text-current",
+      "dark:prose-a:text-d/secondary" + " dark:hover:prose-a:bg-d/tertiary",
+      "prose-a:text-l/tertiary prose-a:outline-none hover:prose-a:bg-l/tertiary" +
+        " hover:prose-a:text-l/bg focus:prose-a:text-l/primary" +
+        " focus-visible:prose-a:text-l/primary active:prose-a:text-l/primary dark:prose-a:text-d/primary dark:hover:prose-a:bg-d/tertiary" +
+        " dark:hover:prose-a:text-d/secondary dark:focus:prose-a:text-d/primary dark:focus-visible:prose-a:text-d/primary" +
+        " prose-a:underline prose-a:decoration-l/tertiary dark:prose-a:decoration-d/tertiary" +
+        " dark:active:prose-a:text-d/primary", //Links
+
+      "prose-ul:flex prose-ul:w-full prose-ul:list-none prose-ul:flex-col prose-ul:justify-start" +
+        " prose-ul:items-start" +
+        " prose-ul:gap-1" +
+        "prose-li:flex prose-li:items-start prose-li:justify-start prose-li:px-3 prose-li:text-base" +
+        " dark:prose-li:bg-d/secondary dark:prose-li:text-d/primary", //Lists
+    ]}
+  >
   <Content />
+  </div>
 </ContentLayout>
