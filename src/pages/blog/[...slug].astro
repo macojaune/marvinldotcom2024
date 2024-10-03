@@ -55,7 +55,9 @@ const json = {
     </Link>
     <SocialShare
       description={entry.data.description}
-      title={"Je viens de lire "+ entry.data.title + " sur le blog MarvinL.com"}
+      title={"Je viens de lire '" +
+        entry.data.title +
+        "' sur le blog MarvinL.com"}
     />
   </div>
   <div
@@ -84,6 +86,6 @@ const json = {
         " dark:prose-li:bg-d/secondary dark:prose-li:text-d/primary", //Lists
     ]}
   >
-  <Content />
+    <Content />
   </div>
 </ContentLayout>
