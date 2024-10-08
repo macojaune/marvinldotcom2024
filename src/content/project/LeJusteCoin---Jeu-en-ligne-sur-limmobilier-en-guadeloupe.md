@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:30:13.818Z
+updatedAt: 2024-10-08T06:35:26.168Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -64,4 +64,10 @@ J'ai utilisé un nouveau service dont j'ai vu l'efficacité sur youtube (learn e
 
 J'ai utilisé leur intégration avec Next.js et ce fut très rapide. Tout est fortement typé donc ça glisse tout seul et j'aime la façon dont le code est synchronisé au Saas.
 
-J'utilise leur base de données pour enregistrer les scores et leurs fonctions pour publier 1 tweet quotidien avec le classement et un tweet quand quelqu'un prend la tête du classement. Ils proposent aussi l'authentification, 
+J'utilise leur base de données pour enregistrer les scores et leurs fonctions pour publier 1 tweet quotidien avec le classement et un tweet quand quelqu'un prend la tête du classement. 
+
+## Lancement 
+
+J'ai lancé un tweet avec le lien et j'ai été me coucher, oui parce que j'ai fait tout ça sur une nuit blanche (comme d'habitude). 
+
+Le jeu à été bien reçu, les joueurs et joueuses sont amusé·es et ont l'envie de gagner. On est à plus de 300 parties lancées et y a plus de 130 joueurs au classement. 
