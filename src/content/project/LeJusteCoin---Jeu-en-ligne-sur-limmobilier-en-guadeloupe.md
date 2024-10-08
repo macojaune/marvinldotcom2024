@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:09:00.470Z
+updatedAt: 2024-10-08T06:16:06.001Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -33,3 +33,13 @@ J'ai commencé a trifouiller Go, il y a quelques mois avec du scrapping justemen
 Mais bien heureusement, il y a des solutions pour contourner tout ça. Et non je ne parle pas d'aller copier coller le code source de chaque page d'annonce à la main. 
 
 On est fainéant ici, je veux dire efficace !
+
+### Zenrows
+
+C'est un service payant (cher!) qui propose une API et des SDK pour outrepasser les sécurités des sites, formatter les données récupées et plein d'autres choses… J'ai utilisé les 14jours d'essais gratuits qui nous limite à 1000requetes je crois.
+
+Quelques essais en echec plus tard, nous voilà avec notre premier jeu de données. D'abord on récupère une liste d'annonces selon une recherche basique, en gros c'est comme si on allait sur Leboncoin, et cliquait sur guadeloupe, immo, location, je récupère les liens vers les annonces de la première page de résultat, simple.
+
+Ensuite, 2ème requete vers la page de chaque annonce et là on cherche a récupérer les données des éléments sur la page via des sélecteurs CSS, c'est assez facile mais il faut faire gaffe. Le site est fait de telle façon a ce que les sélecteurs changent régulièrement.
+
+Une fois qu'on a ce qu'il nous faut, URL de l'annonces, liste de photos, prix… On sauvegarde tout ça, j'ai commencé par tout mettre dans un fichier JSON (simplicité).
