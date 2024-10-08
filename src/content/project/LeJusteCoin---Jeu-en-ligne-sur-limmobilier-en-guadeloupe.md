@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:16:06.001Z
+updatedAt: 2024-10-08T06:20:06.394Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -43,3 +43,13 @@ Quelques essais en echec plus tard, nous voilà avec notre premier jeu de donné
 Ensuite, 2ème requete vers la page de chaque annonce et là on cherche a récupérer les données des éléments sur la page via des sélecteurs CSS, c'est assez facile mais il faut faire gaffe. Le site est fait de telle façon a ce que les sélecteurs changent régulièrement.
 
 Une fois qu'on a ce qu'il nous faut, URL de l'annonces, liste de photos, prix… On sauvegarde tout ça, j'ai commencé par tout mettre dans un fichier JSON (simplicité).
+
+## Le site 
+
+Maintenant qu'on a la partie données, il nous faut la mécanique de jeu. Et vous savez quoi ? J'ai testé un service tout nouveau tout chaud.
+
+### V0 by Vercel
+
+Un service qui permet de génerer des interfaces utilisateur grâce à l'IA. Franchement j'étais plutot impressionné par la rapidité et le rendu qui était directement fonctionnel et testable dans l'aperçu, contrairement à d'autres IA.
+
+Alors bien évidemment, c'est grace à mes talents de prompt engineer (comment ça les chevilles ?) en herbe.
