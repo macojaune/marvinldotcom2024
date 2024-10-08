@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:02:50.960Z
+updatedAt: 2024-10-08T06:09:00.470Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -24,5 +24,12 @@ L'idée d'un jeu qui ressemble au juste prix m'a traversé l'esprit et quelques 
 
 Scrap-quoi ? Scraping, c'est en quelque sorte récupérer des données, gratter le code source des sites pour pouvoir faire ce que tu veux du contenu… On reparlera de la partie légalité etc un jour, le but ici n'est pas lucratif, juste fun.
 
-J'ai d'abord cherché des librairies, spécifiques à Leboncoin, y en a quelques unes qui datent un peu et ne fonctionnent plus.\
- 
+J'ai d'abord cherché des librairies, spécifiques à Leboncoin, y en a quelques unes qui datent un peu et ne fonctionnent plus, du coup on repart de zéro.
+
+J'ai choisi d'utiliser le langage Go pour cette partie parce que j'ai commencé à m'y intéresser il y a peu et je trouve que sa simplicité serait une bonne corde supplémentaire à mon arc. Ne maitrisant pas spécialement le fameux Python, je me rabats sur le "concurrent".
+
+J'ai commencé a trifouiller Go, il y a quelques mois avec du scrapping justement et en tentant de reprendre le meme code et l'appliquer à Leboncoin, je me suis heurté à cette fameuse mesure de sécurité, le Captcha. Leboncoin est logiquement protégé par CloudFlare pour éviter ce type d'usages robotiques (et peut-être illicites ?) 
+
+Mais bien heureusement, il y a des solutions pour contourner tout ça. Et non je ne parle pas d'aller copier coller le code source de chaque page d'annonce à la main. 
+
+On est fainéant ici, je veux dire efficace !
