@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:36:23.015Z
+updatedAt: 2024-10-08T06:39:26.935Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -62,12 +62,13 @@ Maintenant il me fallait dynamiser le tout, avec les vraies données et un peu d
 
 J'ai utilisé un nouveau service dont j'ai vu l'efficacité sur youtube (learn everyday). Convex, c'est un genre de Firebase en plus cool, je trouve.
 
-J'ai utilisé leur intégration avec Next.js et ce fut très rapide. Tout est fortement typé donc ça glisse tout seul et j'aime la façon dont le code est synchronisé au Saas.
+J'ai utilisé leur intégration avec Next.js et ce fut très rapide. Tout est fortement typé donc ça glisse tout seul et j'aime la façon dont le code est synchronisé au SaaS. 
 
 J'utilise leur base de données pour enregistrer les scores et leurs fonctions pour publier 1 tweet quotidien avec le classement et un tweet quand quelqu'un prend la tête du classement. 
 
 ## Lancement 
 
-J'ai lancé un tweet avec le lien et j'ai été me coucher, oui parce que j'ai fait tout ça sur une nuit blanche (comme d'habitude). 
+J'ai lancé un Tweet avec le lien et j'ai été me coucher, oui parce que j'ai fait tout ça sur une nuit blanche (comme d'habitude). Ensuite la magie des réseaux à fait son affaire.
 
-Le jeu à été bien reçu, les joueurs et joueuses sont amusé·es et ont l'envie de gagner. On est à plus de 300 parties lancées et y a plus de 130 joueurs au classement. 
+Le jeu à été bien reçu, les joueurs et joueuses sont amusé·es et ont l'envie de gagner. On est à plus de 300 parties lancées et y a plus de 130 joueurs au classement. \
+Assez content du résultat, j'ai déjà pu améliorer quelques éléments selon les retours que j'ai reçu et pour le moment je n'ai pas d'idée de suite ou autre pour ce projet… 
