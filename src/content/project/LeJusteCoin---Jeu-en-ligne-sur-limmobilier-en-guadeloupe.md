@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:20:06.394Z
+updatedAt: 2024-10-08T06:30:13.818Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
@@ -53,3 +53,15 @@ Maintenant qu'on a la partie données, il nous faut la mécanique de jeu. Et vou
 Un service qui permet de génerer des interfaces utilisateur grâce à l'IA. Franchement j'étais plutot impressionné par la rapidité et le rendu qui était directement fonctionnel et testable dans l'aperçu, contrairement à d'autres IA.
 
 Alors bien évidemment, c'est grace à mes talents de prompt engineer (comment ça les chevilles ?) en herbe.
+
+J'ai quand meme modifié quelques choses avant de publier la première version. Le jeu était fonctionnel, c'est a dire qu'on peut lancer la partie, le timer se met en route, en cliquant sur les boutons on arrive passe a l'étape suivante et une fois le temps écoulé on voit le classement. 
+
+Maintenant il me fallait dynamiser le tout, avec les vraies données et un peu de style.
+
+### Les données
+
+J'ai utilisé un nouveau service dont j'ai vu l'efficacité sur youtube (learn everyday). Convex, c'est un genre de Firebase en plus cool, je trouve.
+
+J'ai utilisé leur intégration avec Next.js et ce fut très rapide. Tout est fortement typé donc ça glisse tout seul et j'aime la façon dont le code est synchronisé au Saas.
+
+J'utilise leur base de données pour enregistrer les scores et leurs fonctions pour publier 1 tweet quotidien avec le classement et un tweet quand quelqu'un prend la tête du classement. Ils proposent aussi l'authentification, 
