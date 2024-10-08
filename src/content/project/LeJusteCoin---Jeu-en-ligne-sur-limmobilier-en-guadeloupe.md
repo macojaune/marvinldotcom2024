@@ -8,7 +8,7 @@ technos:
 isClient: false
 isDraft: true
 createdAt: 2024-10-02T05:51:01.222Z
-updatedAt: 2024-10-08T06:35:26.168Z
+updatedAt: 2024-10-08T06:36:23.015Z
 ---
 
 # [LeJusteCoin](https://lejustecoin.marvinl.com)
