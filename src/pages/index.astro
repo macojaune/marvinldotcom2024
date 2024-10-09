@@ -27,7 +27,7 @@ const sortedArticles = sort(articles, (p) => p.data.createdAt, true);
   {
     projects ? (
       <Section>
-        <SectionTitle As="h2" title="Projets" />
+        <SectionTitle As="h2" title="Mes derniers Projets" />
         <List>
           {sortedProjects
             .slice(0, 5)
@@ -67,7 +67,7 @@ const sortedArticles = sort(articles, (p) => p.data.createdAt, true);
   {
     articles.length > 0 ? (
       <Section>
-        <SectionTitle As="h2" title="Articles" />
+        <SectionTitle As="h2" title="Mes Réflexions récentes" />
         <List>
           {sortedArticles.map(({ data, slug }) => (
             <ListItem
