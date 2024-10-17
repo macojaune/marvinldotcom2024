@@ -47,9 +47,9 @@ const json = {
   title={entry.data.title + " − Un projet MarvinL.com"}
   desc={description}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(json)} />
 
-  <div class="flex flex-row items-center justify-between">
+  <div class="flex flex-row items-center justify-between mb-4">
     <Link url="/projets">
       <svg
         slot="before"
@@ -103,7 +103,7 @@ const json = {
     <ul
       class="flex w-full flex-row flex-wrap items-start justify-start gap-x-2 gap-y-1"
     >
-      {entry.data.technos.map((t) => <ListItem title={t} isProject />)}
+      {entry.data.technos.map((t:string) => <ListItem title={t} isProject />)}
     </ul>
   </Section>
   <ContentFooter />

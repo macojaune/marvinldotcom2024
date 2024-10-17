@@ -35,6 +35,7 @@ import BottomLine from "../components/BottomLine.astro";
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={desc} />
 
@@ -56,7 +57,7 @@ import BottomLine from "../components/BottomLine.astro";
     />
     <title>{title}</title>
 
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -85,20 +86,20 @@ import BottomLine from "../components/BottomLine.astro";
     </script>
     <ViewTransitions />
     <script
+    is:inline
       defer
       src="https://analytics.marvinl.com/script.js"
       data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
-    <script async src="https://tally.so/widgets/embed.js"></script>
+    <script is:inline async src="https://tally.so/widgets/embed.js"></script>
   </head>
   <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
     <div
       class="m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8"
     >
       <Navigation />
-      <main class="mb-4 space-y-4">
+      <main class="mb-4 lg:mb-8 w-full">
         <slot />
       </main>
-      <!--<ContentFooter />-->
       <BottomLine />
     </div>
     <script>

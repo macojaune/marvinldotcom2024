@@ -1,14 +1,14 @@
 ---
 import { persona } from "../persona";
 import Link from "./Link.astro";
-interface ContentFooter {
+interface Props {
   isRoot?: boolean;
 }
 const { isRoot = false } = Astro.props;
 const slots = 2;
 ---
 
-<footer class="my-4">
+<footer class="my-4 lg:my-12">
   {
     !isRoot && (
       <h2 class="font-bold text-l/tertiary md:mb-3 md:text-3xl dark:text-d/tertiary">

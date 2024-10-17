@@ -36,6 +36,7 @@ import BottomLine from "../components/BottomLine.astro";
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={desc} />
 
@@ -60,7 +61,7 @@ import BottomLine from "../components/BottomLine.astro";
     />
     <title>{title}</title>
     <ViewTransitions />
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
