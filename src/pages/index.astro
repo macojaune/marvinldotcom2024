@@ -10,7 +10,7 @@ import Section from "../components/Section.astro";
 import Story from "../components/Story.astro";
 import { getCollection } from "astro:content";
 import Link from "../components/Link.astro";
-import { sort } from "radash";
+import { sort} from "radash";
 // Resolve an array of references
 const projects = await getCollection("project", ({ data }) =>
   import.meta.env.PROD ? data.isDraft !== true : true,

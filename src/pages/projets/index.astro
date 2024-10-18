@@ -22,7 +22,7 @@ const myProjects = await getCollection("project", ({ data }) => {
     <SectionTitle title="Projets Clients" />
     <List>
       {
-        clientProjects.map((cp) => (
+        clientProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
           <ListItem
             title={cp.data.title}
             desc={cp.data.description}
@@ -37,7 +37,7 @@ const myProjects = await getCollection("project", ({ data }) => {
     <SectionTitle title="Mes projets" />
     <List>
       {
-        myProjects.map((cp) => (
+        myProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
           <ListItem
             title={cp.data.title}
             desc={cp.data.description}
