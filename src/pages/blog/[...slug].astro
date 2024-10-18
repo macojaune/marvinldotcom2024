@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import ContentLayout from "../../layouts/ContentLayout.astro";
 import SocialShare from "../../components/socialShare/SocialShare.astro";
 import Link from "../../components/Link.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Fragment } from "react";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog", ({ data }) => {
@@ -34,7 +35,7 @@ const json = {
 };
 ---
 
-<ContentLayout title={entry.data.title} desc={entry.data.description}>
+<Layout title={entry.data.title} desc={entry.data.description}>
   <script type="application/ld+json" set:html={JSON.stringify(json)} />
 
   <div class="flex flex-row items-center justify-between">
@@ -88,4 +89,4 @@ const json = {
   >
     <Content />
   </div>
-</ContentLayout>
+</Layout>

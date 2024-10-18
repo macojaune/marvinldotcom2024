@@ -1,5 +1,4 @@
 ---
-import SocialShare from "../components/socialShare/SocialShare.astro";
 interface Props {
   title: string;
   desc: string;
@@ -7,105 +6,23 @@ interface Props {
 
 const { title, desc } = Astro.props;
 import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import { ViewTransitions } from "astro:transitions";
 import BottomLine from "../components/BottomLine.astro";
+import Head from "../components/Head.astro";
 ---
-
 <!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon/favicon-32x32.png"
-    />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={desc} />
-
-    {/* Open Graph Facebook  */}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:site_name" content="MarvinL.com" />
-
-    {/* Twitter */}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:site" content={Astro.url} />
-    <meta property="twitter:description" content={desc} />
-    <!--RSS-->
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="MarvinL.com RSS Feed"
-      href={new URL("rss.xml", Astro.site)}
-    />
-    <title>{title}</title>
-    <ViewTransitions />
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "MarvinL.com",
-        "image": "",
-        "@id": "https://www.marvinl.com",
-        "url": "https://www.marvinl.com",
-        "telephone": "",
-        "priceRange": "520-",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "",
-          "addressLocality": "Petit-Bourg",
-          "postalCode": "97170",
-          "addressCountry": "GP"
-        },
-        "sameAs": [
-          "https://facebook.com/marvinldotcom",
-          "https://twitter.com/macojaune",
-          "https://instagram.com/macojaune",
-          "https://youtube.com/@macojaune",
-          "https://www.linkedin.com/in/marvinlondinfer/",
-          "https://www.marvinl.com"
-        ]
-      }
-    </script>
-    <script
-      defer
-      src="https://analytics.marvinl.com/script.js"
-      data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-  </head>
-  <body class="h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
+<html lang="fr" >
+<Head title={title} desc={desc} />
+  <body class="transition-colors duration-500 h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
     <div
       class="m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8"
     >
-      <Navigation />
+      <Navigation/>
       <main class="w-full space-y-8">
         <slot />
       </main>
-      <Footer />
       <BottomLine />
     </div>
-    <script>
+    <script is:inline>
       window.axeptioSettings = {
         clientId: "65cb08d7c71bfd77d142e82d",
       };
@@ -130,6 +47,19 @@ import BottomLine from "../components/BottomLine.astro";
         e.src = "//static.axept.io/sdk.js";
         t.parentNode.insertBefore(e, t);
       })(document, "script");
+    </script>
+    <script is:inline>
+      const theme = localStorage.getItem('darkMode');
+    function checkTheme(){  if (
+        theme === 'true' ||
+        ((!theme || theme !== 'false') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+      }
+      checkTheme()
+      document.addEventListener("astro:after-swap", checkTheme);
+
     </script>
   </body>
 </html>

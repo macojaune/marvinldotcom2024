@@ -7,6 +7,7 @@ import SectionTitle from "../../components/SectionTitle.astro";
 import ListItem from "../../components/ListItem.astro";
 import ContentFooter from "../../components/ContentFooter.astro";
 import SocialShare from "../../components/socialShare/SocialShare.astro";
+import Layout from "@/layouts/Layout.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const projectEntries = await getCollection("project", ({ data }) => {
@@ -43,7 +44,7 @@ const json = {
 };
 ---
 
-<ContentLayout
+<Layout
   title={entry.data.title + " − Un projet MarvinL.com"}
   desc={description}
 >
@@ -107,4 +108,4 @@ const json = {
     </ul>
   </Section>
   <ContentFooter />
-</ContentLayout>
+</Layout>

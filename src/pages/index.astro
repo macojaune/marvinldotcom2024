@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import { persona } from "../persona";
 import List from "../components/List.astro";
@@ -101,4 +102,6 @@ const sortedArticles = sort(articles, (p) => p.data.createdAt, true);
       </Section>
     ) : null
   }
+  <Footer />
+  
 </Layout>

@@ -18,7 +18,6 @@ const isActive = (n: { url: string }) => {
           url={n.url}
           noDecorate
           title={n.title}
-          data-astro-prefecth
           class="block"
         >
           {n.title}
@@ -59,26 +58,23 @@ const isActive = (n: { url: string }) => {
     </svg>
   </button>
 </nav>
-<script is:inline>
-  const darkModeToggle = document.getElementById("darkModeToggle");
+<script>
+  function setListener(){
+    const darkModeToggle = document.getElementById("darkModeToggle");
 
   // Function to set the theme
-  function setTheme(isDark) {
-    document.documentElement.classList.toggle("dark", isDark);
-    localStorage.setItem("darkMode", isDark);
+  function setTheme() {
+   const isDark = document.documentElement.classList.toggle("dark")
+    localStorage.setItem("darkMode", isDark.toString())
   }
 
-  // Check for saved theme preference or default to light theme
-  const savedTheme = localStorage.getItem("darkMode");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const defaultDark = savedTheme === null ? prefersDark : savedTheme === "true";
-
-  // Set initial theme
-  setTheme(defaultDark);
-
   // Toggle theme when button is clicked
-  darkModeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    setTheme(isDark);
+  darkModeToggle?.addEventListener("click", () => {
+    setTheme();
   });
+  }
+  
+  setListener()
+  document.addEventListener("astro:after-swap", setListener);
+
 </script>
