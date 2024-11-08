@@ -7,6 +7,7 @@ import SectionTitle from "../../components/SectionTitle.astro";
 import ListItem from "../../components/ListItem.astro";
 import ContentFooter from "../../components/ContentFooter.astro";
 import SocialShare from "../../components/socialShare/SocialShare.astro";
+import Layout from "@/layouts/Layout.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const projectEntries = await getCollection("project", ({ data }) => {
@@ -32,7 +33,7 @@ const json = {
   image: "",
   author: {
     "@type": "",
-    name: "",
+    name: "MarvinL.com",
   },
   publisher: {
     "@type": "Organization",
@@ -43,13 +44,13 @@ const json = {
 };
 ---
 
-<ContentLayout
+<Layout
   title={entry.data.title + " − Un projet MarvinL.com"}
   desc={description}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(json)} />
 
-  <div class="flex flex-row items-center justify-between">
+  <div class="flex flex-row items-center justify-between mb-4">
     <Link url="/projets">
       <svg
         slot="before"
@@ -103,8 +104,8 @@ const json = {
     <ul
       class="flex w-full flex-row flex-wrap items-start justify-start gap-x-2 gap-y-1"
     >
-      {entry.data.technos.map((t) => <ListItem title={t} isProject />)}
+      {entry.data.technos.map((t:string) => <ListItem title={t} isProject />)}
     </ul>
   </Section>
   <ContentFooter />
-</ContentLayout>
+</Layout>

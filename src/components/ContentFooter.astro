@@ -1,17 +1,17 @@
 ---
 import { persona } from "../persona";
 import Link from "./Link.astro";
-interface ContentFooter {
+interface Props {
   isRoot?: boolean;
 }
 const { isRoot = false } = Astro.props;
-const slots = 2;
+const slots = 3;
 ---
 
-<footer class="my-4">
+<footer class="my-4 lg:my-12">
   {
     !isRoot && (
-      <h2 class="font-bold text-l/tertiary md:mb-3 md:text-3xl dark:text-d/tertiary">
+      <h2 class="font-bold text-l/tertiary dark:text-d/tertiary md:mb-3 md:text-3xl">
         Une idée, un projet similaire ?
       </h2>
     )
@@ -25,7 +25,7 @@ const slots = 2;
     {
       slots === 0 ? (
         <>
-          <p class="dark:bg-bg mb-2 w-full text-l/bg md:mb-4 dark:text-d/tertiary">
+          <p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
             Il faudra patienter pour qu'on travaille ensemble.
           </p>
 
@@ -38,7 +38,7 @@ const slots = 2;
         </>
       ) : (
         <>
-          <p class="dark:bg-bg mb-2 w-full text-l/bg md:mb-4 dark:text-d/tertiary">
+          <p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
             Parle moi de ton projet :
             <Link
               url="#tally-open=m6RJ0B&tally-layout=modal&tally-width=440&tally-overlay=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=1000"

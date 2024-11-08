@@ -5,26 +5,30 @@ import ListItem from "../../components/ListItem.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import Section from "../../components/Section.astro";
 import { group } from "radash";
-import ContentLayout from "../../layouts/ContentLayout.astro";
 import { persona } from "../../persona";
+import Layout from "@/layouts/Layout.astro";
+import ContentFooter from "@/components/ContentFooter.astro";
+import { Fragment } from "react";
+import Footer from "@/components/Footer.astro";
 
 const allBlogPosts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.isDraft !== true : true;
 });
-const byDate = group(allBlogPosts, ({ data: { date } }) => {
-  const d = new Date(date).toLocaleString("fr-fr", {
+const byDate = group(allBlogPosts, ({ data:{createdAt}}) => {
+  const d = new Date(createdAt).toLocaleString("fr-fr", {
     month: "short",
     year: "numeric",
   });
+  
   return d;
 });
 ---
 
-<ContentLayout title="Le blog — MarvinL.com" desc={persona.seo.description}>
+<Layout title="Le blog — MarvinL.com" desc={persona.seo.description}>
   <Section>
     <SectionTitle title="Articles" />
     {
-      Object.keys(byDate).map((d) => (
+      Object.keys(byDate).sort((a,b)=>new Date(b).getTime() - new Date(a).getTime()).map((d) => (
         <>
           <p class="w-fit p-1 font-bold capitalize dark:bg-d/secondary dark:text-d/primary">
             {d}
@@ -42,4 +46,5 @@ const byDate = group(allBlogPosts, ({ data: { date } }) => {
       ))
     }
   </Section>
-</ContentLayout>
+  <Footer />
+</Layout>

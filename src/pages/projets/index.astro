@@ -4,7 +4,7 @@ import List from "../../components/List.astro";
 import ListItem from "../../components/ListItem.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import Section from "../../components/Section.astro";
-import ContentLayout from "../../layouts/ContentLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { persona } from "../../persona";
 import ContentFooter from "../../components/ContentFooter.astro";
 import Header from '../../components/Header.astro'
@@ -18,13 +18,12 @@ const myProjects = await getCollection("project", ({ data }) => {
 });
 ---
 
-<ContentLayout title="Mes projets − MarvinL.com" desc={persona.seo.projectDesc}>
-<Header title={persona.firstName} description={persona.description} />
+<Layout title="Mes projets − MarvinL.com" desc={persona.seo.projectDesc}>
   <Section>
     <SectionTitle title="Projets Clients" />
     <List>
       {
-        clientProjects.map((cp) => (
+        clientProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
           <ListItem
             title={cp.data.title}
             desc={cp.data.description}
@@ -39,7 +38,7 @@ const myProjects = await getCollection("project", ({ data }) => {
     <SectionTitle title="Mes projets" />
     <List>
       {
-        myProjects.map((cp) => (
+        myProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
           <ListItem
             title={cp.data.title}
             desc={cp.data.description}
@@ -51,4 +50,4 @@ const myProjects = await getCollection("project", ({ data }) => {
     </List>
   </Section>
   <ContentFooter isRoot />
-</ContentLayout>
+</Layout>

@@ -1,3 +1,4 @@
+import { dash } from "radash";
 import { defineConfig, Form, TinaCMS } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -14,15 +15,14 @@ export default defineConfig({
   clientId: process.env.PUBLIC_TINA_CLIENT_ID,
   // Get this from tina.io
   token: process.env.TINA_TOKEN,
-
   build: {
     outputFolder: "admin",
     publicFolder: "public",
   },
   media: {
     tina: {
-      mediaRoot: "images",
-      publicFolder: "public",
+      mediaRoot: "",
+      publicFolder: "/src/assets",
     },
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
@@ -69,6 +69,10 @@ export default defineConfig({
           },
         ],
         ui: {
+          filename: {
+            readonly: false,
+            slugify: (values) => dash(values?.title)
+          },
           beforeSubmit: async ({
             form,
             cms,
@@ -93,6 +97,7 @@ export default defineConfig({
         name: "project",
         label: "Projets",
         path: "src/content/project",
+        format: "mdx",
         fields: [
           {
             type: "string",
@@ -144,6 +149,10 @@ export default defineConfig({
           },
         ],
         ui: {
+          filename:{
+            readonly:false,
+            slugify: (values) => dash(values?.title)
+          },
           beforeSubmit: async ({
             form,
             cms,

@@ -1,19 +1,13 @@
 ---
-import Section from "../components/Section.astro";
 interface Props {
   title: string;
   desc: string;
 }
 
 const { title, desc } = Astro.props;
-import Navigation from "../components/Navigation.astro";
 import { ViewTransitions } from "astro:transitions";
-import ContentFooter from "../components/ContentFooter.astro";
-import BottomLine from "../components/BottomLine.astro";
 ---
 
-<!doctype html>
-<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -28,6 +22,7 @@ import BottomLine from "../components/BottomLine.astro";
       sizes="32x32"
       href="/favicon/favicon-32x32.png"
     />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
     <link
       rel="icon"
       type="image/png"
@@ -35,6 +30,7 @@ import BottomLine from "../components/BottomLine.astro";
       href="/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={desc} />
 
@@ -42,10 +38,13 @@ import BottomLine from "../components/BottomLine.astro";
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:site_name" content="MarvinL.com" />
 
     {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
+    <meta property="twitter:site" content={Astro.url} />
     <meta property="twitter:description" content={desc} />
     <!--RSS-->
     <link
@@ -55,8 +54,8 @@ import BottomLine from "../components/BottomLine.astro";
       href={new URL("rss.xml", Astro.site)}
     />
     <title>{title}</title>
-
-    <script type="application/ld+json">
+    <ViewTransitions />
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -83,49 +82,11 @@ import BottomLine from "../components/BottomLine.astro";
         ]
       }
     </script>
-    <ViewTransitions />
     <script
       defer
+      is:inline
       src="https://analytics.marvinl.com/script.js"
       data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
     <script async src="https://tally.so/widgets/embed.js"></script>
+    
   </head>
-  <body class="h-full w-full bg-l/bg p-4 antialiased md:p-0 dark:bg-d/bg">
-    <div
-      class="m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8"
-    >
-      <Navigation />
-      <main class="mb-4 space-y-4">
-        <slot />
-      </main>
-      <!--<ContentFooter />-->
-      <BottomLine />
-    </div>
-    <script>
-      window.axeptioSettings = {
-        clientId: "65cb08d7c71bfd77d142e82d",
-      };
-      window._axcb = window._axcb || [];
-      window._mtm = window._mtm || [];
-      window._axcb.push(function (sdk) {
-        sdk.on("cookies:complete", function (choices) {
-          let axeptio_Matomo = [];
-          for (let vendor in choices) {
-            if (vendor != "$$completed" && choices[vendor] == true) {
-              _mtm.push({ event: `axeptio_activate_${vendor}` });
-              axeptio_Matomo.push(vendor);
-            }
-          }
-          _mtm.push({ axeptio_Matomo: axeptio_Matomo });
-        });
-      });
-      (function (d, s) {
-        var t = d.getElementsByTagName(s)[0],
-          e = d.createElement(s);
-        e.async = true;
-        e.src = "//static.axept.io/sdk.js";
-        t.parentNode.insertBefore(e, t);
-      })(document, "script");
-    </script>
-  </body>
-</html>
