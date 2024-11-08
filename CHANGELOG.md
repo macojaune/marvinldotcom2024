@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.0...marvinldotcom-v2.1.1) (2024-11-08)
+
+
+### 📦 CI Improvements
+
+* update changelog style ([fd78efb](https://github.com/macojaune/marvinldotcom2024/commit/fd78efba48fd1a899115aa62d2e622696d2d6127))
+
 ## [2.1.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.0.0...marvinldotcom-v2.1.0) (2024-11-08)
 
 
