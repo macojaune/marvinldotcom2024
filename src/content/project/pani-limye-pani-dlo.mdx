@@ -1,0 +1,85 @@
+---
+title: Pani Limyè | Pani Dlo
+description: Carte des coupures de courant et d'électricité
+technos:
+  - Drizzle
+  - Turso
+  - OpenStreetMap
+  - Leaflet
+  - React
+isClient: false
+isDraft: false
+createdAt: 2024-11-08T23:19:47.995Z
+updatedAt: 2024-11-08T23:22:07.602Z
+---
+
+# Pani Limyè − Pani Dlo
+
+[Pani Limyè](https://pani-limye.marvinl.com/) c'est un site web qui permet de visualiser les coupures de courant en
+Guadeloupe.
+
+En pleine période de grève des agents EDF PEI, des délestages et coupures intempestives. L'idée m'est venue un matin
+après une soirée/nuit sans électricité, et donc sans pouvoir avancer sur mes projets. Je me suis demandé comment
+j'aurais pu savoir où il y a du courant pour éventuellement aller bosser en extérieur.
+J'ai noté l'idée et c'est en recevant un DM Tiktok d'un abonné qui me présentait exactement la même idée que je me
+suis lancé.
+
+Dans ma tête c'était encore un petit projet 24Heures, et je me suis basé sur [O yò?](https://oyo.marvinl.com/) qui
+était un projet similaire mais pour suivre l'évolution des groupes à Po, durant le carnaval.
+
+Je l'ai développé, mis en ligne et j'en ai parlé sur mes réseaux sociaux. Sans réellement savoir si le conflit était
+terminé, si les coupures allaient continuer… Durant le weekend de développement tout allait bien, aucune coupures.
+
+Mes posts ont du tomber sous les yeux d'une journaliste RCI qui me contacte pour parler du site. Après un court
+interview, l'article sera publié le lendemain matin sur le site de la radio.
+
+## Coincidence ?
+Ce meme vendredi 25 octobre 2024 au matin, à peine quelques heures après la sortie de [l'article](https://rci.fm/guadeloupe/infos/Informations-pratiques/Un-site-recense-en-temps-reel-les-coupures-delectricite), black-out total
+sur la
+Guadeloupe. Tous les moteurs de la centrale sont à l'arrêt.
+
+Tout ceci se passe alors que je dormais tranquillement…
+À mon réveil,n'ayant pas d'électricité, je tente de trouver un peu de réseau 4G pour partager la coupure sur le site
+et c'est là que je me rend compte de l'envergure que prend ce "petit" projet pour le fun.
+
+Mon téléphone est bombardé de notifications, mentions et partages suite à l'article. Et le site est pris d'assaut,
+plus de 30 000 visites sur mon outil d'analyse, à mon réveil.
+
+Le black-out aura duré 24 heures dans ma zone, le réseau 4G est tombé après 4heures donc c'était méditation forcée
+toute la journée pour moi.
+
+[Un deuxième article RCI](https://rci.fm/guadeloupe/infos/Societe/Black-out-le-site-Pani-Limye-du-jeune-Guadeloupeen
+-Marvin-Londinfer-pris-dassaut) sortira après le retour à la "normale".
+
+Et un autre sur le site de [France-Antilles](https://www.guadeloupe.franceantilles.fr/actualite/economie/pani-limye-pani-dlo-le-site-qui-tombe-a-pic-1009361.php)
+
+## Les aléas du direct
+
+On a connu un problème majeur le samedi, le site à atteint le quota (1milliard de lectures) de mon service de base de
+données.
+Concordance de plusieurs facteurs :
+ - J'ai oublié d'ajouter des index sur les tables de la base de données (pour les requetes plus rapides et moins
+ couteuses en lectures)
+ - Le traffic très élevé et le nombre de status partagés
+ - Un problème du coté de Turso (mon service de choix ces derniers temps) quand j'ai ajouté ma CB pour éviter de voir
+  mon accès bloqué, quelque chose s'est mal passé et ils ont du intervenir manuellement pour résoudre le problème.
+
+Retour à la normale après 1 heure environ, depuis le site est en ligne et tout fonctionne correctement.
+
+## Premier site "à succès"
+
+C'est bel et bien mon premier succès sur un projet perso…
+On est toujours à plus de 200 visites par jour après presque 15jours et on me reconnait comme le mec "qui a fait le
+truc de Limyè là…"
+
+Je suis vraiment impressionné et j'aurais jamais imaginé que ça prenne cette ampleur.
+J'ai eu quelques sollicitations depuis et on va voir ce sur quoi ça débouche.
+## La suite ?
+
+Arrive bientôt.
+
+J'ai pas mal de projets dans les tuyaux et je vais continuer à ¨#BuilInPublic comme disent les
+collègues Développeurs/Entrepreneurs.
+
+Et pour ce projet? Je ne sais pas trop. Si vous avez des suggestions d'améliorations, n'hésitez pas à me contacter.
+
