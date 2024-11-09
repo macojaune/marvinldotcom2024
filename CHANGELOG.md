@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.1...marvinldotcom-v2.1.2) (2024-11-09)
+
+
+### ⚙️ Chores
+
+* Pani Limyè project ([ba7e134](https://github.com/macojaune/marvinldotcom2024/commit/ba7e134eeae48585aa0097ce007fec4d9f55a782))
+
 ## [2.1.1](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.0...marvinldotcom-v2.1.1) (2024-11-08)
 
 
