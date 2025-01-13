@@ -19,8 +19,10 @@ const activeProject = await Astro.locals.db.query.project.findFirst({
   <Header title={persona.firstName} description={persona.description} />
   {
     activeProject && (
-    <><SectionTitle As="h2" title="Le projet en cours" />
-      <ProjectCard project={activeProject} isCurrent client:load /></>
+    <>
+    <SectionTitle As="h2" title="Le projet en cours" />
+      <ProjectCard project={activeProject} isCurrent client:load />
+      </>
     )
   }
   <ProjectBracket projects={projectIdeas} activeProjectId={activeProject.id} client:load />
