@@ -78,7 +78,7 @@ const PitchPlayer: FC<{
             subtitles.map((subtitle, index) => (
               <div
                 key={index}
-                className={`absolute w-full text-l/primary transition-all duration-300 ease-in-out dark:text-d/primary ${
+                className={`absolute w-full text-l/primary transition-all duration-300 ease-in-out dark:text-d/primary  ${
                   index === activeIndex
                     ? "translate-y-0 transform opacity-100"
                     : "-translate-y-2 transform opacity-0"
@@ -139,11 +139,11 @@ const PitchPlayer: FC<{
         </span>
       </button>
       {!isResults && isPlaying && (
-        <div className=" relative h-10 w-full text-center text-sm sm:h-8">
+        <div className="relative w-full text-center text-sm min-h-[4rem] my-2">
           {subtitles.map((subtitle, index) => (
             <div
               key={index}
-              className={`absolute w-full text-l/primary transition-all duration-300 ease-in-out dark:text-d/primary ${
+              className={`absolute w-full text-l/primary transition-all duration-300 ease-in-out dark:text-d/primary overflow-auto ${
                 index === activeIndex
                   ? "translate-y-0 transform opacity-100"
                   : "-translate-y-2 transform opacity-0"

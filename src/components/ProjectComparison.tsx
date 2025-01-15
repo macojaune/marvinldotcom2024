@@ -137,10 +137,10 @@ export const ProjectBracket: React.FC<{
           />
         ) : (
           <div className="mx-auto my-4">
-            <h2 className="mb-2 w-fit px-2 text-2xl font-bold text-l/primary dark:bg-d/secondary dark:text-d/primary">
+            <h2 className="my-2 w-fit px-2 text-2xl font-bold text-l/primary dark:bg-d/secondary dark:text-d/primary">
               Vote pour le prochain projet
             </h2>
-            <p className="mb-4 text-l/primary dark:text-d/primary">
+            <p className="mb-8 text-l/primary dark:text-d/primary">
               Une fois celui en cours mis en route, on enchaine sur celui que
               vous aurez sélectionné:
             </p>
@@ -175,16 +175,14 @@ export const ProjectBracket: React.FC<{
             </p>
           </div>
         )}
-        {!votingComplete && (
-          <div className="flex w-full justify-center">
-            <button
-              onClick={() => toggleResults((prev) => !prev)}
-              className=" text-xs text-l/tertiary underline underline-offset-8 hover:bg-l/tertiary hover:text-l/bg hover:no-underline focus:text-l/primary focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:bg-d/tertiary dark:hover:text-d/secondary dark:focus:text-d/primary dark:focus-visible:text-d/primary dark:active:text-d/primary"
-            >
-              {showResults ? "Retour au vote" : "Flemme… montre les résultats"}
-            </button>
-          </div>
-        )}
+        {!votingComplete &&(<div className="flex w-full justify-center">
+          <button
+            onClick={() => toggleResults((prev) => !prev)}
+            className=" text-xs text-l/tertiary underline underline-offset-8 hover:bg-l/tertiary hover:text-l/bg hover:no-underline focus:text-l/primary focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:bg-d/tertiary dark:hover:text-d/secondary dark:focus:text-d/primary dark:focus-visible:text-d/primary dark:active:text-d/primary"
+          >
+            {showResults ? "Retour au vote" : "Flemme… montre les résultats"}
+          </button>
+        </div>)}
       </>
     </QueryClientProvider>
   );

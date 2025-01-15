@@ -5,6 +5,7 @@ import { ProjectBracket } from "../components/ProjectComparison";
 import ProjectCard from "../components/ProjectCard";
 import SectionTitle from "../components/SectionTitle.astro";
 import { persona } from "../persona";
+import {NewsletterForm}from'../components/NewsletterForm'
 
 const projectIdeas = await Astro.locals.db.query.project.findMany({
   with: { votes: true },
@@ -13,6 +14,8 @@ const projectIdeas = await Astro.locals.db.query.project.findMany({
 const activeProject = await Astro.locals.db.query.project.findFirst({
   where: (project, { eq }) => eq(project.active, true),
 });
+
+
 ---
 
 <Layout title={persona.seo.title} desc={persona.seo.description}>
@@ -26,4 +29,6 @@ const activeProject = await Astro.locals.db.query.project.findFirst({
     )
   }
   <ProjectBracket projects={projectIdeas} activeProjectId={activeProject.id} client:load />
+
+ <NewsletterForm />
 </Layout>
