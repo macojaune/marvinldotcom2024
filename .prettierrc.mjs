@@ -11,6 +11,6 @@ export default {
   ],
   semi: false,
   jsxSingleQuote: true,
-  singleQuote: true,
-  trailingComma: true,
-};
+  singleQuote: false,
+  trailingComma: "none",
+}
