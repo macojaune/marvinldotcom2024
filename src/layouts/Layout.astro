@@ -1,65 +1,92 @@
 ---
 interface Props {
-  title: string;
-  desc: string;
+  title: string
+  desc: string
 }
 
-const { title, desc } = Astro.props;
-import Navigation from "../components/Navigation.astro";
-import BottomLine from "../components/BottomLine.astro";
-import Head from "../components/Head.astro";
+const { title, desc } = Astro.props
+import Navigation from "../components/Navigation.astro"
+import BottomLine from "../components/BottomLine.astro"
+import Head from "../components/Head.astro"
+import { NewsletterForm } from "../components/NewsletterForm"
 ---
+
 <!doctype html>
-<html lang="fr" >
-<Head title={title} desc={desc} />
-  <body class="transition-colors duration-500 h-full w-full bg-l/bg p-4 antialiased dark:bg-d/bg md:p-0">
+<html lang='fr'>
+  <Head title={title} desc={desc} />
+  <body
+    class='h-full w-full bg-l/bg p-4 antialiased transition-colors duration-500 dark:bg-d/bg md:p-0'
+  >
     <div
-      class="m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8"
+      class='m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8'
     >
-      <Navigation/>
-      <main class="w-full space-y-8">
+      <Navigation />
+      <main class='w-full space-y-8'>
         <slot />
       </main>
+      <NewsletterForm client:load />
+
       <BottomLine />
     </div>
     <script is:inline>
       window.axeptioSettings = {
-        clientId: "65cb08d7c71bfd77d142e82d",
-      };
-      window._axcb = window._axcb || [];
-      window._mtm = window._mtm || [];
+        clientId: "65cb08d7c71bfd77d142e82d"
+      }
+      window._axcb = window._axcb || []
+      window._mtm = window._mtm || []
       window._axcb.push(function (sdk) {
         sdk.on("cookies:complete", function (choices) {
-          let axeptio_Matomo = [];
+          let axeptio_Matomo = []
           for (let vendor in choices) {
             if (vendor != "$$completed" && choices[vendor] == true) {
-              _mtm.push({ event: `axeptio_activate_${vendor}` });
-              axeptio_Matomo.push(vendor);
+              _mtm.push({ event: `axeptio_activate_${vendor}` })
+              axeptio_Matomo.push(vendor)
             }
           }
-          _mtm.push({ axeptio_Matomo: axeptio_Matomo });
-        });
-      });
-      (function (d, s) {
+          _mtm.push({ axeptio_Matomo: axeptio_Matomo })
+        })
+      })
+      ;(function (d, s) {
         var t = d.getElementsByTagName(s)[0],
-          e = d.createElement(s);
-        e.async = true;
-        e.src = "//static.axept.io/sdk.js";
-        t.parentNode.insertBefore(e, t);
-      })(document, "script");
+          e = d.createElement(s)
+        e.async = true
+        e.src = "//static.axept.io/sdk.js"
+        t.parentNode.insertBefore(e, t)
+      })(document, "script")
     </script>
     <script is:inline>
-      const theme = localStorage.getItem('darkMode');
-    function checkTheme(){  if (
-        theme === 'true' ||
-        ((!theme || theme !== 'false') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      }
+      const theme = localStorage.getItem("darkMode")
+      function checkTheme() {
+        if (
+          theme === "true" ||
+          ((!theme || theme !== "false") &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark")
+        }
       }
       checkTheme()
-      document.addEventListener("astro:after-swap", checkTheme);
-
+      document.addEventListener("astro:after-swap", checkTheme)
     </script>
-  </body>
+  </body><!-- <script is:inline>
+    // This script runs immediately to set the initial theme
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme")
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark"
+      }
+      return "light"
+    })()
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark")
+    } else {
+      document.documentElement.classList.add("dark")
+    }
+  </script> -->
 </html>

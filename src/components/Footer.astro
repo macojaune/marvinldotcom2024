@@ -1,26 +1,26 @@
 ---
-import { persona } from "../persona";
-import Link from "./Link.astro";
+import { persona } from "../persona"
+import Link from "./Link.astro"
 ---
 
-<footer class="w-full bg-l/primary p-3 dark:bg-d/secondary">
+<footer class='w-full bg-l/primary p-3 dark:bg-d/secondary'>
   <h3
-    class="mb-2 w-fit bg-l/secondary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary"
+    class='mb-2 w-fit bg-l/secondary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary'
   >
     Discutons
   </h3>
-  <p class="text-l/bg dark:text-d/tertiary">
+  <p class='text-l/bg dark:text-d/tertiary'>
     tu peux m'envoyer un fax :
-    <Link target="_self" url={`mailto:${persona.email}`} invert>
+    <Link target='_self' url={`mailto:${persona.email}`} invert>
       {persona.email.replace("@", "[@]")}
     </Link>
   </p>
-  <p class="text-l/bg dark:text-d/tertiary">
+  <p class='text-l/bg dark:text-d/tertiary'>
     ou me faire vibrer sur les réseaux :
     {
       persona.contacts.map((c) => (
         <span class="uppercase text-l/bg after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
-          <Link target="_blank" url={c.url} invert>
+          <Link target='_blank' url={c.url} invert>
             {c.title}
           </Link>
         </span>

@@ -7,6 +7,7 @@ import Section from "../../components/Section.astro";
 import Layout from "../../layouts/Layout.astro";
 import { persona } from "../../persona";
 import ContentFooter from "../../components/ContentFooter.astro";
+import Header from '../../components/Header.astro'
 const clientProjects = await getCollection("project", ({ data }) => {
   if (data.isClient === true)
     return import.meta.env.PROD ? data.isDraft !== true : true;

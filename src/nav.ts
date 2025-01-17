@@ -9,14 +9,14 @@ export const nav = [
     title: "projets",
     url: "/projets",
   },
-  {
-    title: "blog",
-    url: "/blog",
-  },
+  {title: 'idées', url:"/ideas"}
+  // {
+  //   title: "blog",
+  //   url: "/blog",
+  // },
   // {
   //   title: "open",
   //   url: "/data",
   // },
 ];
 
-// Don't forget to save upon changing the contents of the file ;)
