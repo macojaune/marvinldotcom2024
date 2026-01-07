@@ -1,7 +1,7 @@
 {
   "name": "marvinldotcom",
   "type": "module",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "astro dev",
