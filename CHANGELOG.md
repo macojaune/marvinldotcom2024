@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.2.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.2...marvinldotcom-v2.2.0) (2026-01-12)
+
+
+### 🚀 New Features
+
+* add article "Allo Robert tu me reçois ?" - co-créé par Glob le blogger ([a396b36](https://github.com/macojaune/marvinldotcom2024/commit/a396b36339c8ee69f32e8b559fddfc24b23d3267))
+* add article "Comment j'ai perdu 10 kg en 2 mois avec le biohacking alimentaire" - co-créé par Glob le blogger ([b82390c](https://github.com/macojaune/marvinldotcom2024/commit/b82390c5a2111cd2bfcacb8e8252481c09a5b18c))
+* add article "Débrouille et vous ?" - co-créé par Glob le blogger ([19e3e01](https://github.com/macojaune/marvinldotcom2024/commit/19e3e01d5df31ee23daaef7ac639f2dd43495931))
+* add article "Macotidien S03E10 - MacoFormateur ? C'est fini !" - co-créé par Glob le blogger ([47c0a63](https://github.com/macojaune/marvinldotcom2024/commit/47c0a6392e53df501d5c8fe62746f1d68ec99c2a))
+* add article "Photogénique : ça n'existe pas" - co-créé par Glob le blogger ([0783716](https://github.com/macojaune/marvinldotcom2024/commit/0783716401aa2d7ac68c85c6d45a9cb3677241e1))
+
+
+### ⌨️ Code Refactoring
+
+* optimisation SEO - titre orienté formation Développeur Web Web Mobile, contenu plus business-friendly ([e939fa6](https://github.com/macojaune/marvinldotcom2024/commit/e939fa68293d116250dc6f5131c9bb6e181d11a5))
+
 ## [2.1.2](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.1...marvinldotcom-v2.1.2) (2024-11-09)
 
 
