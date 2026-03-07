@@ -1,61 +1,63 @@
 ---
-import { persona } from "../persona";
-import Link from "./Link.astro";
+import { persona } from "../persona"
+import Link from "./Link.astro"
 interface Props {
-  isRoot?: boolean;
+  isRoot?: boolean
 }
-const { isRoot = false } = Astro.props;
-const slots = 3;
+const { isRoot = false } = Astro.props
+const slots = 3
 ---
 
-<footer class="my-4 lg:my-12">
+<footer class='my-12 max-w-[46rem] lg:my-16'>
   {
     !isRoot && (
-      <h2 class="font-bold text-l/tertiary dark:text-d/tertiary md:mb-3 md:text-3xl">
+      <h2 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary dark:text-d/primary md:mb-3 md:text-5xl'>
         Une idée, un projet similaire ?
       </h2>
     )
   }
-  <div class="bg-l/tertiary p-3 dark:bg-d/secondary">
-    <h3
-      class="mb-2 w-fit bg-l/primary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary"
+  <div class='mt-4 grid gap-4'>
+    <p
+      class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
     >
       J'ai actuellement {slots}/3 slots disponibles
-    </h3>
+    </p>
     {
       slots === 0 ? (
         <>
-          <p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
+          <p class='mb-2 w-full text-base leading-8 text-l/secondary dark:text-d/muted md:mb-4'>
             Il faudra patienter pour qu'on travaille ensemble.
           </p>
 
-          <p class="text-l/bg dark:text-d/tertiary">
-            En attendant tu peux m'envoyer un fax :
-            <Link target="_self" url={`mailto:${persona.email}`} invert>
+          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+            En attendant tu peux m'envoyer un message :
+            <Link target='_self' url={`mailto:${persona.email}`}>
               {persona.email.replace("@", "[@]")}
             </Link>
           </p>
         </>
       ) : (
         <>
-          <p class="dark:bg-bg mb-2 w-full text-l/bg dark:text-d/tertiary md:mb-4">
+          <p class='mb-2 w-full text-base leading-8 text-l/secondary dark:text-d/muted md:mb-4'>
             Parle moi de ton projet :
-            <Link
-              url="#tally-open=m6RJ0B&tally-layout=modal&tally-width=440&tally-overlay=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=1000"
-              invert
-            >
-              EN CLIQUANT ICI
+            <Link url='#tally-open=m6RJ0B&tally-layout=modal&tally-width=440&tally-overlay=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=1000'>
+              en cliquant ici
             </Link>
           </p>
         </>
       )
     }
-    <p class="w-full text-l/bg dark:text-d/tertiary">
-      ou fais-moi vibrer sur les réseaux :
+    <p class='w-full text-sm text-l/secondary dark:text-d/muted'>
+      Ou me retrouver ici :
       {
         persona.contacts.map((c) => (
-          <span class="uppercase text-l/primary after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
-            <Link target="_blank" url={c.url} invert>
+          <span class="uppercase after:content-['_/_'] last:after:content-none">
+            <Link
+              target='_blank'
+              url={c.url}
+              noDecorate
+              class='mx-1 font-mono text-[0.68rem] uppercase tracking-[0.24em]'
+            >
               {c.title}
             </Link>
           </span>

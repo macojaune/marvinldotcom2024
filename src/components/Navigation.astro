@@ -1,77 +1,94 @@
 ---
-import { nav } from "../nav";
-import Link from "./Link.astro";
-const current = Astro.url.pathname;
+import { nav } from "../nav"
+import Link from "./Link.astro"
+const current = Astro.url.pathname
 
 const isActive = (n: { url: string }) => {
-  if (n.url === "/" && current === "/") return true;
-  return n.url !== "/" && current.startsWith(n.url);
-};
+  if (n.url === "/" && current === "/") return true
+  return n.url !== "/" && current.startsWith(n.url)
+}
 ---
 
-<nav class="mt-2 flex w-full items-start justify-start gap-2">
+<nav class='mt-2 flex w-full flex-wrap items-center gap-x-5 gap-y-2 py-4'>
+  <span
+    class='mr-3 font-mono text-[0.68rem] uppercase tracking-[0.34em] text-l/primary dark:text-d/primary'
+  >
+    MarvinL.com
+  </span>
   {
     nav.map((n) =>
       !isActive(n) ? (
-        <Link target="_self" url={n.url} noDecorate title={n.title} data-astro-prefecth>
+        <Link
+          target='_self'
+          url={n.url}
+          noDecorate
+          title={n.title}
+          class='font-mono text-[0.68rem] uppercase tracking-[0.26em] text-l/secondary dark:text-d/subtle'
+          data-astro-prefetch
+        >
           {n.title}
         </Link>
       ) : (
-        <span class="text-sm underline underline-offset-8 dark:text-d/primary">
+        <span class='font-mono text-[0.68rem] uppercase tracking-[0.26em] text-l/primary underline decoration-l/tertiary underline-offset-[0.45rem] dark:text-d/primary dark:decoration-d/tertiary'>
           {n.title}
         </span>
-      ),
+      )
     )
   }
-  <button id="darkModeToggle" class="ml-auto h-fit w-fit">
+  <button
+    id='darkModeToggle'
+    class='ml-auto inline-flex h-8 w-8 items-center justify-center text-l/primary transition hover:text-l/tertiary dark:text-d/primary dark:hover:text-d/tertiary'
+    aria-label='Basculer le thème'
+    type='button'
+  >
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      class="hidden h-5 w-5 dark:inline-block dark:text-d/primary"
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      class='hidden h-5 w-5 dark:inline-block dark:text-d/primary'
     >
       <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-width="2"
-        d="M12 4.5V3m0 18v-1.5m9-7.5h-1.5m-15 0H3m14.303-5.303l1.061-1.061M5.636 18.364l1.06-1.06m11.668 1.06l-1.06-1.06M6.696 6.696l-1.06-1.06M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0z"
+        fill='none'
+        stroke='currentColor'
+        stroke-linecap='round'
+        stroke-width='2'
+        d='M12 4.5V3m0 18v-1.5m9-7.5h-1.5m-15 0H3m14.303-5.303l1.061-1.061M5.636 18.364l1.06-1.06m11.668 1.06l-1.06-1.06M6.696 6.696l-1.06-1.06M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0z'
       ></path>
     </svg>
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      class="inline-block h-5 w-5 text-l/primary dark:hidden"
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      class='inline-block h-5 w-5 text-l/primary dark:hidden'
     >
       <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M20 14.12A7.78 7.78 0 0 1 9.88 4a7.782 7.782 0 0 0 2.9 15A7.782 7.782 0 0 0 20 14.12z"
+        fill='none'
+        stroke='currentColor'
+        stroke-linejoin='round'
+        stroke-width='2'
+        d='M20 14.12A7.78 7.78 0 0 1 9.88 4a7.782 7.782 0 0 0 2.9 15A7.782 7.782 0 0 0 20 14.12z'
       ></path>
     </svg>
   </button>
 </nav>
 <script is:inline>
-  const darkModeToggle = document.getElementById("darkModeToggle");
+  const darkModeToggle = document.getElementById("darkModeToggle")
 
   // Function to set the theme
   function setTheme(isDark) {
-    document.documentElement.classList.toggle("dark", isDark);
-    localStorage.setItem("darkMode", isDark);
+    document.documentElement.classList.toggle("dark", isDark)
+    localStorage.setItem("darkMode", isDark)
   }
 
   // Check for saved theme preference or default to light theme
-  const savedTheme = localStorage.getItem("darkMode");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const defaultDark = savedTheme === null ? prefersDark : savedTheme === "true";
+  const savedTheme = localStorage.getItem("darkMode")
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const defaultDark = savedTheme === null ? prefersDark : savedTheme === "true"
 
   // Set initial theme
-  setTheme(defaultDark);
+  setTheme(defaultDark)
 
   // Toggle theme when button is clicked
   darkModeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    setTheme(isDark);
-  });
+    const isDark = document.documentElement.classList.toggle("dark")
+    setTheme(isDark)
+  })
 </script>

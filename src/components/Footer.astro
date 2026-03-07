@@ -3,24 +3,47 @@ import { persona } from "../persona"
 import Link from "./Link.astro"
 ---
 
-<footer class='w-full bg-l/primary p-3 dark:bg-d/secondary'>
-  <h3
-    class='mb-2 w-fit bg-l/secondary px-3 py-1 text-xl font-bold text-l/bg dark:bg-d/tertiary dark:text-d/secondary'
-  >
-    Discutons
-  </h3>
-  <p class='text-l/bg dark:text-d/tertiary'>
-    tu peux m'envoyer un fax :
-    <Link target='_self' url={`mailto:${persona.email}`} invert>
+<footer class='w-full py-8 text-l/primary dark:text-d/primary'>
+  <div class='flex flex-col gap-5 md:flex-row md:items-end md:justify-between'>
+    <div class='max-w-xl space-y-3'>
+      <p
+        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+      >
+        Contact
+      </p>
+      <h3
+        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-6xl'
+      >
+        Si une idée mérite d’être construite, on peut en parler.
+      </h3>
+      <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+        Je travaille entre missions, produits et expérimentations. Si tu veux me
+        montrer un projet ou juste m’envoyer un signal, l’e-mail reste la route
+        la plus simple.
+      </p>
+    </div>
+
+    <Link
+      target='_self'
+      url={`mailto:${persona.email}`}
+      noDecorate
+      class='font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary dark:text-d/primary'
+    >
       {persona.email.replace("@", "[@]")}
     </Link>
-  </p>
-  <p class='text-l/bg dark:text-d/tertiary'>
-    ou me faire vibrer sur les réseaux :
+  </div>
+
+  <p class='mt-8 text-sm text-l/secondary dark:text-d/muted'>
+    Ou me retrouver ici :
     {
       persona.contacts.map((c) => (
-        <span class="uppercase text-l/bg after:content-['_−_'] last:after:content-none dark:text-d/tertiary">
-          <Link target='_blank' url={c.url} invert>
+        <span class="uppercase after:content-['_/_'] last:after:content-none">
+          <Link
+            target='_blank'
+            url={c.url}
+            noDecorate
+            class='mx-1 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/primary dark:text-d/primary'
+          >
             {c.title}
           </Link>
         </span>

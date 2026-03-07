@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string
+  desc?: string
+  url: string
+  date: Date
+  technos: string[]
+  isClient: boolean
+}
+
+const { title, desc, url, date, technos, isClient } = Astro.props
+
+const formattedDate = date.toLocaleDateString("fr-FR", {
+  month: "long",
+  year: "numeric"
+})
+---
+
+<a
+  href={url}
+  class='group -mx-3 flex h-full flex-col gap-6 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
+>
+  <div class='flex flex-wrap items-center gap-3'>
+    <span
+      class='font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/accent'
+    >
+      {isClient ? "Client" : "Perso"}
+    </span>
+    <span
+      class='font-mono text-[0.68rem] uppercase tracking-[0.26em] text-l/secondary dark:text-d/subtle'
+    >
+      {formattedDate}
+    </span>
+  </div>
+
+  <div class='space-y-4'>
+    <h3
+      class='font-display text-4xl leading-[0.9] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary md:text-5xl'
+    >
+      {title}
+    </h3>
+    {
+      desc && (
+        <p class='max-w-md text-base leading-8 text-l/secondary dark:text-d/muted'>
+          {desc}
+        </p>
+      )
+    }
+  </div>
+
+  <div class='flex flex-wrap gap-x-4 gap-y-2'>
+    {
+      technos
+        .slice(0, 3)
+        .map((tech) => (
+          <span class='font-mono text-[0.7rem] uppercase tracking-[0.22em] text-l/secondary dark:text-d/subtle'>
+            {tech}
+          </span>
+        ))
+    }
+  </div>
+
+  <span
+    class='inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary transition group-hover:gap-4 group-hover:text-l/tertiary group-focus-visible:gap-4 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'
+  >
+    Voir le projet
+    <span aria-hidden='true'>→</span>
+  </span>
+</a>

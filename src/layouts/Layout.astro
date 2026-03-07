@@ -2,9 +2,10 @@
 interface Props {
   title: string
   desc: string
+  wide?: boolean
 }
 
-const { title, desc } = Astro.props
+const { title, desc, wide = false } = Astro.props
 import Navigation from "../components/Navigation.astro"
 import BottomLine from "../components/BottomLine.astro"
 import Head from "../components/Head.astro"
@@ -15,13 +16,22 @@ import { NewsletterForm } from "../components/NewsletterForm"
 <html lang='fr'>
   <Head title={title} desc={desc} />
   <body
-    class='h-full w-full bg-l/bg p-4 antialiased transition-colors duration-500 dark:bg-d/bg md:p-0'
+    class='min-h-full w-full bg-l/bg font-body text-l/primary antialiased transition-colors duration-500 selection:bg-l/tertiary selection:text-l/bg dark:bg-d/bg dark:text-d/primary dark:selection:bg-d/tertiary dark:selection:text-d/primary'
   >
+    <div class='pointer-events-none fixed inset-0 overflow-hidden'>
+      <div
+        class='absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(116,29,18,0.05),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(223,94,55,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.28),transparent_40%)]'
+      >
+      </div>
+    </div>
     <div
-      class='m-auto flex min-h-screen w-full max-w-3xl flex-col items-start justify-center gap-8'
+      class:list={[
+        "relative m-auto flex min-h-screen w-full flex-col items-start justify-center gap-10 px-5 py-5 md:px-8 md:py-8",
+        wide ? "max-w-6xl" : "max-w-3xl"
+      ]}
     >
       <Navigation />
-      <main class='w-full space-y-8'>
+      <main class={wide ? "w-full space-y-10" : "w-full space-y-8"}>
         <slot />
       </main>
       <NewsletterForm client:load />

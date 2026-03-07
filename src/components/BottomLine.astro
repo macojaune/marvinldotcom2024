@@ -1,16 +1,21 @@
 ---
-import SocialShare from "./socialShare/SocialShare.astro";
+import SocialShare from "./socialShare/SocialShare.astro"
 ---
 
-<div class="mb-2 flex w-full flex-row items-center justify-between">
-  <p class="hidden text-sm text-l/primary md:flex dark:text-d/secondary">
+<div
+  class='mb-2 flex w-full flex-col gap-3 border-t border-l/primary/10 pt-4 text-sm dark:border-d/tertiary md:flex-row md:items-center md:justify-between'
+>
+  <p
+    class='hidden font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/secondary dark:text-d/subtle md:flex'
+  >
     Partager
   </p>
-  <span class="text-sm text-l/primary dark:text-d/primary"
+  <span
+    class='font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/subtle'
     >{new Date().getFullYear()}&copy; Tous droits réservés</span
   >
   <SocialShare
-    title="MarvinL.com − Un profil de développeur freelance qui devrait te plaire !"
-    description="Découvre MarvinL.com, développeur web fullstack en freelance depuis la Guadeloupe et plonge dans mon univers créatif. 💼💻"
+    title='MarvinL.com − Un profil de développeur freelance qui devrait te plaire !'
+    description='Découvre MarvinL.com, développeur web fullstack en freelance depuis la Guadeloupe et plonge dans mon univers créatif. 💼💻'
   />
 </div>

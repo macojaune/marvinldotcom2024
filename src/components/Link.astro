@@ -1,11 +1,12 @@
 ---
 interface Props {
-  url: string;
-  target?: string;
-  title?: string;
-  noDecorate?: boolean;
-  invert?: boolean;
-  class?: string;
+  url: string
+  target?: string
+  title?: string
+  noDecorate?: boolean
+  invert?: boolean
+  class?: string
+  variant?: "inline" | "button" | "subtle"
 }
 
 const {
@@ -13,29 +14,42 @@ const {
   target,
   noDecorate = false,
   invert = false,
-  title = url, class: className,...rest} = Astro.props;
+  variant = "inline",
+  title = url,
+  class: className,
+  ...rest
+} = Astro.props
 ---
 
 <a
   class:list={[
-    "inline-flex w-fit items-center gap-x-1 text-sm  outline-none focus:text-l/primary" +
-      " focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:bg-d/tertiary" +
-      " dark:hover:text-d/secondary dark:focus:text-d/primary dark:focus-visible:text-d/primary" +
-      " dark:active:text-d/primary",
-    invert
-      ? "bg-l/bg text-l/primary hover:bg-l/tertiary hover:text-l/bg dark:bg-d/secondary"
-      : "text-l/tertiary  hover:bg-l/tertiary" + " hover:text-l/bg",
-    !noDecorate && invert && "decoration-l/tertiary",
+    "inline-flex w-fit items-center gap-x-2 outline-none transition duration-200 focus-visible:outline-none",
+    variant === "inline" &&
+      "text-sm text-l/tertiary hover:text-l/primary focus:text-l/primary focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:text-d/accent dark:focus:text-d/accent dark:focus-visible:text-d/accent dark:active:text-d/accent",
+    variant === "button" &&
+      "justify-center font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary hover:text-l/tertiary focus-visible:text-l/tertiary dark:text-d/primary dark:hover:text-d/accent dark:focus-visible:text-d/accent",
+    variant === "subtle" &&
+      "justify-center font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/secondary hover:text-l/tertiary focus-visible:text-l/tertiary dark:text-d/muted dark:hover:text-d/accent dark:focus-visible:text-d/accent",
+    invert &&
+      variant === "inline" &&
+      "text-l/bg hover:text-white dark:text-d/primary",
+    !noDecorate && invert && variant === "inline" && "decoration-l/tertiary",
     !noDecorate &&
+      variant === "inline" &&
       "underline decoration-l/primary underline-offset-2 dark:decoration-d/tertiary",
-    className,
+    className
   ]}
   title={title}
   href={url}
   target={target}
-  {rest}
+  {...rest}
 >
-  <slot name="before" />
+  <slot name='before' />
   <slot />
-  <slot name="after" />
+  {
+    (variant === "button" || variant === "subtle") && (
+      <span aria-hidden='true'>→</span>
+    )
+  }
+  <slot name='after' />
 </a>

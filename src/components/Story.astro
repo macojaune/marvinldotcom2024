@@ -1,33 +1,26 @@
 ---
-import Link from "./Link.astro";
+import Link from "./Link.astro"
 ---
 
-<article class="text-base text-l/secondary dark:text-d/primary">
-  <p>
-    <b class="text-2xl font-bold">2024!</b> C'est l'heure de refondre ce site internet.
-    11ans que j'évolue en tant que développeur freelance, il serait temps de passer
-    du "cordonnier mal chaussé" à autre chose.
-    <i class="text-l/secondary dark:text-d/tertiary"
-      >Peut-être une jolie paire de chaussures minimalistes ?</i
-    >
+<article
+  class='rounded-[1.6rem] border border-l/primary/10 bg-white/80 p-5 text-base text-l/secondary shadow-[10px_10px_0_0_rgba(17,17,17,0.06)] dark:border-d/tertiary dark:bg-d/secondary dark:text-d/muted dark:shadow-[10px_10px_0_0_rgba(0,0,0,0.24)]'
+>
+  <p
+    class='font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/tertiary'
+  >
+    Note
   </p>
-  <p class="mt-2">
-    MarvinL.com ne te dit surement pas grand chose, mais tu connais peut-être la
-    facette <Link url="https://macojaune.com" target="_blank" class="mx-1"
-      >@macojaune</Link
-    >
-    des réseaux sociaux.
+  <p class='mt-4 leading-7'>
+    MarvinL.com me sert de laboratoire public. J'y garde les projets qui ont
+    quitte le carnet, les experiences qui valent une trace et les idees qui
+    finissent par trouver une forme.
   </p>
-  <p>
-    Disons que MarvinL.com c’est l'entité officielle de mon activité. <br /><br
-    />
-    Je suis Développeur Web Fullstack, entrepreneur et <u>surtout</u>
-    <i>Passionné</i>.
-  </p>
-  <p class="mt-2">
-    Passionné de mode sombre et de textes colorés qui défilent… Je vis la nuit
-    et me prélasse la journée, un mode de vie complètement à l'opposé de ce
-    qu'attendaient mes derniers patrons.
-    <br />J'aime créer, résoudre les problèmes, tester des idées saugrenues…
+  <p class='mt-3 leading-7'>
+    Si tu connais plutot la facette
+    <Link url='https://macojaune.com' target='_blank' class='mx-1'>
+      @macojaune
+    </Link>
+    des reseaux sociaux, ici c'est la version plus calme, plus rangee et plus utile
+    de l'atelier.
   </p>
 </article>

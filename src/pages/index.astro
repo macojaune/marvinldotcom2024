@@ -1,107 +1,204 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import SectionTitle from "../components/SectionTitle.astro";
-import { persona } from "../persona";
-import List from "../components/List.astro";
-import ListItem from "../components/ListItem.astro";
-import Section from "../components/Section.astro";
-import Story from "../components/Story.astro";
-import { getCollection } from "astro:content";
-import Link from "../components/Link.astro";
-import { sort} from "radash";
-// Resolve an array of references
+import { getCollection } from "astro:content"
+import { sort } from "radash"
+import Footer from "../components/Footer.astro"
+import HomeHero from "../components/HomeHero.astro"
+import HomeProjectCard from "../components/HomeProjectCard.astro"
+import Link from "../components/Link.astro"
+import { home } from "../home"
+import Layout from "../layouts/Layout.astro"
+import { persona } from "../persona"
+
 const projects = await getCollection("project", ({ data }) =>
-  import.meta.env.PROD ? data.isDraft !== true : true,
-);
+  import.meta.env.PROD ? data.isDraft !== true : true
+)
 const articles = await getCollection("blog", ({ data }) =>
-  import.meta.env.PROD ? data.isDraft !== true : true,
-);
-const sortedProjects = sort(projects, (p) => p.data.createdAt, true);
-const sortedArticles = sort(articles, (p) => p.data.createdAt, true);
+  import.meta.env.PROD ? data.isDraft !== true : true
+)
+
+const sortedProjects = sort(projects, (project) => project.data.createdAt, true)
+const sortedArticles = sort(articles, (article) => article.data.createdAt, true)
+
+const featuredProjects = sortedProjects.slice(0, 3)
+const archiveProjects = sortedProjects.slice(3, 6)
+const recentArticles = sortedArticles.slice(0, 3)
 ---
 
-<Layout title={persona.seo.title} desc={persona.seo.description}>
-  <Header title={persona.firstName} description={persona.description} />
-  <Story />
-  {
-    projects ? (
-      <Section>
-        <SectionTitle As="h2" title="Mes derniers Projets" />
-        <List>
-          {sortedProjects
-            .slice(0, 5)
-            .map(({ data: { title, description, createdAt }, slug }) => (
-              <ListItem
-                title={title}
-                desc={description}
-                url={"/projets/" + slug}
-                date={createdAt}
-              />
-            ))}
-          {projects.length - 5 > 0 && (
-            <p class="mt-2 w-full text-center text-sm">
-              <Link url="/projets" title="Projets">
-                {projects.length - 5} autre{projects.length - 5 > 1 ? "s" : ""}
-                projet{projects.length - 5 > 1 ? "s" : ""}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  class="h-4 w-4"
-                  slot="after"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </Link>
-            </p>
-          )}
-        </List>
-      </Section>
-    ) : null
-  }
-  {
-    articles.length > 0 ? (
-      <Section>
-        <SectionTitle As="h2" title="Mes Réflexions récentes" />
-        <List>
-          {sortedArticles.map(({ data, slug }) => (
-            <ListItem
-              title={data.title}
-              desc={data.description}
-              url={"/blog/" + slug}
+<Layout title={persona.seo.title} desc={persona.seo.description} wide>
+  <HomeHero
+    eyebrow={home.hero.eyebrow}
+    title={home.hero.title}
+    body={home.hero.body}
+    ctas={home.ctas}
+  />
+
+  <section class='grid gap-10 py-6 lg:grid-cols-3 lg:gap-12'>
+    {
+      home.now.map((item) => (
+        <article class='space-y-4'>
+          <p class='font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/accent'>
+            {item.label}
+          </p>
+          <h2 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary dark:text-d/primary md:text-[3.2rem]'>
+            {item.title}
+          </h2>
+          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+            {item.body}
+          </p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class='grid gap-10 py-8'>
+    <div
+      class='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'
+    >
+      <div class='max-w-3xl space-y-3'>
+        <p
+          class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+        >
+          {home.projects.eyebrow}
+        </p>
+        <h2
+          class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6.2rem]'
+        >
+          {home.projects.title}
+        </h2>
+        <p
+          class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-xl'
+        >
+          {home.projects.body}
+        </p>
+      </div>
+
+      <Link url='/projets' target='_self' variant='subtle'>
+        Tous les projets
+      </Link>
+    </div>
+
+    {
+      featuredProjects.length > 0 && (
+        <div class='grid gap-12 lg:grid-cols-3 lg:gap-10'>
+          {featuredProjects.map((project) => (
+            <HomeProjectCard
+              title={project.data.title}
+              desc={project.data.description}
+              date={project.data.createdAt}
+              technos={project.data.technos}
+              isClient={project.data.isClient}
+              url={`/projets/${project.slug}`}
             />
           ))}
-          {articles.length - 3 > 0 && (
-            <p class="mt-2 w-full text-center text-sm">
-              <Link url="/blog" title="Blog">
-                {articles.length - 3} autre{articles.length - 3 > 1 ? "s" : ""}
-                article{articles.length - 3 > 1 ? "s" : ""}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  class="h-4 w-4"
-                  slot="after"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </Link>
+        </div>
+      )
+    }
+
+    {
+      archiveProjects.length > 0 && (
+        <div class='grid gap-5 pt-6'>
+          <div class='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
+            <p class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/subtle'>
+              Autres sorties
             </p>
-          )}
-        </List>
-      </Section>
-    ) : null
-  }
+            <p class='text-sm text-l/secondary dark:text-d/subtle'>
+              Encore quelques traces récentes avant l’archive complète.
+            </p>
+          </div>
+          <div class='grid gap-8 md:grid-cols-3'>
+            {archiveProjects.map((project) => (
+              <a
+                href={`/projets/${project.slug}`}
+                class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-3 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
+              >
+                <p class='font-mono text-[0.66rem] uppercase tracking-[0.25em] text-l/secondary dark:text-d/subtle'>
+                  {project.data.createdAt.toLocaleDateString("fr-FR", {
+                    month: "short",
+                    year: "numeric"
+                  })}
+                </p>
+                <h3 class='font-display text-3xl leading-[0.94] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'>
+                  {project.data.title}
+                </h3>
+                {project.data.description && (
+                  <p class='text-base leading-7 text-l/secondary dark:text-d/muted'>
+                    {project.data.description}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </section>
+
+  <section
+    class='grid gap-10 py-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]'
+  >
+    <div class='space-y-4'>
+      <p
+        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+      >
+        {home.writing.eyebrow}
+      </p>
+      <h2
+        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
+      >
+        {home.writing.title}
+      </h2>
+      <p
+        class='max-w-xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-xl'
+      >
+        {home.writing.body}
+      </p>
+      {
+        articles.length > 0 && (
+          <Link url='/blog' target='_self' variant='subtle'>
+            Voir les écrits
+          </Link>
+        )
+      }
+    </div>
+
+    <div class='grid gap-3'>
+      {
+        recentArticles.length > 0 ? (
+          recentArticles.map((article) => (
+            <a
+              href={`/blog/${article.slug}`}
+              class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
+            >
+              <p class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/accent'>
+                {article.data.updatedAt.toLocaleDateString("fr-FR", {
+                  month: "long",
+                  year: "numeric"
+                })}
+              </p>
+              <h3 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'>
+                {article.data.title}
+              </h3>
+              {article.data.description && (
+                <p class='text-base leading-7 text-l/secondary dark:text-d/muted'>
+                  {article.data.description}
+                </p>
+              )}
+            </a>
+          ))
+        ) : (
+          <article class='py-3'>
+            <p class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/accent'>
+              En pause
+            </p>
+            <p class='mt-3 text-base leading-8 text-l/secondary dark:text-d/muted'>
+              Les prochains textes arriveront quand un sujet mérite mieux qu’un
+              post rapide ou une note perdue ailleurs.
+            </p>
+          </article>
+        )
+      }
+    </div>
+  </section>
+
   <Footer />
-  
 </Layout>

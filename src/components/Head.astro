@@ -1,92 +1,98 @@
 ---
 interface Props {
-  title: string;
-  desc: string;
+  title: string
+  desc: string
 }
 
-const { title, desc } = Astro.props;
-import { ViewTransitions } from "astro:transitions";
+const { title, desc } = Astro.props
+import { ViewTransitions } from "astro:transitions"
 ---
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon/favicon-32x32.png"
-    />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={desc} />
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width' />
+  <meta name='theme-color' content='#eeeeee' />
+  <link rel='preconnect' href='https://fonts.googleapis.com' />
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+  <link
+    href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap'
+    rel='stylesheet'
+  />
+  <link
+    rel='apple-touch-icon'
+    sizes='180x180'
+    href='/favicon/apple-touch-icon.png'
+  />
+  <link
+    rel='icon'
+    type='image/png'
+    sizes='32x32'
+    href='/favicon/favicon-32x32.png'
+  />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon/favicon.ico' />
+  <link
+    rel='icon'
+    type='image/png'
+    sizes='16x16'
+    href='/favicon/favicon-16x16.png'
+  />
+  <link rel='manifest' href='/site.webmanifest' />
+  <link rel='sitemap' href='/sitemap-index.xml' />
+  <meta name='generator' content={Astro.generator} />
+  <meta name='description' content={desc} />
 
-    {/* Open Graph Facebook  */}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:site_name" content="MarvinL.com" />
+  {/* Open Graph Facebook  */}
+  <meta property='og:type' content='website' />
+  <meta property='og:title' content={title} />
+  <meta property='og:description' content={desc} />
+  <meta property='og:url' content={Astro.url} />
+  <meta property='og:site_name' content='MarvinL.com' />
 
-    {/* Twitter */}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:site" content={Astro.url} />
-    <meta property="twitter:description" content={desc} />
-    <!--RSS-->
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="MarvinL.com RSS Feed"
-      href={new URL("rss.xml", Astro.site)}
-    />
-    <title>{title}</title>
-    <ViewTransitions />
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "MarvinL.com",
-        "image": "",
-        "@id": "https://www.marvinl.com",
-        "url": "https://www.marvinl.com",
-        "telephone": "",
-        "priceRange": "520-",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "",
-          "addressLocality": "Petit-Bourg",
-          "postalCode": "97170",
-          "addressCountry": "GP"
-        },
-        "sameAs": [
-          "https://facebook.com/marvinldotcom",
-          "https://twitter.com/macojaune",
-          "https://instagram.com/macojaune",
-          "https://youtube.com/@macojaune",
-          "https://www.linkedin.com/in/marvinlondinfer/",
-          "https://www.marvinl.com"
-        ]
-      }
-    </script>
-    <script
-      defer
-      is:inline
-      src="https://analytics.marvinl.com/script.js"
-      data-website-id="d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac"></script>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-    
-  </head>
+  {/* Twitter */}
+  <meta property='twitter:card' content='summary_large_image' />
+  <meta property='twitter:title' content={title} />
+  <meta property='twitter:site' content={Astro.url} />
+  <meta property='twitter:description' content={desc} />
+  <!--RSS-->
+  <link
+    rel='alternate'
+    type='application/rss+xml'
+    title='MarvinL.com RSS Feed'
+    href={new URL("rss.xml", Astro.site)}
+  />
+  <title>{title}</title>
+  <ViewTransitions />
+  <script is:inline type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "MarvinL.com",
+      "image": "",
+      "@id": "https://www.marvinl.com",
+      "url": "https://www.marvinl.com",
+      "telephone": "",
+      "priceRange": "520-",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "Petit-Bourg",
+        "postalCode": "97170",
+        "addressCountry": "GP"
+      },
+      "sameAs": [
+        "https://facebook.com/marvinldotcom",
+        "https://twitter.com/macojaune",
+        "https://instagram.com/macojaune",
+        "https://youtube.com/@macojaune",
+        "https://www.linkedin.com/in/marvinlondinfer/",
+        "https://www.marvinl.com"
+      ]
+    }
+  </script>
+  <script
+    defer
+    is:inline
+    src='https://analytics.marvinl.com/script.js'
+    data-website-id='d75ac3a2-42e5-4aaf-8f37-371c1e2e4eac'></script>
+  <script async src='https://tally.so/widgets/embed.js'></script>
+</head>

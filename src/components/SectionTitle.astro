@@ -1,13 +1,14 @@
 ---
 interface Props {
-  title: string;
-  As?: string;
+  title: string
+  As?: string
 }
 
-const { title, As = "h3" } = Astro.props;
+const { title, As = "h3" } = Astro.props
 ---
 
 <As
   id={title.toLowerCase()}
-  class="text-lg font-bold text-l/primary dark:text-d/primary">{title}</As
+  class='font-display text-2xl leading-none text-l/primary dark:text-d/primary md:text-3xl'
+  >{title}</As
 >

@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import typography from "@tailwindcss/typography";
+import typography from "@tailwindcss/typography"
 export default {
   darkMode: "class",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -7,18 +7,26 @@ export default {
     extend: {
       colors: {
         "d/bg": "#741D12",
-        "d/primary": "#feeeb8",
+        "d/primary": "#fff4cf",
+        "d/muted": "#f0dfb6",
+        "d/subtle": "#dfc59a",
+        "d/accent": "#f3bf86",
         "d/secondary": "#2a0d3e",
         "d/tertiary": "#df5e37",
         "l/bg": "#eeeeee",
         "l/primary": "#111111",
         "l/secondary": "#555555",
-        "l/tertiary": "#741D12", //"#999999",
+        "l/tertiary": "#741D12" //"#999999",
       },
-    },
+      fontFamily: {
+        body: ["'IBM Plex Sans'", "sans-serif"],
+        display: ["'Fraunces'", "serif"],
+        mono: ["'IBM Plex Mono'", "monospace"]
+      }
+    }
   },
-  plugins: [typography],
-};
+  plugins: [typography]
+}
 
 // "d/bg": "#111111",
 //         "d/primary": "#eeeeee",

@@ -1,22 +1,37 @@
 ---
-import { getCollection } from "astro:content";
-import SocialShare from "../../components/socialShare/SocialShare.astro";
-import Link from "../../components/Link.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Fragment } from "react";
+import { getCollection } from "astro:content"
+import EditorialHeader from "../../components/EditorialHeader.astro"
+import EditorialProse from "../../components/EditorialProse.astro"
+import Layout from "@/layouts/Layout.astro"
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog", ({ data }) => {
-    return import.meta.env.PROD ? data.isDraft !== true : true;
-  });
+    return import.meta.env.PROD ? data.isDraft !== true : true
+  })
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
-  }));
+    props: { entry }
+  }))
 }
 // 2. For your template, you can get the entry directly from the prop
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { entry } = Astro.props
+const { Content } = await entry.render()
+const formattedCreatedAt = new Date(entry.data.createdAt).toLocaleDateString(
+  "fr-FR",
+  {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }
+)
+const formattedUpdatedAt = new Date(entry.data.updatedAt).toLocaleDateString(
+  "fr-FR",
+  {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }
+)
 const json = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -24,69 +39,35 @@ const json = {
   image: "",
   author: {
     "@type": "",
-    name: "MarvinL.com",
+    name: "MarvinL.com"
   },
   publisher: {
     "@type": "Organization",
-    name: "MarvinL.com",
+    name: "MarvinL.com"
   },
   datePublished: new Date(entry.data.createdAt).toLocaleDateString(),
-  dateModified: new Date(entry.data.updatedAt).toLocaleDateString(),
-};
+  dateModified: new Date(entry.data.updatedAt).toLocaleDateString()
+}
 ---
 
-<Layout title={entry.data.title} desc={entry.data.description}>
-  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+<Layout wide title={entry.data.title} desc={entry.data.description}>
+  <script type='application/ld+json' set:html={JSON.stringify(json)} />
 
-  <div class="flex flex-row items-center justify-between">
-    <Link url="/blog">
-      <svg
-        slot="before"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        class="h-4 w-4"
-      >
-        <path
-          fillRule="evenodd"
-          d="M14 8a.75.75 0 0 1-.75.75H4.56l1.22 1.22a.75.75 0 1 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 1.06L4.56 7.25h8.69A.75.75 0 0 1 14 8Z"
-          clipRule="evenodd"></path>
-      </svg>
-      retour
-    </Link>
-    <SocialShare
-      description={entry.data.description}
-      title={"Je viens de lire '" +
-        entry.data.title +
-        "' sur le blog MarvinL.com"}
-    />
-  </div>
-  <div
-    class:list={[
-      "prose",
-      "prose-h1:w-fit prose-h1:px-3 prose-h1:text-l/bg dark:prose-h1:text-d/secondary" +
-        " prose-h1:py-2" +
-        " prose-h1:bg-l/primary dark:prose-h1:bg-d/tertiary", //H1
-
-      " prose-headings:text-l/primary dark:prose-headings:text-d/primary", //Headings
-
-      " prose-p:text-l/primary dark:prose-p:text-d/primary", //P
-      "prose-strong:font-bold prose-strong:text-current",
-      "dark:prose-a:text-d/secondary" + " dark:hover:prose-a:bg-d/tertiary",
-      "prose-a:text-l/tertiary prose-a:outline-none hover:prose-a:bg-l/tertiary" +
-        " hover:prose-a:text-l/bg focus:prose-a:text-l/primary" +
-        " focus-visible:prose-a:text-l/primary active:prose-a:text-l/primary dark:prose-a:text-d/primary dark:hover:prose-a:bg-d/tertiary" +
-        " dark:hover:prose-a:text-d/secondary dark:focus:prose-a:text-d/primary dark:focus-visible:prose-a:text-d/primary" +
-        " prose-a:underline prose-a:decoration-l/tertiary dark:prose-a:decoration-d/tertiary" +
-        " dark:active:prose-a:text-d/primary", //Links
-
-      "prose-ul:flex prose-ul:w-full prose-ul:list-none prose-ul:flex-col prose-ul:justify-start" +
-        " prose-ul:items-start" +
-        " prose-ul:gap-1" +
-        "prose-li:flex prose-li:items-start prose-li:justify-start prose-li:px-3 prose-li:text-base" +
-        " dark:prose-li:bg-d/secondary dark:prose-li:text-d/primary", //Lists
+  <EditorialHeader
+    backHref='/blog'
+    backLabel='Retour au blog'
+    eyebrow='Article'
+    title={entry.data.title}
+    description={entry.data.description}
+    meta={[
+      `Publié le ${formattedCreatedAt}`,
+      `Mis à jour le ${formattedUpdatedAt}`
     ]}
-  >
+    shareDescription={entry.data.description}
+    shareTitle={`Je viens de lire "${entry.data.title}" sur le blog MarvinL.com`}
+  />
+
+  <EditorialProse>
     <Content />
-  </div>
+  </EditorialProse>
 </Layout>
