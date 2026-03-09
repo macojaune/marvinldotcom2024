@@ -1,0 +1,80 @@
+---
+title: Kalot Municipales
+description: Plateforme de compétition fun pour les musiques de campagne électorale en Guadeloupe
+technos:
+  - TanStack Start
+  - React 19
+  - TypeScript
+  - TanStack Query
+  - TanStack Router
+  - Tailwind CSS 4
+  - shadcn/ui
+  - Clerk
+  - Drizzle ORM
+  - Turso
+  - PostHog
+  - Vite 7
+  - Netlify
+  - Vitest
+isClient: false
+isDraft: false
+createdAt: 2026-03-07T05:00:00.000Z
+updatedAt: 2026-03-09T00:00:00.000Z
+---
+
+# Kalot Municipales
+
+[Kalot](https://kalot.fr) c'est une plateforme de compétition fun pour les musiques de campagne électorale en Guadeloupe. Vote par duels, classement Elo, qui aura la meilleure vibes ?
+
+## Le concept
+
+En Guadeloupe, les élections municipales ont une saveur particulière : les candidats sortent leurs propres chansons de campagne. Des titres qui passent en boucle sur les ondes, dans les rue, sur les marchés. Et franchement, y'en a des pépites ! 🎵
+
+L'idée m'est venue pendant la campagne 2026 : pourquoi pas créer une plateforme pour que les Guadeloupéens puissent voter pour leurs musiques préférées ? Un truc fun, participatif, qui capture cette énergie unique de la politique locale.
+
+"Kalot" vient de "kalotèr" en créole guadeloupéen, ce qui signifie querelle, chamaillerie, conflit. Parfait pour une compétition de musiques électorales non ? 😏
+
+## Comment ça marche
+
+Le système est simple mais addictif :
+
+- **Duels** : Deux chansons s'affrontent, tu choisis ta préférée
+- **Winner stays on** : Le gagnant reste en lice pour le prochain duel
+- **Classement Elo** : Un leaderboard en temps réel basé sur le système de classement des joueurs d'échecs
+
+Tu arrives sur le site, t'écoutes deux extraits, tu votes, et tu passes au duel suivant. Simple. Efficace. Addictif.
+
+## Le lancement
+
+Lancé le 7 mars 2026 à 5h du mat (oui, j'étais réveillé tôt pour une fois), avec seulement 7 chansons au démarrage.
+
+48h plus tard :
+- **3.36k visiteurs**
+- **20+ chansons** ajoutées par la communauté
+- **~40 utilisateurs concurrents** en permanence
+
+La viralité locale a été immédiate. Les gens partageaient les duels sur WhatsApp, les discussions démarraient sur les réseaux, c'était exactement ce que j'espérais.
+
+## Features
+
+- **Système de vote par paires** : Simple et rapide
+- **Mécanique winner-stays-on** : Tu veux toujours savoir si ton champion va tenir le coup
+- **Classement Elo en temps réel** : Pour savoir qui domine vraiment la compétition
+- **Leaderboard live** : Les stats en direct
+- **Système de signalement/modération** : Pour éviter les abus
+- **Backoffice admin** : Gestion des chansons et modération
+- **Auth sociale via Clerk** : Connexion rapide avec Google, Facebook, etc.
+
+## Stack technique
+
+Pour ce projet, j'ai voulu tester **TanStack Start** avec **React 19** et **TypeScript**. C'était l'occasion parfaite pour expérimenter avec les derniers outils tout en construisant quelque chose d'utile.
+
+La base de données **Turso** (libsql) avec **Drizzle ORM** pour gérer les votes et le classement. **Clerk** pour l'auth, **PostHog** pour les analytics, le tout déployé sur **Netlify**.
+
+## Pourquoi ce projet
+
+Parce que la politique en Guadeloupe, c'est aussi de la culture. Ces musiques font partie de notre patrimoine local, elles méritent d'être célébrées.
+
+Et puis, c'est un projet fun qui permet de rapprocher les gens autour de quelque chose de positif. Au lieu de se disputer sur les programmes politiques, on se dispute sur les musiques. C'est déjà ça de pris ! 🎶
+
+**Article en cours… Modifications à venir**
