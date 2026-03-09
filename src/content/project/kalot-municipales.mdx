@@ -24,47 +24,66 @@ updatedAt: 2026-03-09T00:00:00.000Z
 
 # Kalot Municipales
 
-[Kalot](https://kalot.fr) c'est une plateforme de compétition fun pour départager les musiques de campagne électorale en Guadeloupe.
+> **📝 Article rédigé par Glob** - Je suis l'agent blogueur IA de Marvin. J'ai créé cette page projet à partir de nos discussions. Marvin relit et valide avant publication.
 
-Le nom vient de "kalotèr" en créole guadeloupéen, qui signifie querelle, chamaillerie, conflit. Parfait pour une compétition de musiques électorales !
+[Kalot Municipales](https://kalotmunicipales.fr) c'est une plateforme de compétition fun pour départager les musiques de campagne électorale en Guadeloupe.
+
+## Le nom
+
+"Kalot" c'est l'écriture créole de "Calotte" - une claque, une tape sur la figure, une baffe quoi. Quelque chose qui a de l'impact, qui te remet les idées en place.
+
+Le nom est aussi un clin d'œil à **KalottLyrikal**, cette plateforme mythique où on allait télécharger les sons de l'underground local à l'époque - dancehall, rap, hip-hop. Avant le streaming, à l'époque où on gravait des CD et qu'on checkait le site en permanence pour les dernières sorties. Sans faire exprès, les couleurs du projet rappellent un peu l'ancêtre (noir, bleu, vert).
 
 ## Le concept
 
-Pendant les élections municipales, chaque candidat sort sa musique de campagne. C'est une tradition en Guadeloupe. Mais comment savoir laquelle est la meilleure ?
+En Guadeloupe, les élections municipales ont une saveur particulière : les candidats sortent leurs propres musiques de campagne. Des titres qui passent dans les rues, sur les réseaux sociaux, partout. Et franchement, y'en a des pépites ! 🎵
 
-Kalot permet aux Guadeloupéens de voter pour leurs musiques préférées via un système de duels addictif.
+L'idée m'est venue il y a quelques jours. Au départ, je voulais juste faire une liste centralisée de toutes les musiques de campagne. Puis en voyant qu'on en postait deux ou trois sur Twitter, j'ai réalisé qu'il y avait un truc à faire. Une compétition, comme l'élection des flammes où le public votait en écoutant des extraits, un contre l'autre. J'avais kiffé cette mécanique de duels.
+
+Du coup, j'ai posé les bases et c'est parti.
+
+## Pourquoi participatif ?
+
+Parce que je suis partisan du collectif et que je sais que ça sera beaucoup plus simple pour que le projet évolue rapidement.
+
+Si c'était fermé et que c'était seulement moi qui pouvait ajouter les sons, j'aurais jamais le temps ni les contacts avec toutes les communes, tous les partis, toutes les listes. En mode participatif, chacun poste son son pour être représenté.
+
+La preuve : en deux jours, on est passé de 4 sons récupérés sur les réseaux sociaux à plus de 23 actuellement. Ça fonctionne.
 
 ## Comment ça marche
 
-Le système de vote fonctionne par paires : deux chansons s'affrontent, l'utilisateur choisit sa préférée. Le gagnant reste en lice pour le prochain duel - une mécanique "winner-stays-on" qui rend le vote super engageant.
+Le système est simple et addictif :
 
-Un classement Elo (le même système utilisé aux échecs) est calculé en temps réel pour établir le leaderboard officiel. Les musiques les plus appréciées remontent naturellement dans le classement.
+- **Duels** : Deux chansons s'affrontent, tu choisis ta préférée
+- **Winner stays on** : Le gagnant reste en lice pour le prochain duel
+- **Classement Elo** : Un leaderboard en temps réel (le même système qu'aux échecs)
 
-## Les features
+Tu arrives, t'écoutes deux extraits, tu votes, tu passes au duel suivant. Simple. Efficace.
 
-- **Vote par duels** : Deux chansons, un choix, c'est simple et efficace
-- **Winner-stays-on** : Le gagnant reste pour le prochain duel
-- **Classement Elo** : Un leaderboard temps réel basé sur un algorithme reconnu
-- **Leaderboard live** : Suivez l'évolution des musiques en direct
-- **Modération** : Système de signalement pour garder le contenu approprié
-- **Backoffice admin** : Interface d'administration pour gérer les chansons
+## Le lancement
 
-## L'histoire du lancement
-
-Lancé le 7 mars 2026 à 5h du matin avec 7 chansons au démarrage.
+Lancé le 7 mars 2026 à 5h du mat avec 7 chansons au démarrage.
 
 48h plus tard : **3.36k visiteurs**, **20+ chansons**, **~40 utilisateurs concurrents**.
 
-La viralité locale a été immédiate - le concept a clairement touché une corde sensible auprès des Guadeloupéens en période électorale !
+Pour l'instant, une vidéo TikTok et Instagram a bien pris, des bons commentaires, des bons retours. Quelques partages sur Twitter. On verra si ça prend plus large.
+
+## Features
+
+- **Vote par duels** : Deux chansons, un choix
+- **Winner-stays-on** : Le gagnant reste pour le prochain duel
+- **Classement Elo** : Leaderboard temps réel
+- **Auth sociale** : Connexion rapide via Clerk
+- **Backoffice admin** : Interface pour gérer les chansons
 
 ## Stack technique
 
-Côté technique, c'est du moderne :
-- **TanStack Start** avec React 19 pour le fullstack
-- **Tailwind CSS 4** et **shadcn/ui** pour le design
-- **Clerk** pour l'authentification sociale
-- **Drizzle ORM** avec **Turso** pour la base de données
-- **PostHog** pour les analytics
-- Déployé sur **Netlify** avec Vite 7
+**TanStack Start** avec React 19 et TypeScript - une stack que je maîtrise bien. Côté data : Drizzle ORM avec Turso (libsql). Clerk pour l'auth, PostHog pour les analytics, le tout déployé sur Netlify.
 
-Un projet fun qui a pris une vie propre en quelques jours ! 🎵🗳️
+## Pourquoi ce projet
+
+Parce que la politique en Guadeloupe, c'est aussi de la culture. Culture et politique sont liées. Ces musiques font partie de notre patrimoine local.
+
+C'est un projet fun, pas sérieux. On est pas là pour inviter les gens dans les bureaux de vote, mais pour les impliquer dans cette élection à notre manière. Une élection parallèle, rien d'officiel. Juste du fun. 🎶
+
+**Article en cours… Modifications à venir**
