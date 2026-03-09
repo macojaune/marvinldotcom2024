@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.2.0...marvinldotcom-v2.3.0) (2026-03-09)
+
+
+### 🚀 New Features
+
+* add Kalot Municipales project page ([13c2744](https://github.com/macojaune/marvinldotcom2024/commit/13c2744fc708519310d091a399f82bd8333cbf56))
+
 ## [2.2.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.1.2...marvinldotcom-v2.2.0) (2026-02-06)
 
 
