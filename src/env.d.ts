@@ -3,10 +3,8 @@
 
 import type { DB } from "../db";
 
-type NetlifyLocals = import("@astrojs/netlify").NetlifyLocals;
-
 declare namespace App {
-  interface Locals extends NetlifyLocals {
+  interface Locals {
     db: DB;
   }
 }
@@ -14,5 +12,8 @@ declare namespace App {
 interface ImportMetaEnv {
   readonly ASTRO_DB_REMOTE_URL: string;
   readonly ASTRO_DB_APP_TOKEN: string;
+  readonly MJ_PUBLIC_KEY: string;
+  readonly MJ_SECRET_KEY: string;
+  readonly MJ_LIST_ID: string;
   // more env variables...
 }
