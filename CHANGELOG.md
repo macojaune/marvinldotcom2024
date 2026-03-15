@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.1](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.3.0...marvinldotcom-v2.3.1) (2026-03-15)
+
+
+### 🔥 Bug Fixes
+
+* **build:** add sharp dependency ([28e6231](https://github.com/macojaune/marvinldotcom2024/commit/28e62312e007ac9fb25e55ff1dc269718a767f78))
+* **deploy:** adapt astro app for coolify ([164fe9b](https://github.com/macojaune/marvinldotcom2024/commit/164fe9b6d06f89519d6cfdc93693c8182a49d421))
+
 ## [2.3.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.2.0...marvinldotcom-v2.3.0) (2026-03-09)
 
 
