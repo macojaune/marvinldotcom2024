@@ -4,6 +4,7 @@ import EditorialHeader from "../../components/EditorialHeader.astro"
 import EditorialProse from "../../components/EditorialProse.astro"
 import ContentFooter from "../../components/ContentFooter.astro"
 import Layout from "@/layouts/Layout.astro"
+import { buildBreadcrumbList, getCanonicalUrl } from "../../seo"
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const projectEntries = await getCollection("project", ({ data }) => {
@@ -34,35 +35,43 @@ const formattedUpdatedAt = new Date(entry.data.updatedAt).toLocaleDateString(
   }
 )
 const description = `Découvre ${entry.data.title}, un projet web conçu par MarvinL.com. Explore son contexte, ses choix techniques et la manière dont l'idée a pris forme en ligne.`
+const canonical = getCanonicalUrl(`/projets/${entry.slug}/`)
 const json = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: `${entry.data.title} − Un projet MarvinL.com`,
-  image: "",
-  author: {
-    "@type": "",
-    name: "MarvinL.com"
+  "@type": "CreativeWork",
+  "@id": `${canonical}#project`,
+  name: entry.data.title,
+  headline: entry.data.title,
+  url: canonical,
+  description,
+  creator: {
+    "@id": "https://www.marvinl.com/#person"
   },
   publisher: {
-    "@type": "Organization",
-    name: "MarvinL.com"
+    "@id": "https://www.marvinl.com/#service"
   },
-  datePublished: new Date(entry.data.createdAt).toLocaleDateString(),
-  dateModified: new Date(entry.data.updatedAt).toLocaleDateString()
+  inLanguage: "fr-FR",
+  keywords: entry.data.technos.join(", "),
+  genre: entry.data.isClient ? "Projet client" : "Projet personnel",
+  dateCreated: new Date(entry.data.createdAt).toISOString(),
+  dateModified: new Date(entry.data.updatedAt).toISOString()
 }
+const breadcrumb = buildBreadcrumbList([
+  { name: "Accueil", url: "/" },
+  { name: "Projets", url: "/projets/" },
+  { name: entry.data.title, url: `/projets/${entry.slug}/` }
+])
 ---
 
 <Layout
   wide
   title={entry.data.title + " − Un projet MarvinL.com"}
   desc={description}
+  canonical={canonical}
+  ogType='article'
+  publishedTime={entry.data.createdAt}
+  modifiedTime={entry.data.updatedAt}
+  structuredData={[json, breadcrumb]}
 >
-  <script
-    is:inline
-    type='application/ld+json'
-    set:html={JSON.stringify(json)}
-  />
-
   <EditorialHeader
     backHref='/projets'
     backLabel='Retour aux projets'

@@ -1,51 +1,83 @@
 ---
-import { getCollection } from "astro:content";
-import List from "../../components/List.astro";
-import ListItem from "../../components/ListItem.astro";
-import SectionTitle from "../../components/SectionTitle.astro";
-import Section from "../../components/Section.astro";
-import Layout from "../../layouts/Layout.astro";
-import { persona } from "../../persona";
-import ContentFooter from "../../components/ContentFooter.astro";
-import Header from '../../components/Header.astro'
+import { getCollection } from "astro:content"
+import Layout from "../../layouts/Layout.astro"
+import List from "../../components/List.astro"
+import ListItem from "../../components/ListItem.astro"
+import Section from "../../components/Section.astro"
+import SectionTitle from "../../components/SectionTitle.astro"
+import ContentFooter from "../../components/ContentFooter.astro"
+import { persona } from "../../persona"
+import { buildBreadcrumbList } from "../../seo"
+
 const clientProjects = await getCollection("project", ({ data }) => {
   if (data.isClient === true)
-    return import.meta.env.PROD ? data.isDraft !== true : true;
-});
+    return import.meta.env.PROD ? data.isDraft !== true : true
+})
 const myProjects = await getCollection("project", ({ data }) => {
   if (data.isClient === false)
-    return import.meta.env.PROD ? data.isDraft !== true : true;
-});
+    return import.meta.env.PROD ? data.isDraft !== true : true
+})
+const breadcrumb = buildBreadcrumbList([
+  { name: "Accueil", url: "/" },
+  { name: "Projets", url: "/projets/" }
+])
 ---
 
-<Layout title="Mes projets − MarvinL.com" desc={persona.seo.projectDesc}>
+<Layout
+  wide
+  title={persona.seo.projectTitle}
+  desc={persona.seo.projectDesc}
+  structuredData={breadcrumb}
+>
+  <section class='grid gap-5 py-6'>
+    <p
+      class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+    >
+      Projets
+    </p>
+    <h1
+      class='max-w-5xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6rem]'
+    >
+      Projets web client, expérimentations produits et outils publiés.
+    </h1>
+    <p
+      class='max-w-3xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-[1.18rem]'
+    >
+      Une sélection de projets réalisés en freelance ou lancés en indépendant,
+      avec le contexte, les choix techniques et ce qu’ils ont réellement donné.
+    </p>
+  </section>
   <Section>
-    <SectionTitle title="Projets Clients" />
+    <SectionTitle title='Projets clients' As='h2' />
     <List>
       {
-        clientProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
-          <ListItem
-            title={cp.data.title}
-            desc={cp.data.description}
-            date={cp.data.createdAt}
-            url={`/projets/${cp.slug}`}
-          />
-        ))
+        clientProjects
+          .sort((a, b) => b.data.createdAt - a.data.createdAt)
+          .map((cp) => (
+            <ListItem
+              title={cp.data.title}
+              desc={cp.data.description}
+              date={cp.data.createdAt}
+              url={`/projets/${cp.slug}`}
+            />
+          ))
       }
     </List>
   </Section>
   <Section>
-    <SectionTitle title="Mes projets" />
+    <SectionTitle title='Projets personnels' As='h2' />
     <List>
       {
-        myProjects.sort((a, b) => b.data.createdAt - a.data.createdAt).map(cp => (
-          <ListItem
-            title={cp.data.title}
-            desc={cp.data.description}
-            date={cp.data.createdAt}
-            url={`/projets/${cp.slug}`}
-          />
-        ))
+        myProjects
+          .sort((a, b) => b.data.createdAt - a.data.createdAt)
+          .map((cp) => (
+            <ListItem
+              title={cp.data.title}
+              desc={cp.data.description}
+              date={cp.data.createdAt}
+              url={`/projets/${cp.slug}`}
+            />
+          ))
       }
     </List>
   </Section>

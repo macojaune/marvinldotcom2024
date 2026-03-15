@@ -1,40 +1,76 @@
 export const persona = {
+  brandName: "MarvinL.com",
+  name: "Marvin",
+  handle: "macojaune",
   firstName: "MarvinL.com",
   secondName: "",
   description: "Développeur fullstack indépendant",
+  shortDescription:
+    "Développeur fullstack indépendant basé en Guadeloupe. Je conçois des projets web, des prototypes utiles et des expériences sur mesure pour le web.",
+  jobTitle: "Développeur fullstack indépendant",
   email: "contact@marvinl.com",
+  location: {
+    locality: "Petit-Bourg",
+    region: "Guadeloupe",
+    postalCode: "97170",
+    countryCode: "GP"
+  },
+  serviceAreas: ["Guadeloupe", "Martinique", "France", "Remote"],
+  serviceTypes: [
+    "Développement web sur mesure",
+    "Prototype produit",
+    "Architecture frontend",
+    "Conception d'outils web"
+  ],
+  knowsAbout: [
+    "Développement web",
+    "Frontend",
+    "Backend",
+    "Astro",
+    "React",
+    "Prototypage produit",
+    "Freelance",
+    "Guadeloupe"
+  ],
+  sameAs: [
+    "https://t.me/macojaune",
+    "https://www.youtube.com/@macojaune",
+    "https://github.com/macojaune",
+    "https://instagram.com/macojaune",
+    "https://x.com/macojaune",
+    "https://www.linkedin.com/in/marvinlondinfer/"
+  ],
   contacts: [
     {
       title: "Telegram",
-      url: "https://t.me/macojaune",
+      url: "https://t.me/macojaune"
     },
     {
       title: "Youtube",
-      url: "https://www.youtube.com/@macojaune",
+      url: "https://www.youtube.com/@macojaune"
     },
     {
       title: "Github",
-      url: "https://github.com/macojaune",
+      url: "https://github.com/macojaune"
     },
     {
       title: "Insta",
-      url: "https://instagram.com/macojaune",
-    },
+      url: "https://instagram.com/macojaune"
+    }
   ],
   seo: {
     title: "MarvinL.com − Développement Web en Freelance depuis la Guadeloupe",
     description:
-      "Salut ! Bienvenue sur mon blog, où je partage ma passion pour le business et la tech ! Je suis" +
-      " Marvin, un développeur web en freelance qui travaille en remote depuis la Guadeloupe depuis bientôt 15ans. Rejoins-moi pour explorer ensemble les dernières tendances du développement web, les astuces pour réussir en tant que freelance et les secrets pour concilier travail et vie insulaire. Prépare-toi à être inspiré et à découvrir un univers où le business et la technologie se rencontrent d'une manière unique. Alors, qu'attends-tu ? Viens faire un tour sur MarvinL.com et laisse-toi emporter par l'aventure !",
+      "Développeur fullstack freelance basé en Guadeloupe. Je partage ici mes projets web, mes retours d'expérience et les idées qui prennent une vraie forme en ligne.",
+    blogTitle:
+      "Blog développement web, freelance et projets depuis la Guadeloupe − MarvinL.com",
+    blogDescription:
+      "Articles sur le développement web, les projets produits, le freelance et la vie de créateur web depuis la Guadeloupe.",
+    projectTitle:
+      "Projets web freelance et expérimentations produits − MarvinL.com",
     projectDesc:
-      "Explorez mon portfolio diversifié et captivant, regroupant une sélection de projets clients et" +
-      " personnels que j'ai réalisés avec passion et expertise. Du développement web sur mesure pour des entreprises" +
-      " à mes propres projets, cette page vous offre un aperçu de mon parcours professionnel et" +
-      " créatif. Plongez dans un univers où chaque projet raconte une histoire unique, où la technologie se mêle" +
-      " harmonieusement au design pour créer des expériences exceptionnelles. Découvrez comment je donne vie aux" +
-      " idées, une ligne de code à la fois. Prêt à être inspiré·e ? Parcourez mon portfolio dès maintenant et" +
-      "qui sait, peut-être que votre projet fera partie de la liste bientôt…",
-  },
-};
+      "Portfolio de projets web réalisés pour des clients ou construits en indépendant, avec un angle produit, technique et contexte local depuis la Guadeloupe."
+  }
+}
 
 // Don't forget to save upon changing the contents of the file ;)

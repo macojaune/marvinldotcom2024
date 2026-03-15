@@ -1,49 +1,78 @@
 ---
-import { getCollection } from "astro:content";
-import List from "../../components/List.astro";
-import ListItem from "../../components/ListItem.astro";
-import SectionTitle from "../../components/SectionTitle.astro";
-import Section from "../../components/Section.astro";
-import { group } from "radash";
-import { persona } from "../../persona";
-import Layout from "@/layouts/Layout.astro";
-import ContentFooter from "@/components/ContentFooter.astro";
-import { Fragment } from "react";
-import Footer from "@/components/Footer.astro";
+import { getCollection } from "astro:content"
+import { group } from "radash"
+import Footer from "@/components/Footer.astro"
+import Layout from "@/layouts/Layout.astro"
+import List from "../../components/List.astro"
+import ListItem from "../../components/ListItem.astro"
+import Section from "../../components/Section.astro"
+import SectionTitle from "../../components/SectionTitle.astro"
+import { persona } from "../../persona"
+import { buildBreadcrumbList } from "../../seo"
 
 const allBlogPosts = await getCollection("blog", ({ data }) => {
-  return import.meta.env.PROD ? data.isDraft !== true : true;
-});
-const byDate = group(allBlogPosts, ({ data:{createdAt}}) => {
+  return import.meta.env.PROD ? data.isDraft !== true : true
+})
+const byDate = group(allBlogPosts, ({ data: { createdAt } }) => {
   const d = new Date(createdAt).toLocaleString("fr-fr", {
     month: "short",
-    year: "numeric",
-  });
-  
-  return d;
-});
+    year: "numeric"
+  })
+
+  return d
+})
+const breadcrumb = buildBreadcrumbList([
+  { name: "Accueil", url: "/" },
+  { name: "Blog", url: "/blog/" }
+])
 ---
 
-<Layout title="Le blog — MarvinL.com" desc={persona.seo.description}>
+<Layout
+  wide
+  title={persona.seo.blogTitle}
+  desc={persona.seo.blogDescription}
+  structuredData={breadcrumb}
+>
+  <section class='grid gap-5 py-6'>
+    <p
+      class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+    >
+      Blog
+    </p>
+    <h1
+      class='max-w-5xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6rem]'
+    >
+      Articles sur le développement web, les projets produits et le travail en
+      indépendant.
+    </h1>
+    <p
+      class='max-w-3xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-[1.18rem]'
+    >
+      J’y range mes retours d’expérience, mes réflexions sur les outils web, le
+      freelance et ce que je construis depuis la Guadeloupe.
+    </p>
+  </section>
   <Section>
-    <SectionTitle title="Articles" />
+    <SectionTitle title='Archives des articles' As='h2' />
     {
-      Object.keys(byDate).sort((a,b)=>new Date(b).getTime() - new Date(a).getTime()).map((d) => (
-        <>
-          <p class="w-fit p-1 font-bold capitalize dark:bg-d/secondary dark:text-d/primary">
-            {d}
-          </p>
-          <List>
-            {byDate[d].map((b) => (
-              <ListItem
-                title={b.data.title}
-                desc={b.data.description}
-                url={`/blog/${b.slug}`}
-              />
-            ))}
-          </List>
-        </>
-      ))
+      Object.keys(byDate)
+        .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())
+        .map((d) => (
+          <>
+            <p class='w-fit p-1 font-bold capitalize dark:bg-d/secondary dark:text-d/primary'>
+              {d}
+            </p>
+            <List>
+              {byDate[d].map((b) => (
+                <ListItem
+                  title={b.data.title}
+                  desc={b.data.description}
+                  url={`/blog/${b.slug}`}
+                />
+              ))}
+            </List>
+          </>
+        ))
     }
   </Section>
   <Footer />

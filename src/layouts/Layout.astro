@@ -1,20 +1,50 @@
 ---
-interface Props {
-  title: string
-  desc: string
-  wide?: boolean
-}
-
-const { title, desc, wide = false } = Astro.props
 import Navigation from "../components/Navigation.astro"
 import BottomLine from "../components/BottomLine.astro"
 import Head from "../components/Head.astro"
 import { NewsletterForm } from "../components/NewsletterForm"
+import type { JsonLd } from "../seo"
+
+interface Props {
+  title: string
+  desc: string
+  wide?: boolean
+  canonical?: string
+  image?: string
+  modifiedTime?: string | Date
+  noindex?: boolean
+  ogType?: "article" | "website"
+  publishedTime?: string | Date
+  structuredData?: JsonLd | JsonLd[]
+}
+
+const {
+  title,
+  desc,
+  wide = false,
+  canonical,
+  image,
+  modifiedTime,
+  noindex,
+  ogType,
+  publishedTime,
+  structuredData
+} = Astro.props
 ---
 
 <!doctype html>
 <html lang='fr'>
-  <Head title={title} desc={desc} />
+  <Head
+    title={title}
+    desc={desc}
+    canonical={canonical}
+    image={image}
+    modifiedTime={modifiedTime}
+    noindex={noindex}
+    ogType={ogType}
+    publishedTime={publishedTime}
+    structuredData={structuredData}
+  />
   <body
     class='min-h-full w-full bg-l/bg font-body text-l/primary antialiased transition-colors duration-500 selection:bg-l/tertiary selection:text-l/bg dark:bg-d/bg dark:text-d/primary dark:selection:bg-d/tertiary dark:selection:text-d/primary'
   >

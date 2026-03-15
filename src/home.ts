@@ -13,7 +13,7 @@ export const home = {
   hero: {
     eyebrow: "Développeur fullstack indépendant depuis la Guadeloupe",
     title:
-      "Je construis des projets web, je teste des idées et je publie ce qui fais sens.",
+      "Je construis des projets web, je teste des idées et je publie ce qui fait sens.",
     body: "Je travaille entre missions, prototypes, outils utiles et projets un peu loufoques. MarvinL.com me sert de carnet de bord public : j’y montre ce qui se passe vraiment, comment ça évolue et les projets qui prennent une forme suffisamment solide pour rester ici."
   },
   ctas: [
@@ -46,7 +46,7 @@ export const home = {
   writing: {
     eyebrow: "Traces écrites",
     title: "J’écris parfois pour poser les idées proprement.",
-    body: "Consistant dans l'irrégularité. Par moments l'écrit est la façon la plus efficace de partager ce que j'ai a dire."
+    body: "Consistant dans l'irrégularité. Par moments l'écrit est la façon la plus efficace de partager ce que j'ai à dire."
   },
   projects: {
     eyebrow: "Sorties récentes",
