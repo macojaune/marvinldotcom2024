@@ -50,6 +50,47 @@ export function buildBreadcrumbList(
   }
 }
 
+export function buildWebPage({
+  description,
+  name,
+  url
+}: {
+  description: string
+  name: string
+  url: string
+}): JsonLd {
+  const canonical = getCanonicalUrl(url)
+
+  return {
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name,
+    description,
+    inLanguage: "fr-FR",
+    isPartOf: {
+      "@id": websiteId
+    },
+    about: [{ "@id": personId }, { "@id": serviceId }]
+  }
+}
+
+export function buildFaqPage(
+  items: { answer: string; question: string }[]
+): JsonLd {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  }
+}
+
 export function getBaseStructuredData(): JsonLd[] {
   return [
     {

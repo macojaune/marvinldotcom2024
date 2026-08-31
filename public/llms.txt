@@ -1,0 +1,45 @@
+# MarvinL.com
+
+MarvinL.com est le site personnel de Marvin, développeur fullstack indépendant basé en Guadeloupe.
+
+## Positionnement
+
+- Développement web sur mesure
+- Prototypes produits
+- Outils web utiles
+- Portfolio vivant et laboratoire public
+
+## Ce que l'on trouve ici
+
+- Des projets clients et personnels
+- Des articles sur le développement web, le freelance et la construction de produits
+- Des idées et des expérimentations en cours
+
+## À propos
+
+- Basé en Guadeloupe
+- Travail en remote
+- Intervient sur des projets en Guadeloupe, en Martinique, en France et à distance
+
+## Pages importantes
+
+- Accueil: https://www.marvinl.com/
+- Projets: https://www.marvinl.com/projets/
+- Blog: https://www.marvinl.com/blog/
+- Idées: https://www.marvinl.com/ideas/
+- RSS: https://www.marvinl.com/rss.xml
+
+## Contact
+
+- Email: contact@marvinl.com
+- Telegram: https://t.me/macojaune
+- GitHub: https://github.com/macojaune
+- YouTube: https://www.youtube.com/@macojaune
+- Instagram: https://instagram.com/macojaune
+- LinkedIn: https://www.linkedin.com/in/marvinlondinfer/
+
+## Notes
+
+- Le site est en français.
+- Les projets publiés ici sont préférés aux intentions non réalisées.
+- Quand un projet apparaît sur le site, c'est généralement qu'il existe déjà sous une forme concrète.

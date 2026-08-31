@@ -8,6 +8,7 @@ import Link from "../components/Link.astro"
 import { home } from "../home"
 import Layout from "../layouts/Layout.astro"
 import { persona } from "../persona"
+import { buildFaqPage, buildWebPage } from "../seo"
 
 const projects = await getCollection("project", ({ data }) =>
   import.meta.env.PROD ? data.isDraft !== true : true
@@ -22,15 +23,58 @@ const sortedArticles = sort(articles, (article) => article.data.createdAt, true)
 const featuredProjects = sortedProjects.slice(0, 3)
 const archiveProjects = sortedProjects.slice(3, 6)
 const recentArticles = sortedArticles.slice(0, 3)
+const homePage = buildWebPage({
+  name: persona.seo.title,
+  description: persona.seo.description,
+  url: "/"
+})
+const faqPage = buildFaqPage(home.faq.items)
 ---
 
-<Layout title={persona.seo.title} desc={persona.seo.description} wide>
+<Layout
+  title={persona.seo.title}
+  desc={persona.seo.description}
+  structuredData={[homePage, faqPage]}
+  wide
+>
   <HomeHero
     eyebrow={home.hero.eyebrow}
     title={home.hero.title}
     body={home.hero.body}
     ctas={home.ctas}
   />
+
+  <section
+    class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12'
+  >
+    <div class='space-y-4'>
+      <p
+        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+      >
+        {home.summary.eyebrow}
+      </p>
+      <h2
+        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
+      >
+        {home.summary.title}
+      </h2>
+    </div>
+
+    <dl class='grid gap-6'>
+      {
+        home.summary.items.map((item) => (
+          <div class='grid gap-2 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-4'>
+            <dt class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/accent'>
+              {item.label}
+            </dt>
+            <dd class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+              {item.answer}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
 
   <section class='grid gap-10 py-6 lg:grid-cols-3 lg:gap-12'>
     {
@@ -196,6 +240,38 @@ const recentArticles = sortedArticles.slice(0, 3)
             </p>
           </article>
         )
+      }
+    </div>
+  </section>
+
+  <section
+    class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-12'
+  >
+    <div class='space-y-4'>
+      <p
+        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
+      >
+        {home.faq.eyebrow}
+      </p>
+      <h2
+        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
+      >
+        {home.faq.title}
+      </h2>
+    </div>
+
+    <div class='grid gap-8'>
+      {
+        home.faq.items.map((item) => (
+          <article class='space-y-3'>
+            <h3 class='font-display text-3xl leading-[0.95] tracking-[-0.03em] text-l/primary dark:text-d/primary md:text-4xl'>
+              {item.question}
+            </h3>
+            <p class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted'>
+              {item.answer}
+            </p>
+          </article>
+        ))
       }
     </div>
   </section>

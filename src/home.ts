@@ -9,6 +9,16 @@ export type HomeStatusItem = {
   title: string
 }
 
+export type HomeSummaryItem = {
+  answer: string
+  label: string
+}
+
+export type HomeFAQItem = {
+  answer: string
+  question: string
+}
+
 export const home = {
   hero: {
     eyebrow: "Développeur fullstack indépendant depuis la Guadeloupe",
@@ -26,6 +36,33 @@ export const home = {
       label: "Explorer les idées"
     }
   ] satisfies HomeCTA[],
+  summary: {
+    eyebrow: "En bref",
+    title:
+      "Quelques réponses rapides pour comprendre qui je suis et ce que je fais.",
+    items: [
+      {
+        label: "Qui",
+        answer:
+          "Développeur fullstack indépendant basé en Guadeloupe, avec un goût prononcé pour les projets web concrets."
+      },
+      {
+        label: "Quoi",
+        answer:
+          "Des produits web, des prototypes utiles, des interfaces sur mesure et des expériences qui vont jusqu’à une vraie mise en ligne."
+      },
+      {
+        label: "Où",
+        answer:
+          "Je travaille depuis la Guadeloupe, en remote, sur des sujets locaux comme sur des projets plus larges côté France et au-delà."
+      },
+      {
+        label: "Pourquoi ce site",
+        answer:
+          "MarvinL.com me sert de portfolio vivant, de laboratoire public et de trace claire de ce que je construis réellement."
+      }
+    ] satisfies HomeSummaryItem[]
+  },
   now: [
     {
       label: "Construire",
@@ -47,6 +84,32 @@ export const home = {
     eyebrow: "Traces écrites",
     title: "J’écris parfois pour poser les idées proprement.",
     body: "Consistant dans l'irrégularité. Par moments l'écrit est la façon la plus efficace de partager ce que j'ai à dire."
+  },
+  faq: {
+    eyebrow: "Questions fréquentes",
+    title: "Les réponses que les gens cherchent souvent en arrivant ici.",
+    items: [
+      {
+        question: "Qui est derrière MarvinL.com ?",
+        answer:
+          "MarvinL.com est le site personnel de Marvin, développeur fullstack indépendant basé en Guadeloupe."
+      },
+      {
+        question: "Quel type de projets sont présentés ici ?",
+        answer:
+          "Tu trouveras ici des projets clients, des outils personnels, des prototypes produits et des articles liés au développement web, au freelance et à la construction de produits."
+      },
+      {
+        question: "Tu travailles uniquement en Guadeloupe ?",
+        answer:
+          "Non. Je suis basé en Guadeloupe mais je travaille aussi en remote sur des projets en France et ailleurs, tant que le cadre de collaboration est clair."
+      },
+      {
+        question: "Quand est-ce qu’un projet apparaît sur le site ?",
+        answer:
+          "En général quand il a dépassé l’idée pure et qu’il existe sous une forme assez solide pour être montré, expliqué et assumé publiquement."
+      }
+    ] satisfies HomeFAQItem[]
   },
   projects: {
     eyebrow: "Sorties récentes",
