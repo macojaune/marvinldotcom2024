@@ -2,6 +2,10 @@
   "name": "marvinldotcom",
   "type": "module",
   "version": "2.3.0",
+  "engines": {
+    "node": "20.x"
+  },
+  "packageManager": "pnpm@10.20.0",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "HOST=0.0.0.0 node ./dist/server/entry.mjs",
