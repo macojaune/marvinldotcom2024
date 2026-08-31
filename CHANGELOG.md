@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.4.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.3.0...marvinldotcom-v2.4.0) (2026-08-31)
+
+
+### 🚀 New Features
+
+* improve homepage SEO and GEO content ([7feb9ab](https://github.com/macojaune/marvinldotcom2024/commit/7feb9abff170ef5e0fae9a739c0aaf9ad7722415))
+
+
+### 🔥 Bug Fixes
+
+* **build:** add sharp dependency ([28e6231](https://github.com/macojaune/marvinldotcom2024/commit/28e62312e007ac9fb25e55ff1dc269718a767f78))
+* **deploy:** adapt astro app for coolify ([164fe9b](https://github.com/macojaune/marvinldotcom2024/commit/164fe9b6d06f89519d6cfdc93693c8182a49d421))
+* make production build reproducible ([1542e3c](https://github.com/macojaune/marvinldotcom2024/commit/1542e3cad2b053c0a91d3338e425191f425656cf))
+* restore Umami analytics tracking ([73e1b99](https://github.com/macojaune/marvinldotcom2024/commit/73e1b992a9b373dc94939f02213a1dd510b754bd))
+
 ## [2.3.0](https://github.com/macojaune/marvinldotcom2024/compare/marvinldotcom-v2.2.0...marvinldotcom-v2.3.0) (2026-03-09)
 
 
