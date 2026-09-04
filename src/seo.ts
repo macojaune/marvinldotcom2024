@@ -9,8 +9,8 @@ export const defaultSocialImage = new URL(
 ).toString()
 
 const personId = `${siteUrl}#person`
-const serviceId = `${siteUrl}#service`
 const websiteId = `${siteUrl}#website`
+const maggmaId = "https://maggma.studio/#organization"
 
 export function getCanonicalUrl(pathOrUrl?: string | URL) {
   if (!pathOrUrl) {
@@ -71,7 +71,9 @@ export function buildWebPage({
     isPartOf: {
       "@id": websiteId
     },
-    about: [{ "@id": personId }, { "@id": serviceId }]
+    about: {
+      "@id": personId
+    }
   }
 }
 
@@ -100,7 +102,7 @@ export function getBaseStructuredData(): JsonLd[] {
       name: persona.brandName,
       inLanguage: "fr-FR",
       publisher: {
-        "@id": serviceId
+        "@id": personId
       }
     },
     {
@@ -118,37 +120,16 @@ export function getBaseStructuredData(): JsonLd[] {
         name: `${persona.location.locality}, ${persona.location.region}`
       },
       worksFor: {
-        "@id": serviceId
+        "@id": maggmaId
       },
       sameAs: persona.sameAs,
       knowsAbout: persona.knowsAbout
     },
     {
-      "@type": "ProfessionalService",
-      "@id": serviceId,
-      name: persona.brandName,
-      alternateName: persona.handle,
-      url: siteUrl.toString(),
-      image: defaultSocialImage,
-      description: persona.shortDescription,
-      email: persona.email,
-      founder: {
-        "@id": personId
-      },
-      areaServed: persona.serviceAreas.map((area) => ({
-        "@type": "Place",
-        name: area
-      })),
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: persona.location.locality,
-        addressRegion: persona.location.region,
-        postalCode: persona.location.postalCode,
-        addressCountry: persona.location.countryCode
-      },
-      availableLanguage: ["fr-FR", "en"],
-      serviceType: persona.serviceTypes,
-      sameAs: persona.sameAs
+      "@type": "Organization",
+      "@id": maggmaId,
+      name: "MAGGMA Studio",
+      url: "https://maggma.studio/"
     }
   ]
 }

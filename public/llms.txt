@@ -1,25 +1,25 @@
 # MarvinL.com
 
-MarvinL.com est le site personnel de Marvin, développeur fullstack indépendant basé en Guadeloupe.
+MarvinL.com est le site personnel de Marvin Londinfer, développeur web fullstack et entrepreneur basé en Guadeloupe.
 
 ## Positionnement
 
-- Développement web sur mesure
-- Prototypes produits
+- Construction de produits numériques
+- Prototypage et expérimentation
 - Outils web utiles
 - Portfolio vivant et laboratoire public
+- Les nouveaux projets client sont réalisés collectivement chez MAGGMA Studio: https://maggma.studio/
 
 ## Ce que l'on trouve ici
 
 - Des projets clients et personnels
-- Des articles sur le développement web, le freelance et la construction de produits
+- Des articles sur le développement web, l'entrepreneuriat et la construction de produits
 - Des idées et des expérimentations en cours
 
 ## À propos
 
 - Basé en Guadeloupe
-- Travail en remote
-- Intervient sur des projets en Guadeloupe, en Martinique, en France et à distance
+- Une grande partie des projets part de problèmes et d'usages rencontrés en Guadeloupe
 
 ## Pages importantes
 

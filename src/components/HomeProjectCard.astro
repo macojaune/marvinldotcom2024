@@ -1,14 +1,32 @@
 ---
+import ProjectPreview from "./ProjectPreview.astro"
+
 interface Props {
+  slug: string
   title: string
   desc?: string
   url: string
   date: Date
-  technos: string[]
-  isClient: boolean
+  types?: string[]
+  status?: "En cours" | "Terminé" | "En pause"
 }
 
-const { title, desc, url, date, technos, isClient } = Astro.props
+const { slug, title, desc, url, date, types, status } = Astro.props
+
+const previewProjects = [
+  "kalot-municipales",
+  "stay-connect",
+  "o-mas-la",
+  "pani-limye-pani-dlo",
+  "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe",
+  "extension-chrome-odesli",
+  "days-since-scolo",
+  "macojaune",
+  "marvinl-point-com",
+  "quilivreou",
+  "sauve-ta-saint-valentin"
+] as const
+const preview = previewProjects.find((project) => project === slug)
 
 const formattedDate = date.toLocaleDateString("fr-FR", {
   month: "long",
@@ -20,22 +38,26 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
   href={url}
   class='group -mx-3 flex h-full flex-col gap-6 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
 >
-  <div class='flex flex-wrap items-center gap-3'>
+  <div class='flex min-h-5 items-center justify-between gap-4'>
     <span
-      class='font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/accent'
-    >
-      {isClient ? "Client" : "Perso"}
-    </span>
-    <span
-      class='font-mono text-[0.68rem] uppercase tracking-[0.26em] text-l/secondary dark:text-d/subtle'
+      class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/subtle'
     >
       {formattedDate}
     </span>
+    {
+      status && (
+        <span class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/tertiary dark:text-d/accent'>
+          {status}
+        </span>
+      )
+    }
   </div>
+
+  {preview && <ProjectPreview project={preview} />}
 
   <div class='space-y-4'>
     <h3
-      class='font-display text-4xl leading-[0.9] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary md:text-5xl'
+      class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary lg:text-3xl xl:text-4xl'
     >
       {title}
     </h3>
@@ -48,20 +70,16 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
     }
   </div>
 
-  <div class='flex flex-wrap gap-x-4 gap-y-2'>
-    {
-      technos
-        .slice(0, 3)
-        .map((tech) => (
-          <span class='font-mono text-[0.7rem] uppercase tracking-[0.22em] text-l/secondary dark:text-d/subtle'>
-            {tech}
-          </span>
-        ))
-    }
-  </div>
+  {
+    types && types.length > 0 && (
+      <p class='font-mono text-[0.68rem] uppercase tracking-[0.2em] text-l/secondary dark:text-d/subtle'>
+        {types.join(" · ")}
+      </p>
+    )
+  }
 
   <span
-    class='inline-flex items-center gap-3 font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary transition group-hover:gap-4 group-hover:text-l/tertiary group-focus-visible:gap-4 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'
+    class='mt-auto inline-flex items-center gap-3 pt-1 font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary transition group-hover:gap-4 group-hover:text-l/tertiary group-focus-visible:gap-4 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'
   >
     Voir le projet
     <span aria-hidden='true'>→</span>
