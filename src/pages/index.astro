@@ -5,7 +5,6 @@ import Footer from "../components/Footer.astro"
 import HomeHero from "../components/HomeHero.astro"
 import MaggmaAnnouncement from "../components/MaggmaAnnouncement.astro"
 import HomeProjectCard from "../components/HomeProjectCard.astro"
-import IdeasInvitation from "../components/IdeasInvitation.astro"
 import Link from "../components/Link.astro"
 import { home } from "../home"
 import Layout from "../layouts/Layout.astro"
@@ -117,8 +116,6 @@ const faqPage = buildFaqPage(home.faq.items)
       )
     }
   </section>
-
-  <IdeasInvitation />
 
   <section
     class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-12'

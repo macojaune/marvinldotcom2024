@@ -18,10 +18,6 @@ export const home = {
     {
       href: "/projets",
       label: "Voir les projets"
-    },
-    {
-      href: "/ideas",
-      label: "Explorer les idées"
     }
   ] satisfies HomeCTA[],
   writing: {
