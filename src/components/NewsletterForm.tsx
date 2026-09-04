@@ -1,8 +1,34 @@
-import { useState, type FormEvent } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
 
 interface Props {
   emphasized?: boolean
 }
+
+interface TurnstileOptions {
+  sitekey: string
+  action: string
+  appearance: "interaction-only"
+  size: "flexible"
+  theme: "auto" | "dark"
+  callback: (token: string) => void
+  "expired-callback": () => void
+  "error-callback": () => void
+}
+
+interface TurnstileApi {
+  render: (container: HTMLElement, options: TurnstileOptions) => string
+  reset: (widgetId: string) => void
+  remove: (widgetId: string) => void
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi
+  }
+}
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+const turnstileScriptId = "cloudflare-turnstile-script"
 
 const defaultStyles = {
   section: "mb-6 mt-16 w-full py-8",
@@ -46,13 +72,107 @@ const emphasizedStyles = {
 export function NewsletterForm({ emphasized = false }: Props) {
   const [email, setEmail] = useState("")
   const [isAgree, setAgree] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState("")
+  const [captchaError, setCaptchaError] = useState("")
+  const [formError, setFormError] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
+  const captchaContainer = useRef<HTMLDivElement>(null)
+  const captchaWidgetId = useRef<string | null>(null)
+
+  useEffect(() => {
+    let isDisposed = false
+    let script: HTMLScriptElement | null = null
+
+    const handleScriptError = () => {
+      if (!isDisposed) {
+        setCaptchaError("La vérification anti-spam n'a pas pu charger.")
+      }
+    }
+
+    const renderCaptcha = () => {
+      if (
+        isDisposed ||
+        !captchaContainer.current ||
+        !window.turnstile ||
+        captchaWidgetId.current
+      ) {
+        return
+      }
+
+      captchaWidgetId.current = window.turnstile.render(
+        captchaContainer.current,
+        {
+          sitekey: turnstileSiteKey,
+          action: "newsletter",
+          appearance: "interaction-only",
+          size: "flexible",
+          theme: emphasized ? "dark" : "auto",
+          callback: (token) => {
+            setCaptchaToken(token)
+            setCaptchaError("")
+          },
+          "expired-callback": () => {
+            setCaptchaToken("")
+            setCaptchaError("La vérification a expiré. Réessaie.")
+          },
+          "error-callback": () => {
+            setCaptchaToken("")
+            setCaptchaError("La vérification anti-spam n'a pas pu charger.")
+          }
+        }
+      )
+    }
+
+    if (window.turnstile) {
+      renderCaptcha()
+    } else {
+      script = document.getElementById(
+        turnstileScriptId
+      ) as HTMLScriptElement | null
+
+      if (!script) {
+        script = document.createElement("script")
+        script.id = turnstileScriptId
+        script.src =
+          "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        script.async = true
+        script.defer = true
+        document.head.appendChild(script)
+      }
+
+      script.addEventListener("load", renderCaptcha)
+      script.addEventListener("error", handleScriptError)
+    }
+
+    return () => {
+      isDisposed = true
+      script?.removeEventListener("load", renderCaptcha)
+      script?.removeEventListener("error", handleScriptError)
+      if (captchaWidgetId.current && window.turnstile) {
+        window.turnstile.remove(captchaWidgetId.current)
+        captchaWidgetId.current = null
+      }
+    }
+  }, [emphasized])
+
+  const resetCaptcha = () => {
+    setCaptchaToken("")
+    if (captchaWidgetId.current && window.turnstile) {
+      window.turnstile.reset(captchaWidgetId.current)
+    }
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (email === "" || !isAgree) {
+    setFormError("")
+
+    if (email === "" || !isAgree || !captchaToken || isSubmitting) {
       return
     }
+
+    setIsSubmitting(true)
+
     try {
       const formData = new FormData(e.target as HTMLFormElement)
 
@@ -60,12 +180,27 @@ export function NewsletterForm({ emphasized = false }: Props) {
         method: "POST",
         body: formData
       })
-      const data = await response.json()
-      if (data.success) {
+      const data = (await response.json().catch(() => null)) as {
+        success?: boolean
+        message?: string
+      } | null
+
+      if (response.ok && data?.success) {
         setSuccess(true)
+        return
       }
-    } catch (err) {
-      console.error(err)
+
+      setFormError(
+        data?.message ??
+          "L'inscription n'a pas abouti. Réessaie dans un moment."
+      )
+      resetCaptcha()
+    } catch (error) {
+      console.error("Newsletter signup failed", error)
+      setFormError("Connexion impossible. Vérifie ta connexion puis réessaie.")
+      resetCaptcha()
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -98,6 +233,9 @@ export function NewsletterForm({ emphasized = false }: Props) {
                 <input
                   type='email'
                   name='email'
+                  autoComplete='email'
+                  inputMode='email'
+                  maxLength={254}
                   value={email}
                   onChange={(e) => setEmail(e.currentTarget.value)}
                   placeholder='toi@exemple.com'
@@ -122,8 +260,33 @@ export function NewsletterForm({ emphasized = false }: Props) {
                 </span>
               </label>
 
-              <button type='submit' value='submit' className={styles.button}>
-                S&apos;inscrire
+              <input type='hidden' name='turnstileToken' value={captchaToken} />
+              <div>
+                <div ref={captchaContainer} />
+                {captchaError && (
+                  <p className='mt-2 text-sm text-[#df5e37]' role='alert'>
+                    {captchaError}
+                  </p>
+                )}
+              </div>
+
+              {formError && (
+                <p
+                  className='text-sm leading-6 text-[#df5e37]'
+                  role='alert'
+                  aria-live='polite'
+                >
+                  {formError}
+                </p>
+              )}
+
+              <button
+                type='submit'
+                value='submit'
+                className={`${styles.button} disabled:cursor-not-allowed disabled:opacity-50`}
+                disabled={!captchaToken || isSubmitting}
+              >
+                {isSubmitting ? "Inscription..." : "S'inscrire"}
                 <span aria-hidden='true'>→</span>
               </button>
             </form>

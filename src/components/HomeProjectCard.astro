@@ -29,24 +29,24 @@ const previewProjects = [
 const preview = previewProjects.find((project) => project === slug)
 
 const formattedDate = date.toLocaleDateString("fr-FR", {
-  month: "long",
+  month: "short",
   year: "numeric"
 })
 ---
 
 <a
   href={url}
-  class='group -mx-3 flex h-full flex-col gap-6 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
+  class='group flex h-full min-w-0 flex-col gap-3 rounded-xl py-3 transition duration-200 hover:translate-y-[-0.2rem] focus-visible:translate-y-[-0.2rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-l/tertiary focus-visible:ring-offset-4 focus-visible:ring-offset-l/bg dark:focus-visible:ring-d/accent dark:focus-visible:ring-offset-d/bg sm:gap-5 sm:px-3 sm:py-4'
 >
-  <div class='flex min-h-5 items-center justify-between gap-4'>
+  <div class='flex min-h-5 items-start justify-between gap-2'>
     <span
-      class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/subtle'
+      class='font-mono text-[0.56rem] uppercase leading-4 tracking-[0.14em] text-l/secondary dark:text-d/subtle sm:text-[0.64rem] sm:tracking-[0.2em]'
     >
       {formattedDate}
     </span>
     {
       status && (
-        <span class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/tertiary dark:text-d/accent'>
+        <span class='text-right font-mono text-[0.56rem] uppercase leading-4 tracking-[0.14em] text-l/tertiary dark:text-d/accent sm:text-[0.64rem] sm:tracking-[0.2em]'>
           {status}
         </span>
       )
@@ -55,15 +55,15 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
 
   {preview && <ProjectPreview project={preview} />}
 
-  <div class='space-y-4'>
+  <div class='space-y-2 sm:space-y-4'>
     <h3
-      class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary lg:text-3xl xl:text-4xl'
+      class='font-display text-[1.7rem] leading-[0.92] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary sm:text-3xl xl:text-4xl'
     >
       {title}
     </h3>
     {
       desc && (
-        <p class='max-w-md text-base leading-8 text-l/secondary dark:text-d/muted'>
+        <p class='line-clamp-3 max-w-md text-sm leading-6 text-l/secondary dark:text-d/muted sm:text-base sm:leading-7'>
           {desc}
         </p>
       )
@@ -72,14 +72,14 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
 
   {
     types && types.length > 0 && (
-      <p class='font-mono text-[0.68rem] uppercase tracking-[0.2em] text-l/secondary dark:text-d/subtle'>
+      <p class='line-clamp-2 font-mono text-[0.56rem] uppercase leading-5 tracking-[0.14em] text-l/secondary dark:text-d/subtle sm:text-[0.66rem] sm:tracking-[0.18em]'>
         {types.join(" · ")}
       </p>
     )
   }
 
   <span
-    class='mt-auto inline-flex items-center gap-3 pt-1 font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary transition group-hover:gap-4 group-hover:text-l/tertiary group-focus-visible:gap-4 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'
+    class='mt-auto inline-flex min-h-11 items-center gap-2 pt-1 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-l/primary transition group-hover:gap-3 group-hover:text-l/tertiary group-focus-visible:gap-3 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary sm:text-[0.7rem] sm:tracking-[0.22em]'
   >
     Voir le projet
     <span aria-hidden='true'>→</span>
