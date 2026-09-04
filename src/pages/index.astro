@@ -67,7 +67,7 @@ const faqPage = buildFaqPage(home.faq.items)
 
     {
       featuredProjects.length > 0 && (
-        <div class='grid gap-12 lg:grid-cols-3 lg:gap-10'>
+        <div class='grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-10'>
           {featuredProjects.map((project) => (
             <HomeProjectCard
               slug={project.slug}
@@ -89,27 +89,17 @@ const faqPage = buildFaqPage(home.faq.items)
           <p class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/subtle'>
             Autres projets
           </p>
-          <div class='grid gap-8 md:grid-cols-3'>
+          <div class='grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-10'>
             {moreProjects.map((project) => (
-              <a
-                href={`/projets/${project.slug}`}
-                class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-3 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
-              >
-                <p class='font-mono text-[0.66rem] uppercase tracking-[0.25em] text-l/secondary dark:text-d/subtle'>
-                  {project.data.createdAt.toLocaleDateString("fr-FR", {
-                    month: "short",
-                    year: "numeric"
-                  })}
-                </p>
-                <h3 class='font-display text-3xl leading-[0.94] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'>
-                  {project.data.title}
-                </h3>
-                {project.data.description && (
-                  <p class='text-base leading-7 text-l/secondary dark:text-d/muted'>
-                    {project.data.description}
-                  </p>
-                )}
-              </a>
+              <HomeProjectCard
+                slug={project.slug}
+                title={project.data.title}
+                desc={project.data.description}
+                date={project.data.createdAt}
+                types={project.data.types}
+                status={project.data.status}
+                url={`/projets/${project.slug}`}
+              />
             ))}
           </div>
         </div>
