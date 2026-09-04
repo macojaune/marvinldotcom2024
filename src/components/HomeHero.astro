@@ -5,34 +5,24 @@ import type { HomeCTA } from "../home"
 interface Props {
   eyebrow: string
   title: string
-  body: string
   ctas: HomeCTA[]
 }
 
-const { eyebrow, title, body, ctas } = Astro.props
+const { eyebrow, title, ctas } = Astro.props
 ---
 
-<section
-  class='grid gap-10 py-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:py-14'
->
-  <div class='space-y-8'>
+<section class='grid gap-10 py-8 lg:py-14'>
+  <div class='max-w-5xl space-y-8'>
     <p
       class='font-mono text-[0.7rem] uppercase tracking-[0.34em] text-l/tertiary dark:text-d/accent'
     >
       {eyebrow}
     </p>
-    <div class='space-y-6'>
-      <h1
-        class='max-w-5xl font-display text-6xl leading-[0.88] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-8xl xl:text-[7.6rem]'
-      >
-        {title}
-      </h1>
-      <p
-        class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-xl'
-      >
-        {body}
-      </p>
-    </div>
+    <h1
+      class='max-w-5xl font-display text-6xl leading-[0.88] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-8xl xl:text-[7.6rem]'
+    >
+      {title}
+    </h1>
 
     <div class='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center'>
       {
@@ -48,16 +38,4 @@ const { eyebrow, title, body, ctas } = Astro.props
       }
     </div>
   </div>
-
-  <aside class='max-w-xs self-start lg:justify-self-end'>
-    <p
-      class='font-mono text-[0.68rem] uppercase tracking-[0.32em] text-l/tertiary dark:text-d/accent'
-    >
-      Signal
-    </p>
-    <p class='mt-4 text-sm leading-7 text-l/secondary dark:text-d/muted'>
-      Portfolio vivant, terrain d’essai, et quelques projets qui prennent leur
-      temps avant de devenir évidents.
-    </p>
-  </aside>
 </section>

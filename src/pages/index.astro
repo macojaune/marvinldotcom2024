@@ -3,16 +3,19 @@ import { getCollection } from "astro:content"
 import { sort } from "radash"
 import Footer from "../components/Footer.astro"
 import HomeHero from "../components/HomeHero.astro"
+import MaggmaAnnouncement from "../components/MaggmaAnnouncement.astro"
 import HomeProjectCard from "../components/HomeProjectCard.astro"
+import IdeasInvitation from "../components/IdeasInvitation.astro"
 import Link from "../components/Link.astro"
 import { home } from "../home"
 import Layout from "../layouts/Layout.astro"
 import { persona } from "../persona"
 import { buildFaqPage, buildWebPage } from "../seo"
 
-const projects = await getCollection("project", ({ data }) =>
-  import.meta.env.PROD ? data.isDraft !== true : true
-)
+const projects = await getCollection("project", ({ data }) => {
+  if (data.isClient === false)
+    return import.meta.env.PROD ? data.isDraft !== true : true
+})
 const articles = await getCollection("blog", ({ data }) =>
   import.meta.env.PROD ? data.isDraft !== true : true
 )
@@ -20,8 +23,8 @@ const articles = await getCollection("blog", ({ data }) =>
 const sortedProjects = sort(projects, (project) => project.data.createdAt, true)
 const sortedArticles = sort(articles, (article) => article.data.createdAt, true)
 
-const featuredProjects = sortedProjects.slice(0, 3)
-const archiveProjects = sortedProjects.slice(3, 6)
+const featuredProjects = sortedProjects.slice(0, 6)
+const moreProjects = sortedProjects.slice(6, 9)
 const recentArticles = sortedArticles.slice(0, 3)
 const homePage = buildWebPage({
   name: persona.seo.title,
@@ -35,85 +38,27 @@ const faqPage = buildFaqPage(home.faq.items)
   title={persona.seo.title}
   desc={persona.seo.description}
   structuredData={[homePage, faqPage]}
+  newsletterEmphasis
   wide
 >
   <HomeHero
     eyebrow={home.hero.eyebrow}
     title={home.hero.title}
-    body={home.hero.body}
     ctas={home.ctas}
   />
 
-  <section
-    class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12'
-  >
-    <div class='space-y-4'>
-      <p
-        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-      >
-        {home.summary.eyebrow}
-      </p>
-      <h2
-        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
-      >
-        {home.summary.title}
-      </h2>
-    </div>
-
-    <dl class='grid gap-6'>
-      {
-        home.summary.items.map((item) => (
-          <div class='grid gap-2 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-4'>
-            <dt class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/accent'>
-              {item.label}
-            </dt>
-            <dd class='text-base leading-8 text-l/secondary dark:text-d/muted'>
-              {item.answer}
-            </dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section>
-
-  <section class='grid gap-10 py-6 lg:grid-cols-3 lg:gap-12'>
-    {
-      home.now.map((item) => (
-        <article class='space-y-4'>
-          <p class='font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/accent'>
-            {item.label}
-          </p>
-          <h2 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary dark:text-d/primary md:text-[3.2rem]'>
-            {item.title}
-          </h2>
-          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
-            {item.body}
-          </p>
-        </article>
-      ))
-    }
-  </section>
+  <MaggmaAnnouncement />
 
   <section class='grid gap-10 py-8'>
     <div
       class='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'
     >
       <div class='max-w-3xl space-y-3'>
-        <p
-          class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-        >
-          {home.projects.eyebrow}
-        </p>
         <h2
           class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6.2rem]'
         >
           {home.projects.title}
         </h2>
-        <p
-          class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-xl'
-        >
-          {home.projects.body}
-        </p>
       </div>
 
       <Link url='/projets' target='_self' variant='subtle'>
@@ -126,11 +71,12 @@ const faqPage = buildFaqPage(home.faq.items)
         <div class='grid gap-12 lg:grid-cols-3 lg:gap-10'>
           {featuredProjects.map((project) => (
             <HomeProjectCard
+              slug={project.slug}
               title={project.data.title}
               desc={project.data.description}
               date={project.data.createdAt}
-              technos={project.data.technos}
-              isClient={project.data.isClient}
+              types={project.data.types}
+              status={project.data.status}
               url={`/projets/${project.slug}`}
             />
           ))}
@@ -139,18 +85,13 @@ const faqPage = buildFaqPage(home.faq.items)
     }
 
     {
-      archiveProjects.length > 0 && (
+      moreProjects.length > 0 && (
         <div class='grid gap-5 pt-6'>
-          <div class='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
-            <p class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/subtle'>
-              Autres sorties
-            </p>
-            <p class='text-sm text-l/secondary dark:text-d/subtle'>
-              Encore quelques traces récentes avant l’archive complète.
-            </p>
-          </div>
+          <p class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/secondary dark:text-d/subtle'>
+            Autres projets
+          </p>
           <div class='grid gap-8 md:grid-cols-3'>
-            {archiveProjects.map((project) => (
+            {moreProjects.map((project) => (
               <a
                 href={`/projets/${project.slug}`}
                 class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-3 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
@@ -177,15 +118,39 @@ const faqPage = buildFaqPage(home.faq.items)
     }
   </section>
 
+  <IdeasInvitation />
+
+  <section
+    class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-12'
+  >
+    <div class='space-y-4'>
+      <h2
+        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
+      >
+        {home.faq.title}
+      </h2>
+    </div>
+
+    <div class='grid gap-8'>
+      {
+        home.faq.items.map((item) => (
+          <article class='space-y-3'>
+            <h3 class='font-display text-3xl leading-[0.95] tracking-[-0.03em] text-l/primary dark:text-d/primary md:text-4xl'>
+              {item.question}
+            </h3>
+            <p class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted'>
+              {item.answer}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
   <section
     class='grid gap-10 py-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]'
   >
     <div class='space-y-4'>
-      <p
-        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-      >
-        {home.writing.eyebrow}
-      </p>
       <h2
         class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
       >
@@ -214,7 +179,7 @@ const faqPage = buildFaqPage(home.faq.items)
               class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
             >
               <p class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/accent'>
-                {article.data.updatedAt.toLocaleDateString("fr-FR", {
+                {article.data.createdAt.toLocaleDateString("fr-FR", {
                   month: "long",
                   year: "numeric"
                 })}
@@ -230,48 +195,10 @@ const faqPage = buildFaqPage(home.faq.items)
             </a>
           ))
         ) : (
-          <article class='py-3'>
-            <p class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/accent'>
-              En pause
-            </p>
-            <p class='mt-3 text-base leading-8 text-l/secondary dark:text-d/muted'>
-              Les prochains textes arriveront quand un sujet mérite mieux qu’un
-              post rapide ou une note perdue ailleurs.
-            </p>
-          </article>
+          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+            Aucun nouvel article pour le moment.
+          </p>
         )
-      }
-    </div>
-  </section>
-
-  <section
-    class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-12'
-  >
-    <div class='space-y-4'>
-      <p
-        class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-      >
-        {home.faq.eyebrow}
-      </p>
-      <h2
-        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
-      >
-        {home.faq.title}
-      </h2>
-    </div>
-
-    <div class='grid gap-8'>
-      {
-        home.faq.items.map((item) => (
-          <article class='space-y-3'>
-            <h3 class='font-display text-3xl leading-[0.95] tracking-[-0.03em] text-l/primary dark:text-d/primary md:text-4xl'>
-              {item.question}
-            </h3>
-            <p class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted'>
-              {item.answer}
-            </p>
-          </article>
-        ))
       }
     </div>
   </section>

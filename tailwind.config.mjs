@@ -21,7 +21,8 @@ export default {
       fontFamily: {
         body: ["'IBM Plex Sans'", "sans-serif"],
         display: ["'Fraunces'", "serif"],
-        mono: ["'IBM Plex Mono'", "monospace"]
+        mono: ["'IBM Plex Mono'", "monospace"],
+        maggma: ["'Space Grotesk'", "sans-serif"]
       }
     }
   },
