@@ -191,16 +191,32 @@ const { project } = Astro.props
   {
     project === "macojaune" && (
       <div class='maco-frame'>
-        <div class='maco-header'>
-          MACOJAUNE <span>PHOTO · BLOG</span>
+        <div class='maco-masthead'>
+          <strong>@MACOJAUNE</strong>
+          <span>LE SITE</span>
         </div>
-        <div class='maco-grid'>
-          <>
-            <span />
-            <span />
-            <span />
-            <span />
-          </>
+        <div class='maco-gallery'>
+          {["portrait", "warm", "cool"].map((tone) => (
+            <div class={`maco-tile maco-tile--${tone}`}>
+              <svg
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='1.5'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <rect x='3' y='3' width='18' height='18' rx='2' />
+                <circle cx='8.5' cy='8.5' r='1.5' />
+                <path d='m21 15-5-5L5 21' />
+              </svg>
+            </div>
+          ))}
+          <div class='maco-caption'>
+            <span>JE SUIS</span>
+            <strong>MACOJAUNE.</strong>
+          </div>
+          <span class='maco-counter'>01—03</span>
         </div>
       </div>
     )
@@ -231,13 +247,53 @@ const { project } = Astro.props
   {
     project === "quilivreou" && (
       <div class='livre-frame'>
-        <div class='livre-search'>Qui livre en Guadeloupe ?</div>
-        <svg viewBox='0 0 360 190' role='presentation'>
-          <path d='M27 149C94 123 101 63 169 74s70 57 163 2' />
-          <rect x='22' y='132' width='30' height='25' rx='3' />
-          <rect x='154' y='58' width='30' height='25' rx='3' />
-          <rect x='316' y='61' width='30' height='25' rx='3' />
-        </svg>
+        <div class='livre-hero'>
+          <strong>QUILIVREOÙ?</strong>
+          <div class='livre-search'>
+            <svg viewBox='0 0 20 20'>
+              <>
+                <circle cx='8' cy='8' r='5' />
+                <path d='m12 12 5 5' />
+              </>
+            </svg>
+            <span class='livre-input-line' />
+            <span class='livre-region'>Antilles / Guyane</span>
+            <span class='livre-submit'>→</span>
+          </div>
+        </div>
+        <div class='livre-shops'>
+          {["parcel", "bag", "shoe"].map((kind) => (
+            <div class='livre-shop'>
+              <svg viewBox='0 0 72 48'>
+                {kind === "parcel" && (
+                  <>
+                    <path d='m18 15 18-8 18 8v22l-18 8-18-8Z' />
+                    <path d='m18 15 18 8 18-8M36 23v22M27 11l18 8v9' />
+                  </>
+                )}
+                {kind === "bag" && (
+                  <>
+                    <path d='M19 17h34l3 27H16Z' />
+                    <path d='M28 22V13a8 8 0 0 1 16 0v9' />
+                  </>
+                )}
+                {kind === "shoe" && (
+                  <>
+                    <path d='M13 27 25 10l10 7 5 12 18 5q5 1 5 9H10v-8Z' />
+                    <path d='M12 36h45M30 22l9-3M34 28l9-3' />
+                  </>
+                )}
+              </svg>
+              <span class='livre-shop-line' />
+              <span class='livre-status'>
+                <svg viewBox='0 0 12 12'>
+                  <path d='m2 6 3 3 5-6' />
+                </svg>
+                LIVRE
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -817,64 +873,107 @@ const { project } = Astro.props
   }
 
   .project-preview--macojaune {
-    background: #f3c91b;
-    color: #171717;
+    background: #050505;
+    color: #f5c518;
   }
 
   .maco-frame {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
-  .maco-header {
+  .maco-masthead {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.25rem;
     font-family: "Space Grotesk", sans-serif;
-    font-size: 0.65rem;
+  }
+
+  .maco-masthead strong {
+    font-size: clamp(0.62rem, 2.15vw, 1rem);
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: -0.04em;
+    line-height: 1;
   }
 
-  .maco-header span {
-    font-size: 0.45rem;
-    font-weight: 600;
+  .maco-masthead span {
+    align-self: flex-end;
+    padding-bottom: 0.02rem;
+    font-size: clamp(0.22rem, 0.75vw, 0.38rem);
+    font-weight: 700;
+    line-height: 1;
   }
 
-  .maco-grid {
+  .maco-gallery {
+    position: relative;
     display: grid;
-    height: calc(100% - 1.7rem);
     grid-template-columns: 1.2fr 0.8fr;
     grid-template-rows: 1fr 1fr;
     gap: 0.35rem;
-    margin-top: 0.7rem;
+    flex: 1;
+    min-height: 0;
+    margin-top: 0.5rem;
+    overflow: hidden;
   }
 
-  .maco-grid span {
-    background: #231e22;
-    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  .maco-tile {
+    display: grid;
+    min-height: 0;
+    place-items: center;
+    color: #f2e9d6;
   }
 
-  .maco-grid span:first-child {
+  .maco-tile svg {
+    width: clamp(1rem, 3vw, 1.8rem);
+    height: auto;
+    opacity: 0.6;
+  }
+
+  .maco-tile--portrait {
     grid-row: 1 / 3;
-    background: linear-gradient(145deg, #463841, #171417);
+    background: #352d35;
   }
 
-  .maco-grid span:nth-child(2) {
-    background: linear-gradient(145deg, #e68749, #633a35);
+  .maco-tile--warm {
+    background: #92583e;
   }
 
-  .maco-grid span:nth-child(3) {
-    background: linear-gradient(145deg, #526276, #1f242a);
+  .maco-tile--cool {
+    background: #384650;
   }
 
-  .maco-grid span:nth-child(4) {
-    display: none;
+  .maco-caption {
+    position: absolute;
+    bottom: 0.45rem;
+    left: 0.45rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 0.4rem 0.34rem;
+    background: #050505;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(0.28rem, 0.95vw, 0.48rem);
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 0.94;
   }
 
-  :global(a:hover) .maco-grid span:first-child,
-  :global(a:focus-visible) .maco-grid span:first-child {
-    transform: scale(0.97);
+  .maco-caption strong {
+    font-size: 1.45em;
+  }
+
+  .maco-counter {
+    position: absolute;
+    right: 0.4rem;
+    bottom: 0.35rem;
+    padding: 0.12rem 0.22rem;
+    background: #f5c518;
+    color: #050505;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(0.22rem, 0.7vw, 0.36rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
   }
 
   .project-preview--marvinl-point-com {
@@ -938,47 +1037,132 @@ const { project } = Astro.props
     opacity: 0.4;
   }
 
+  @font-face {
+    font-family: "QuiLivreOuTitle";
+    src: url("/fonts/quilivreou-title.woff") format("woff");
+    font-display: swap;
+  }
+
   .project-preview--quilivreou {
-    background: #e9e1cf;
-    color: #231f1a;
+    background: #fceed8;
+    color: #080808;
+    container-type: inline-size;
   }
 
   .livre-frame {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5cqw;
     height: 100%;
-    padding: 1rem;
+    padding: 4cqw;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .livre-hero {
+    padding: 3cqw 4cqw;
+    border: 1px solid #080808;
+    background: #f48229;
+    box-shadow: -1cqw 1cqw 0 #080808;
+  }
+
+  .livre-hero > strong {
+    display: block;
+    margin-bottom: 2cqw;
+    font-family: "QuiLivreOuTitle", sans-serif;
+    font-size: 8cqw;
+    font-weight: 400;
+    line-height: 1;
   }
 
   .livre-search {
-    position: relative;
-    z-index: 1;
-    width: 75%;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid #231f1a;
-    border-radius: 999px;
-    background: #f7f2e7;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 0.55rem;
+    display: flex;
+    align-items: center;
+    gap: 2cqw;
+    padding: 1.3cqw;
+    border: 1px solid #080808;
+    background: #fff;
+  }
+
+  .livre-search > svg {
+    width: 3cqw;
+    height: 3cqw;
   }
 
   .livre-frame svg {
-    position: absolute;
-    inset: 2.5rem 0 0;
-    width: 100%;
-    height: calc(100% - 2.5rem);
-    fill: #df5e37;
-  }
-
-  .livre-frame path {
     fill: none;
-    stroke: #741d12;
-    stroke-dasharray: 350;
-    stroke-width: 3;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  :global(a:hover) .livre-frame path,
-  :global(a:focus-visible) .livre-frame path {
-    animation: parcel-route 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  .livre-input-line {
+    flex: 1;
+    height: 0.8cqw;
+    background: #b7b0a6;
+  }
+
+  .livre-region {
+    padding: 0.8cqw 1.4cqw;
+    border: 1px solid #080808;
+    background: #fceed8;
+    font-size: 2.1cqw;
+    white-space: nowrap;
+  }
+
+  .livre-submit {
+    padding: 0 2cqw;
+    border: 1px solid #080808;
+    background: #f48229;
+    font-size: 4cqw;
+    line-height: 1.2;
+  }
+
+  .livre-shops {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3cqw;
+  }
+
+  .livre-shop {
+    display: flex;
+    flex-direction: column;
+    gap: 2cqw;
+    min-height: 0;
+    padding: 2cqw;
+    border: 1px solid #080808;
+    background: #fff;
+    box-shadow: -0.7cqw 0.7cqw 0 #080808;
+  }
+
+  .livre-shop > svg {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    background: #fceed8;
+  }
+
+  .livre-shop-line {
+    width: 75%;
+    height: 1cqw;
+    background: #080808;
+  }
+
+  .livre-status {
+    display: flex;
+    align-items: center;
+    gap: 1cqw;
+    color: #285b32;
+    font-size: 2.2cqw;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .livre-status svg {
+    width: 2.5cqw;
+    height: 2.5cqw;
   }
 
   .project-preview--sauve-ta-saint-valentin {
@@ -1052,7 +1236,6 @@ const { project } = Astro.props
     .juste-prices i,
     .autosong-popup svg,
     .scolo-frame strong,
-    .maco-grid span,
     .marvin-frame strong,
     .livre-frame path,
     .valentin-heart {

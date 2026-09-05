@@ -21,10 +21,10 @@ const breadcrumb = buildBreadcrumbList([
   { name: "Projets", url: "/projets/" }
 ])
 const sortedPersonalProjects = myProjects.sort(
-  (a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()
+  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime()
 )
 const sortedClientProjects = clientProjects.sort(
-  (a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()
+  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime()
 )
 ---
 
