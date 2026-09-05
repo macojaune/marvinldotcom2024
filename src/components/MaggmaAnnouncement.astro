@@ -1,0 +1,110 @@
+<section
+  aria-labelledby='maggma-announcement-title'
+  class='maggma-panel relative -mx-5 overflow-hidden bg-[#171615] px-5 py-9 text-[#f7f3ea] md:-mx-8 md:px-8 md:py-11 lg:mx-0 lg:rounded-2xl lg:px-12 lg:py-12'
+>
+  <div class='maggma-glow' aria-hidden='true'></div>
+
+  <div
+    class='relative grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:items-end'
+  >
+    <div>
+      <a
+        href='https://maggma.studio/'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='maggma-wordmark inline-flex rounded-sm font-maggma text-sm font-bold uppercase tracking-[0.22em] text-[#f05a24] outline-none focus-visible:ring-2 focus-visible:ring-[#f05a24] focus-visible:ring-offset-4 focus-visible:ring-offset-[#171615]'
+      >
+        Flash info
+      </a>
+
+      <h2
+        id='maggma-announcement-title'
+        class='mt-8 max-w-3xl text-balance font-maggma text-5xl font-bold leading-[0.92] tracking-[-0.035em] text-[#f7f3ea] sm:text-6xl lg:text-[5.4rem]'
+      >
+        Les missions solo, c’est fini.
+      </h2>
+    </div>
+
+    <div class='max-w-xl lg:pb-1'>
+      <p class='font-maggma text-lg leading-8 text-[#c9c3b9] md:text-xl'>
+        Pour les projets clients, on a créé MAGGMA Studio avec l’équipe.
+      </p>
+
+      <a
+        href='https://maggma.studio/'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='maggma-link mt-8 inline-flex min-h-12 items-center gap-4 rounded-full bg-[#f05a24] px-6 py-3 font-maggma text-sm font-semibold text-[#171615] outline-none transition-colors hover:bg-[#ff6b35] focus-visible:ring-2 focus-visible:ring-[#f7f3ea] focus-visible:ring-offset-4 focus-visible:ring-offset-[#171615]'
+      >
+        Découvrir MAGGMA Studio
+        <svg
+          aria-hidden='true'
+          viewBox='0 0 20 20'
+          class='maggma-arrow size-4 fill-none stroke-current'
+        >
+          <path
+            d='M4 10h11M11 5l5 5-5 5'
+            stroke-width='1.8'
+            stroke-linecap='round'
+            stroke-linejoin='round'></path>
+        </svg>
+        <span class='sr-only'>(nouvel onglet)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .maggma-panel {
+    isolation: isolate;
+  }
+
+  .maggma-panel::after {
+    position: absolute;
+    right: -0.06em;
+    bottom: -0.24em;
+    z-index: -1;
+    content: "M";
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(14rem, 35vw, 30rem);
+    font-weight: 700;
+    line-height: 0.72;
+    color: rgb(240 90 36 / 0.34);
+  }
+
+  .maggma-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(42rem, 74%);
+    height: 1px;
+    background: #f05a24;
+    transform-origin: right;
+    animation: magma-line 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .maggma-arrow {
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .maggma-link:hover .maggma-arrow,
+  .maggma-link:focus-visible .maggma-arrow {
+    transform: translateX(0.2rem);
+  }
+
+  @keyframes magma-line {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .maggma-glow {
+      animation: none;
+    }
+
+    .maggma-arrow {
+      transition: none;
+    }
+  }
+</style>

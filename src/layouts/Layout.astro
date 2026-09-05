@@ -12,6 +12,7 @@ interface Props {
   canonical?: string
   image?: string
   modifiedTime?: string | Date
+  newsletterEmphasis?: boolean
   noindex?: boolean
   ogType?: "article" | "website"
   publishedTime?: string | Date
@@ -25,6 +26,7 @@ const {
   canonical,
   image,
   modifiedTime,
+  newsletterEmphasis = false,
   noindex,
   ogType,
   publishedTime,
@@ -48,6 +50,14 @@ const {
   <body
     class='min-h-full w-full bg-l/bg font-body text-l/primary antialiased transition-colors duration-500 selection:bg-l/tertiary selection:text-l/bg dark:bg-d/bg dark:text-d/primary dark:selection:bg-d/tertiary dark:selection:text-d/primary'
   >
+    <!--
+      astro:THESIS: MarvinL.com montre l'expertise et les produits de Marvin sans se vendre comme vitrine freelance. L'annonce MAGGMA marque clairement le passage des missions client vers l'équipe.
+      OWN-WORLD: Le site conserve son ivoire, son bordeaux et son grand Fraunces. MAGGMA intervient dans un seul bloc noir, orange et Space Grotesk.
+      STORY: Le visiteur découvre un développeur fullstack et entrepreneur, comprend que les nouveaux projets client passent par MAGGMA, puis explore le travail publié.
+      FIRST VIEWPORT: Le hero personnel reste dominant et sans contenu secondaire. Le manifeste MAGGMA apparaît immédiatement après, pleine largeur, comme une alerte éditoriale avec une accroche massive et un unique lien externe.
+      FORM: Extension locale de l'accueil existant. Aucun nouveau monde visuel global et aucun concept seed requis.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
     <div class='pointer-events-none fixed inset-0 overflow-hidden'>
       <div
         class='absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(116,29,18,0.05),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(223,94,55,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.28),transparent_40%)]'
@@ -64,7 +74,7 @@ const {
       <main class={wide ? "w-full space-y-10" : "w-full space-y-8"}>
         <slot />
       </main>
-      <NewsletterForm client:load />
+      <NewsletterForm client:load emphasized={newsletterEmphasis} />
 
       <BottomLine />
     </div>
