@@ -27,7 +27,7 @@ const activeProject = await Astro.locals.db.query.project.findFirst({
   }
   <ProjectBracket
     projects={projectIdeas}
-    activeProjectId={activeProject.id}
+    activeProjectId={activeProject?.id ?? 0}
     client:load
   />
 </Layout>
