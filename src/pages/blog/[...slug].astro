@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import EditorialHeader from "../../components/EditorialHeader.astro"
 import EditorialProse from "../../components/EditorialProse.astro"
+import ProjectTableOfContents from "../../components/ProjectTableOfContents"
 import Layout from "@/layouts/Layout.astro"
 import { buildBreadcrumbList, getCanonicalUrl } from "../../seo"
 // 1. Generate a new path for every collection entry
@@ -16,7 +17,10 @@ export async function getStaticPaths() {
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content, headings } = await entry.render()
+const articleHeadings = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3
+)
 const formattedCreatedAt = new Date(entry.data.createdAt).toLocaleDateString(
   "fr-FR",
   {
@@ -85,7 +89,59 @@ const breadcrumb = buildBreadcrumbList([
     shareTitle={`Je viens de lire "${entry.data.title}" sur le blog MarvinL.com`}
   />
 
-  <EditorialProse>
-    <Content />
-  </EditorialProse>
+  <div
+    class:list={[
+      "article-reading-layout grid gap-x-12 gap-y-8",
+      { "has-toc": articleHeadings.length > 0 }
+    ]}
+  >
+    {
+      articleHeadings.length > 0 && (
+        <aside class='article-toc lg:sticky lg:top-8'>
+          <ProjectTableOfContents headings={articleHeadings} client:load />
+        </aside>
+      )
+    }
+
+    <div class='article-body min-w-0'>
+      <EditorialProse>
+        <Content />
+      </EditorialProse>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .article-reading-layout {
+    grid-template-areas: "article";
+  }
+
+  .article-reading-layout.has-toc {
+    grid-template-areas:
+      "toc"
+      "article";
+  }
+
+  .article-toc {
+    grid-area: toc;
+  }
+
+  .article-body {
+    grid-area: article;
+  }
+
+  @media (min-width: 64rem) {
+    .article-reading-layout {
+      grid-template-columns: minmax(0, 46rem);
+      grid-template-areas: "article";
+      justify-content: center;
+      align-items: start;
+    }
+
+    .article-reading-layout.has-toc {
+      grid-template-columns: minmax(0, 46rem) minmax(12rem, 16rem);
+      grid-template-areas: "article toc";
+      justify-content: space-between;
+    }
+  }
+</style>
