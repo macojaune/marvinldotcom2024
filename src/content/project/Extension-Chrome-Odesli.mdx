@@ -7,11 +7,11 @@ technos:
   - Javascript
 isClient: false
 isDraft: false
-status: "Terminé"
+status: "En cours"
 types:
   - Extension navigateur
 createdAt: 2024-07-10T02:58:39.099Z
-updatedAt: 2024-09-13T19:39:47.519Z
+updatedAt: 2026-10-07T00:00:00.000Z
 ---
 
 # [AutoSongLink](https://chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr)
@@ -67,3 +67,11 @@ Update (10/07/2024)
 Ça a été très rapide au final.
 
 Vous pouvez tester ici : [AutoSongLink](https://chromewebstore.google.com/detail/autosonglink/gndjompcjcpibmidddkjmnhimgepoodo?hl=fr) et sentez-vous libre de me faire un retour !
+
+## Mise à jour (octobre 2026) : il était temps de la refaire
+
+J'ai récemment fabriqué [Meet Pause](/projets/meet-pause/), une autre petite extension Chrome. Elle a marché lors de mon test, et en plus elle était jolie. Ça m'a donné envie de rouvrir AutoSongLink, que j'utilise bien plus souvent. L'ancienne fenêtre faisait le boulot, mais elle était lente et, disons-le, pas très belle. Je l'avais dit moi-même un peu plus haut : « un simple bouton tout moche ». Deux ans plus tard, il était peut-être temps de faire mieux.
+
+Il y avait aussi un problème moins visible : l'API publique dont dépendait la première version ne répondait plus comme avant. J'ai donc repris l'extension plutôt que de seulement lui changer sa couleur. La nouvelle version prépare le lien Songlink ou Albumlink directement à partir d'une URL Spotify, Apple Music ou YouTube, sans appeler cette ancienne API. Songlink cherche ensuite les correspondances quand on ouvre le lien ; l'extension ne promet pas que chaque morceau sera disponible partout.
+
+J'ai refait la petite fenêtre en français, avec un champ, un résultat et un bouton de copie. Rien de spectaculaire : je voulais surtout retrouver un outil rapide et agréable à utiliser. Le nouveau ZIP a été envoyé sur la fiche Chrome Web Store existante et attend la validation de Google. La version qui s'y trouve n'est donc pas forcément encore celle que je décris ici.

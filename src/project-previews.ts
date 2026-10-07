@@ -1,4 +1,5 @@
 export const previewProjects = [
+  "meet-pause",
   "kalot-municipales",
   "stay-connect",
   "o-mas-la",
