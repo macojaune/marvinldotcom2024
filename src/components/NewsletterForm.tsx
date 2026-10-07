@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react"
+import LinkMark from "./LinkMark"
 
 interface Props {
   emphasized?: boolean
@@ -57,10 +58,12 @@ const emphasizedStyles = {
   heading:
     "font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/surface dark:text-d/primary md:text-7xl xl:text-[5.8rem]",
   body: "max-w-xl text-base leading-8 text-l/bg dark:text-d/subtle md:text-xl",
-  label: "font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/bg dark:text-d/accent",
+  label:
+    "font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/bg dark:text-d/accent",
   input:
     "w-full border-b border-l/bg/60 bg-transparent px-0 py-3 text-base text-l/surface outline-none transition placeholder:text-l/bg focus:border-l/surface dark:border-d/accent/55 dark:text-d/primary dark:placeholder:text-d/subtle/70 dark:focus:border-d/tertiary",
-  agreement: "flex items-start gap-3 text-sm leading-6 text-l/bg dark:text-d/subtle",
+  agreement:
+    "flex items-start gap-3 text-sm leading-6 text-l/bg dark:text-d/subtle",
   checkbox:
     "mt-1 h-4 w-4 shrink-0 rounded border-l/bg/60 bg-transparent text-l/tertiary focus:ring-l/surface/30 dark:border-d/accent/55 dark:text-d/tertiary dark:focus:ring-d/tertiary/30",
   button:
@@ -310,9 +313,7 @@ export function NewsletterForm({ emphasized = false }: Props) {
                 disabled={!captchaToken || isSubmitting}
               >
                 {isSubmitting ? "Inscription..." : "S'inscrire"}
-                <span className='motion-arrow' aria-hidden='true'>
-                  →
-                </span>
+                <LinkMark />
               </button>
             </form>
           ) : (
