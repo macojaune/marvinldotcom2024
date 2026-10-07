@@ -11,9 +11,38 @@
 .motion-project {
   transition: transform 160ms var(--motion-feedback);
 }
-.motion-arrow {
+/* A small opening frame replaces directional decoration on calls to action. */
+.link-mark {
+  --mark-open: 0;
   display: inline-block;
-  transition: transform 160ms var(--motion-feedback);
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  align-self: center;
+  vertical-align: middle;
+}
+.link-mark-left,
+.link-mark-right,
+.link-mark-center {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 260ms var(--motion-arrival),
+    opacity 260ms ease;
+}
+.link-mark-left {
+  transform: translateX(calc(-2px * var(--mark-open)));
+}
+.link-mark-right {
+  transform: translateX(calc(2px * var(--mark-open)));
+}
+.link-mark-center {
+  opacity: calc(0.45 + 0.55 * var(--mark-open));
+  transform: scale(calc(1 + 0.15 * var(--mark-open)));
+}
+a:is(:focus-visible, :active) .link-mark,
+button:not(:disabled):is(:focus-visible, :active) .link-mark {
+  --mark-open: 1;
 }
 .motion-press {
   transition:
@@ -44,20 +73,22 @@
   .motion-project:hover {
     transform: translateY(-3px);
   }
-  .motion-link:hover .motion-arrow,
-  .motion-project:hover .motion-arrow,
-  .motion-press:hover .motion-arrow {
-    transform: translateX(4px);
+  a:hover .link-mark,
+  button:not(:disabled):hover .link-mark {
+    --mark-open: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .motion-project:hover,
-  .motion-link:hover .motion-arrow,
-  .motion-project:hover .motion-arrow,
-  .motion-press:hover .motion-arrow,
   .motion-press:active:not(:disabled) {
     transform: none;
+  }
+  .link-mark-left,
+  .link-mark-right,
+  .link-mark-center {
+    transform: none;
+    transition: none;
   }
   .toc-marker {
     transition: opacity 180ms ease;

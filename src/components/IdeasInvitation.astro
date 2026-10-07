@@ -1,3 +1,7 @@
+---
+import LinkMark from "./LinkMark"
+---
+
 <section
   aria-labelledby='ideas-invitation-title'
   class='relative overflow-hidden border-y border-l/primary/15 py-10 dark:border-d/primary/20 md:py-12'
@@ -36,7 +40,7 @@
       class='inline-flex min-h-12 w-fit items-center gap-4 rounded-full bg-l/tertiary px-6 py-3 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-l/bg outline-none transition hover:bg-l/primary focus-visible:ring-2 focus-visible:ring-l/tertiary focus-visible:ring-offset-4 focus-visible:ring-offset-l/bg dark:bg-d/tertiary dark:text-d/primary dark:hover:bg-d/primary dark:hover:text-d/bg dark:focus-visible:ring-d/primary dark:focus-visible:ring-offset-d/bg'
     >
       Voter pour une idée
-      <span aria-hidden='true'>→</span>
+      <LinkMark />
     </a>
   </div>
 </section>
