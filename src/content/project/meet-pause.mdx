@@ -1,0 +1,36 @@
+---
+title: "Meet Pause"
+description: "Le rappel Chrome que je n’aurais probablement pas pris le temps de coder sans l’IA."
+technos:
+  - Manifest V3
+  - JavaScript
+  - HTML
+  - CSS
+isClient: false
+isDraft: false
+status: "En cours"
+types:
+  - Extension navigateur
+createdAt: 2026-10-06T00:00:00.000Z
+updatedAt: 2026-10-07T00:00:00.000Z
+---
+
+# Meet Pause
+
+> Article préparé avec Glob, l’agent blogueur IA de Marvin, à partir de son récit, du dépôt et de ses tweets.
+
+Je savais déjà créer des extensions Chrome. Ce qui m’aurait retenu, c’est le temps pour replonger dans les API, gérer les alarmes et les états d’un appel, puis soigner l’interface. Pour un petit irritant personnel, on a vite d’autres choses à faire. L’idée reste dans un coin.
+
+Meet Pause me rappelle de penser à une pause pendant Google Meet. J’ai vu [le tweet de Theo](https://x.com/theo/status/2107218462657712153) sur une autre petite extension Chrome, créée pour corriger un détail pénible de GitHub. Je me suis reconnu dans ce déclic et je l’ai formulé dans [mon tweet](https://x.com/macojaune/status/2107238844709945499) : l’IA rend assez rapide une idée qu’on n’aurait probablement jamais priorisée.
+
+## Un rappel, pas un chef de réunion
+
+Par défaut, le rappel arrive après 120 minutes dans un appel ; la durée est réglable. Une notification et un encart dans Meet proposent de prendre une pause ou de reporter le rappel de cinq minutes, délai lui aussi réglable. C’est moi qui confirme la pause ; l’extension ne coupe ni le micro ni la caméra et n’envoie rien aux autres participants.
+
+Le choix technique reste volontairement léger : Manifest V3, JavaScript, HTML et CSS, sans serveur ni dépendance de production. Réglages et compteurs restent dans Chrome. L’extension ne lit ni audio, ni vidéo, ni chat, ni transcription. Le panneau compact reprend un fond papier et un vert « pause » ; le rappel ne vole pas le focus de la réunion.
+
+## Où j’en suis
+
+La version 0.1.1 est installable en local et un ZIP est généré, mais rien n’est publié sur le Chrome Web Store. Les 21 tests automatisés et les 28 assertions du simulateur couvrent le comportement avec des API Chrome et des appels simulés. La recette documentée n’inclut pas encore une installation dans Chrome et un appel Meet réel. La détection dépend de l’interface de Google Meet, qui peut changer, et les alarmes Chrome ne réveillent pas un ordinateur en veille. La prochaine vérification est de charger l’extension dans Chrome et de la tester pendant un vrai appel.
+
+{/* Piste d’illustration animée : un minuteur avance à côté d’un appel Meet illustré, puis un encart discret apparaît avec « Prendre une pause » et « Reporter » ; ne pas suggérer que l’extension coupe l’appel ou observe les participants. */}
