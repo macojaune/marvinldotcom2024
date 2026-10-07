@@ -1,30 +1,67 @@
 ---
 import Link from "./Link.astro"
+import ProjectPreview from "./ProjectPreview.astro"
+import { previewProjects } from "../project-previews"
 import type { HomeCTA } from "../home"
+import "../styles/hero-scene.css"
 
 interface Props {
   eyebrow: string
   title: string
   ctas: HomeCTA[]
+  projects: { slug: string; title: string }[]
 }
 
-const { eyebrow, title, ctas } = Astro.props
+const { eyebrow, title, ctas, projects } = Astro.props
+const previews = projects
+  .flatMap(({ slug, title }) => {
+    const project = previewProjects.find((preview) => preview === slug)
+    return project ? [{ project, title }] : []
+  })
+  .slice(0, 3)
 ---
 
-<section class='grid gap-10 py-8 lg:py-14'>
-  <div class='max-w-5xl space-y-8'>
+<section data-hero-scene class='hero-scene'>
+  <div class='hero-stage'>
     <p
-      class='font-mono text-[0.7rem] uppercase tracking-[0.34em] text-l/tertiary dark:text-d/accent'
+      class='hero-eyebrow font-mono text-[0.7rem] uppercase tracking-[0.28em] text-l/tertiary dark:text-d/accent'
     >
       {eyebrow}
     </p>
     <h1
-      class='max-w-5xl font-display text-6xl leading-[0.88] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-8xl xl:text-[7.6rem]'
+      data-hero-title
+      class='hero-title font-display text-l/primary dark:text-d/primary'
     >
       {title}
     </h1>
 
-    <div class='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center'>
+    <div class='hero-projects'>
+      {
+        previews.map(({ project, title }, index) => (
+          <a
+            data-hero-project
+            href={`/projets/${project}`}
+            class='hero-project group'
+          >
+            <ProjectPreview project={project} />
+            <span class='hero-project-caption'>
+              <span
+                class='font-mono text-[0.65rem] text-l/tertiary dark:text-d/accent'
+                aria-hidden='true'
+              >
+                0{index + 1}
+              </span>
+              <span class='hero-project-name'>{title}</span>
+              <span class='motion-arrow' aria-hidden='true'>
+                ↗
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class='hero-links flex flex-wrap items-center gap-3'>
       {
         ctas.map((cta, index) => (
           <Link
@@ -36,6 +73,13 @@ const { eyebrow, title, ctas } = Astro.props
           </Link>
         ))
       }
+      <span
+        class='hero-scroll-cue font-mono text-[0.65rem] uppercase tracking-[0.16em] text-l/secondary dark:text-d/muted'
+        aria-hidden='true'
+      >
+        <span class='hero-scroll-track'><span data-hero-progress></span></span>
+        Défiler pour explorer ↓
+      </span>
     </div>
   </div>
 </section>

@@ -38,35 +38,37 @@ const defaultStyles = {
   label:
     "font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/subtle",
   input:
-    "placeholder:text-l/secondary/58 w-full border-b border-l/primary/20 bg-transparent px-0 py-3 text-base text-l/primary outline-none transition focus:border-l/tertiary dark:border-d/tertiary dark:text-d/primary dark:placeholder:text-d/subtle dark:focus:border-d/accent",
+    "placeholder:text-l/secondary w-full border-b border-l/primary/60 bg-transparent px-0 py-3 text-base text-l/primary outline-none transition focus:border-l/tertiary dark:border-d/tertiary dark:text-d/primary dark:placeholder:text-d/subtle dark:focus:border-d/accent",
   agreement:
     "flex items-start gap-3 text-sm leading-6 text-l/secondary dark:text-d/muted",
   checkbox:
-    "mt-1 h-4 w-4 shrink-0 rounded border-l/primary/20 text-l/tertiary focus:ring-l/tertiary/20 dark:border-d/tertiary dark:bg-d/bg dark:text-d/accent",
+    "mt-1 h-4 w-4 shrink-0 rounded border-l/primary/60 text-l/tertiary focus:ring-l/tertiary/20 dark:border-d/tertiary dark:bg-d/bg dark:text-d/accent",
   button:
     "inline-flex w-fit items-center gap-3 pt-4 font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/primary transition hover:text-l/tertiary focus-visible:text-l/tertiary dark:text-d/primary dark:hover:text-d/tertiary dark:focus-visible:text-d/tertiary",
   successLabel:
     "font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/tertiary",
-  successBody: "mt-3 text-base leading-8 text-l/primary dark:text-d/primary"
+  successBody: "mt-3 text-base leading-8 text-l/primary dark:text-d/primary",
+  error: "text-l/tertiary dark:text-d/tertiary"
 }
 
 const emphasizedStyles = {
   section:
-    "relative -mx-5 mb-6 mt-16 w-[calc(100%+2.5rem)] overflow-hidden bg-[#2a0d3e] px-5 py-10 md:-mx-8 md:w-[calc(100%+4rem)] md:px-8 lg:mx-0 lg:w-full lg:rounded-2xl lg:px-12 lg:py-12",
+    "relative -mx-5 mb-6 mt-16 w-[calc(100%+2.5rem)] overflow-hidden bg-l/primary px-5 py-10 dark:bg-d/secondary md:-mx-8 md:w-[calc(100%+4rem)] md:px-8 lg:mx-0 lg:w-full lg:rounded-2xl lg:px-12 lg:py-12",
   heading:
-    "font-display text-5xl leading-[0.9] tracking-[-0.04em] text-[#fff4cf] md:text-7xl xl:text-[5.8rem]",
-  body: "max-w-xl text-base leading-8 text-[#dfc59a] md:text-xl",
-  label: "font-mono text-[0.68rem] uppercase tracking-[0.24em] text-[#f3bf86]",
+    "font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/surface dark:text-d/primary md:text-7xl xl:text-[5.8rem]",
+  body: "max-w-xl text-base leading-8 text-l/bg dark:text-d/subtle md:text-xl",
+  label: "font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/bg dark:text-d/accent",
   input:
-    "w-full border-b border-[#f3bf86]/55 bg-transparent px-0 py-3 text-base text-[#fff4cf] outline-none transition placeholder:text-[#dfc59a]/70 focus:border-[#df5e37]",
-  agreement: "flex items-start gap-3 text-sm leading-6 text-[#dfc59a]",
+    "w-full border-b border-l/bg/60 bg-transparent px-0 py-3 text-base text-l/surface outline-none transition placeholder:text-l/bg focus:border-l/surface dark:border-d/accent/55 dark:text-d/primary dark:placeholder:text-d/subtle/70 dark:focus:border-d/tertiary",
+  agreement: "flex items-start gap-3 text-sm leading-6 text-l/bg dark:text-d/subtle",
   checkbox:
-    "mt-1 h-4 w-4 shrink-0 rounded border-[#f3bf86]/55 bg-transparent text-[#df5e37] focus:ring-[#df5e37]/30",
+    "mt-1 h-4 w-4 shrink-0 rounded border-l/bg/60 bg-transparent text-l/tertiary focus:ring-l/surface/30 dark:border-d/accent/55 dark:text-d/tertiary dark:focus:ring-d/tertiary/30",
   button:
-    "mt-2 inline-flex min-h-12 w-fit items-center gap-3 rounded-full bg-[#df5e37] px-6 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-[#fff4cf] outline-none transition-colors hover:bg-[#ed704d] focus-visible:ring-2 focus-visible:ring-[#fff4cf] focus-visible:ring-offset-4 focus-visible:ring-offset-[#2a0d3e]",
+    "mt-2 inline-flex min-h-12 w-fit items-center gap-3 rounded-full bg-l/surface px-6 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-l/primary outline-none transition-colors hover:bg-l/bg focus-visible:ring-2 focus-visible:ring-l/surface focus-visible:ring-offset-4 focus-visible:ring-offset-l/primary dark:bg-d/tertiary dark:text-d/primary dark:hover:bg-[#ed704d] dark:focus-visible:ring-d/primary dark:focus-visible:ring-offset-d/secondary",
   successLabel:
-    "font-mono text-[0.68rem] uppercase tracking-[0.3em] text-[#f3bf86]",
-  successBody: "mt-3 text-base leading-8 text-[#fff4cf]"
+    "font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/bg dark:text-d/accent",
+  successBody: "mt-3 text-base leading-8 text-l/surface dark:text-d/primary",
+  error: "text-l/surface dark:text-d/tertiary"
 }
 
 export function NewsletterForm({ emphasized = false }: Props) {
@@ -77,10 +79,26 @@ export function NewsletterForm({ emphasized = false }: Props) {
   const [formError, setFormError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const successRef = useRef<HTMLDivElement>(null)
+  const [contentHeight, setContentHeight] = useState<number>()
   const captchaContainer = useRef<HTMLDivElement>(null)
   const captchaWidgetId = useRef<string | null>(null)
 
   useEffect(() => {
+    if (!success || !successRef.current) return
+    const animation = successRef.current.animate(
+      [{ opacity: 0.2 }, { opacity: 1 }],
+      { duration: 180, easing: "cubic-bezier(0.16, 1, 0.3, 1)" }
+    )
+    return () => animation.cancel()
+  }, [success])
+
+  useEffect(() => {
+    if (!turnstileSiteKey) {
+      setCaptchaError("La vérification anti-spam n'a pas pu charger.")
+      return
+    }
     let isDisposed = false
     let script: HTMLScriptElement | null = null
 
@@ -186,6 +204,7 @@ export function NewsletterForm({ emphasized = false }: Props) {
       } | null
 
       if (response.ok && data?.success) {
+        setContentHeight(contentRef.current?.getBoundingClientRect().height)
         setSuccess(true)
         return
       }
@@ -211,7 +230,7 @@ export function NewsletterForm({ emphasized = false }: Props) {
       {emphasized && (
         <div
           aria-hidden='true'
-          className='absolute right-0 top-0 h-px w-1/2 bg-[#df5e37]'
+          className='absolute right-0 top-0 h-px w-1/2 bg-l/bg/60 dark:bg-d/tertiary'
         />
       )}
       <div className='relative grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start'>
@@ -225,7 +244,11 @@ export function NewsletterForm({ emphasized = false }: Props) {
           </p>
         </div>
 
-        <div className='pt-2'>
+        <div
+          ref={contentRef}
+          className='pt-2'
+          style={{ minHeight: contentHeight }}
+        >
           {!success ? (
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
               <label className='space-y-2'>
@@ -264,7 +287,7 @@ export function NewsletterForm({ emphasized = false }: Props) {
               <div>
                 <div ref={captchaContainer} />
                 {captchaError && (
-                  <p className='mt-2 text-sm text-[#df5e37]' role='alert'>
+                  <p className={`mt-2 text-sm ${styles.error}`} role='alert'>
                     {captchaError}
                   </p>
                 )}
@@ -272,7 +295,7 @@ export function NewsletterForm({ emphasized = false }: Props) {
 
               {formError && (
                 <p
-                  className='text-sm leading-6 text-[#df5e37]'
+                  className={`text-sm leading-6 ${styles.error}`}
                   role='alert'
                   aria-live='polite'
                 >
@@ -283,19 +306,21 @@ export function NewsletterForm({ emphasized = false }: Props) {
               <button
                 type='submit'
                 value='submit'
-                className={`${styles.button} disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${styles.button} motion-press disabled:cursor-not-allowed disabled:opacity-50`}
                 disabled={!captchaToken || isSubmitting}
               >
                 {isSubmitting ? "Inscription..." : "S'inscrire"}
-                <span aria-hidden='true'>→</span>
+                <span className='motion-arrow' aria-hidden='true'>
+                  →
+                </span>
               </button>
             </form>
           ) : (
-            <div>
+            <div ref={successRef} role='status' aria-live='polite'>
               <p className={styles.successLabel}>Inscription prise</p>
               <p className={styles.successBody}>
-                Merci pour ton inscription. Tu es sur la liste pour suivre
-                les prochains projets.
+                Merci pour ton inscription. Tu es sur la liste pour suivre les
+                prochains projets.
               </p>
             </div>
           )}
