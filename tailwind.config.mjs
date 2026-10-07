@@ -13,14 +13,15 @@ export default {
         "d/accent": "#f3bf86",
         "d/secondary": "#2a0d3e",
         "d/tertiary": "#df5e37",
-        "l/bg": "#eeeeee",
-        "l/primary": "#111111",
-        "l/secondary": "#555555",
-        "l/tertiary": "#741D12" //"#999999",
+        "l/bg": "#EEDDBD",
+        "l/primary": "#792F21",
+        "l/secondary": "#835044",
+        "l/tertiary": "#AC3522",
+        "l/surface": "#F7EAD2"
       },
       fontFamily: {
         body: ["'IBM Plex Sans'", "sans-serif"],
-        display: ["'Fraunces'", "serif"],
+        display: ["'Anybody'", "sans-serif"],
         mono: ["'IBM Plex Mono'", "monospace"],
         maggma: ["'Space Grotesk'", "sans-serif"]
       }

@@ -1,0 +1,12 @@
+<script>
+  import { initializeMotion, disposeMotion } from "../scripts/motion"
+
+  document.addEventListener("astro:page-load", initializeMotion)
+  document.addEventListener("astro:before-swap", disposeMotion)
+  if (import.meta.hot)
+    import.meta.hot.dispose(() => {
+      disposeMotion()
+      document.removeEventListener("astro:page-load", initializeMotion)
+      document.removeEventListener("astro:before-swap", disposeMotion)
+    })
+</script>

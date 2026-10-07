@@ -5,17 +5,19 @@ import SocialShare from "./socialShare/SocialShare.astro"
 <div
   class='mb-2 flex w-full flex-col gap-3 border-t border-l/primary/10 pt-4 text-sm dark:border-d/tertiary md:flex-row md:items-center md:justify-between'
 >
-  <p
-    class='hidden font-mono text-[0.68rem] uppercase tracking-[0.28em] text-l/secondary dark:text-d/subtle md:flex'
-  >
-    Partager
-  </p>
   <span
     class='font-mono text-[0.68rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/subtle'
     >{new Date().getFullYear()}&copy; Tous droits réservés</span
   >
-  <SocialShare
-    title='MarvinL.com − Développeur web fullstack et entrepreneur en Guadeloupe'
-    description='Découvre les produits, expérimentations et articles de Marvin, développeur web fullstack et entrepreneur en Guadeloupe.'
-  />
+  <div class='flex flex-wrap items-center gap-3'>
+    <p
+      class='font-mono text-[0.68rem] uppercase tracking-[0.2em] text-l/secondary dark:text-d/subtle'
+    >
+      Partager
+    </p>
+    <SocialShare
+      title='MarvinL.com − Développeur web fullstack et entrepreneur en Guadeloupe'
+      description='Découvre les produits, expérimentations et articles de Marvin, développeur web fullstack et entrepreneur en Guadeloupe.'
+    />
+  </div>
 </div>

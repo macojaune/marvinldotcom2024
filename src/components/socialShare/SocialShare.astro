@@ -1,38 +1,62 @@
 ---
-import EmailShareButton from "./Email.astro";
-import FacebookShareButton from "./Facebook.astro";
-import HackerNewsShareButton from "./HackerNews.astro";
-import LinkedInShareButton from "./LinkedIn.astro";
-import RedditShareButton from "./Reddit.astro";
-import TwitterShareButton from "./Twitter.astro";
-import type ButtonProps from "./types";
+import EmailShareButton from "./Email.astro"
+import FacebookShareButton from "./Facebook.astro"
+import LinkedInShareButton from "./LinkedIn.astro"
+import TwitterShareButton from "./Twitter.astro"
+import type ButtonProps from "./types"
 
 interface Props extends ButtonProps {
-  buttons?: Object[];
+  buttons?: Object[]
 }
 
 const DEFAULT_COMPONENTS = [
   TwitterShareButton,
   FacebookShareButton,
-  // HackerNewsShareButton,
   LinkedInShareButton,
-  // RedditShareButton,
-  EmailShareButton,
-];
+  EmailShareButton
+]
 
 const {
   buttons = DEFAULT_COMPONENTS,
   url = Astro.url,
   title,
   description,
-  via,
-} = Astro.props;
+  via
+} = Astro.props
 ---
 
-<div class="flex flex-row gap-x-2">
+<div
+  role='group'
+  aria-label='Partager cette page'
+  class='share-actions flex w-fit flex-wrap gap-1 text-l/secondary dark:text-d/subtle'
+>
   {
     buttons.map((Button) => (
       <Button url={url} description={description} via={via} title={title} />
     ))
   }
 </div>
+
+<style>
+  .share-actions :global(.share-action) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: inherit;
+    transition: background-color 150ms ease;
+  }
+  .share-actions :global(.share-action:hover),
+  .share-actions :global(.share-action:focus-visible) {
+    background-color: color-mix(in srgb, currentColor 8%, transparent);
+  }
+  .share-actions :global(.share-action:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  .share-actions :global(svg) {
+    flex: none;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import ProjectPreview from "./ProjectPreview.astro"
+import { previewProjects } from "../project-previews"
 
 interface Props {
   slug: string
@@ -13,19 +14,6 @@ interface Props {
 
 const { slug, title, desc, url, date, types, status } = Astro.props
 
-const previewProjects = [
-  "kalot-municipales",
-  "stay-connect",
-  "o-mas-la",
-  "pani-limye-pani-dlo",
-  "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe",
-  "extension-chrome-odesli",
-  "days-since-scolo",
-  "macojaune",
-  "marvinl-point-com",
-  "quilivreou",
-  "sauve-ta-saint-valentin"
-] as const
 const preview = previewProjects.find((project) => project === slug)
 
 const formattedDate = date.toLocaleDateString("fr-FR", {
@@ -36,7 +24,7 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
 
 <a
   href={url}
-  class='group flex h-full min-w-0 flex-col gap-3 rounded-xl py-3 transition duration-200 hover:translate-y-[-0.2rem] focus-visible:translate-y-[-0.2rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-l/tertiary focus-visible:ring-offset-4 focus-visible:ring-offset-l/bg dark:focus-visible:ring-d/accent dark:focus-visible:ring-offset-d/bg sm:gap-5 sm:px-3 sm:py-4'
+  class='motion-project group flex h-full min-w-0 flex-col gap-3 rounded-xl py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-l/tertiary focus-visible:ring-offset-4 focus-visible:ring-offset-l/bg dark:focus-visible:ring-d/accent dark:focus-visible:ring-offset-d/bg sm:gap-5 sm:px-3 sm:py-4'
 >
   <div class='flex min-h-5 items-start justify-between gap-2'>
     <span
@@ -79,9 +67,9 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
   }
 
   <span
-    class='mt-auto inline-flex min-h-11 items-center gap-2 pt-1 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-l/primary transition group-hover:gap-3 group-hover:text-l/tertiary group-focus-visible:gap-3 group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary sm:text-[0.7rem] sm:tracking-[0.22em]'
+    class='mt-auto inline-flex min-h-11 items-center gap-2 pt-1 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-l/primary transition-colors group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary sm:text-[0.7rem] sm:tracking-[0.22em]'
   >
     Voir le projet
-    <span aria-hidden='true'>→</span>
+    <span class='motion-arrow' aria-hidden='true'>→</span>
   </span>
 </a>

@@ -4,6 +4,8 @@ import BottomLine from "../components/BottomLine.astro"
 import Head from "../components/Head.astro"
 import { NewsletterForm } from "../components/NewsletterForm"
 import type { JsonLd } from "../seo"
+import Motion from "../components/Motion.astro"
+import "../styles/motion.css"
 
 interface Props {
   title: string
@@ -52,15 +54,15 @@ const {
   >
     <!--
       astro:THESIS: MarvinL.com montre l'expertise et les produits de Marvin sans se vendre comme vitrine freelance. L'annonce MAGGMA marque clairement le passage des missions client vers l'équipe.
-      OWN-WORLD: Le site conserve son ivoire, son bordeaux et son grand Fraunces. MAGGMA intervient dans un seul bloc noir, orange et Space Grotesk.
+      OWN-WORLD: Le lightmode associe sable et brique ; le darkmode conserve son bordeaux et son ivoire. Anybody porte les titres. MAGGMA intervient dans un seul bloc noir, orange et Space Grotesk.
       STORY: Le visiteur découvre un développeur fullstack et entrepreneur, comprend que les nouveaux projets client passent par MAGGMA, puis explore le travail publié.
-      FIRST VIEWPORT: Le hero personnel reste dominant et sans contenu secondaire. Le manifeste MAGGMA apparaît immédiatement après, pleine largeur, comme une alerte éditoriale avec une accroche massive et un unique lien externe.
+      FIRST VIEWPORT: Le hero personnel fait passer la phrase aux aperçus des projets pendant le défilement. Le manifeste MAGGMA suit cette composition, avec une accroche massive et un unique lien externe.
       FORM: Extension locale de l'accueil existant. Aucun nouveau monde visuel global et aucun concept seed requis.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
     -->
     <div class='pointer-events-none fixed inset-0 overflow-hidden'>
       <div
-        class='absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(116,29,18,0.05),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(223,94,55,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.28),transparent_40%)]'
+        class='absolute inset-0 hidden dark:block dark:bg-[radial-gradient(circle_at_top_left,rgba(223,94,55,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.28),transparent_40%)]'
       >
       </div>
     </div>
@@ -78,6 +80,7 @@ const {
 
       <BottomLine />
     </div>
+    <Motion />
     <script is:inline>
       window.axeptioSettings = {
         clientId: "65cb08d7c71bfd77d142e82d"

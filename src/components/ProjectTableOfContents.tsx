@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type Heading = {
   depth: number
@@ -8,6 +8,61 @@ type Heading = {
 
 interface Props {
   headings: Heading[]
+}
+
+function TocLinks({ headings, activeSlug }: Props & { activeSlug: string }) {
+  const listRef = useRef<HTMLOListElement>(null)
+  const [markerY, setMarkerY] = useState<number | null>(null)
+
+  useEffect(() => {
+    const list = listRef.current
+    if (!list) return
+    const update = () => {
+      const current = list.querySelector<HTMLElement>(
+        '[aria-current="location"]'
+      )
+      if (current && list.offsetHeight > 0) {
+        setMarkerY(current.offsetTop + (current.offsetHeight - 16) / 2)
+      }
+    }
+    update()
+    const resize = new ResizeObserver(update)
+    resize.observe(list)
+    return () => resize.disconnect()
+  }, [activeSlug])
+
+  return (
+    <div className='toc-rail relative'>
+      <ol ref={listRef} className='toc-links relative grid gap-1'>
+        {headings.map((heading) => {
+          const isActive = heading.slug === activeSlug
+          return (
+            <li key={heading.slug}>
+              <a
+                href={`#${heading.slug}`}
+                aria-current={isActive ? "location" : undefined}
+                className={`relative block rounded-md py-2 pr-2 text-sm leading-5 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-l/tertiary dark:focus-visible:ring-d/accent ${heading.depth === 3 ? "pl-7" : "pl-4"} ${isActive ? "text-l/primary dark:text-d/primary" : "text-l/secondary hover:text-l/primary dark:text-d/subtle dark:hover:text-d/primary"}`}
+              >
+                <span
+                  aria-hidden='true'
+                  className='absolute bottom-2 left-0 top-2 w-px bg-l/primary/15 dark:bg-d/primary/15'
+                />
+                {heading.text}
+              </a>
+            </li>
+          )
+        })}
+      </ol>
+      <span
+        aria-hidden='true'
+        className='toc-marker bg-l/tertiary dark:bg-d/accent'
+        style={{
+          opacity: markerY === null ? 0 : 1,
+          transform: `translateY(${markerY ?? 0}px)`
+        }}
+      />
+    </div>
+  )
 }
 
 export default function ProjectTableOfContents({ headings }: Props) {
@@ -46,39 +101,7 @@ export default function ProjectTableOfContents({ headings }: Props) {
     }
   }, [headings])
 
-  const links = (
-    <ol className='grid gap-1'>
-      {headings.map((heading) => {
-        const isActive = heading.slug === activeSlug
-
-        return (
-          <li key={heading.slug}>
-            <a
-              href={`#${heading.slug}`}
-              aria-current={isActive ? "location" : undefined}
-              className={`relative block rounded-md py-2 pr-2 text-sm leading-5 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-l/tertiary dark:focus-visible:ring-d/accent ${
-                heading.depth === 3 ? "pl-7" : "pl-4"
-              } ${
-                isActive
-                  ? "text-l/primary dark:text-d/primary"
-                  : "text-l/secondary hover:text-l/primary dark:text-d/subtle dark:hover:text-d/primary"
-              }`}
-            >
-              <span
-                aria-hidden='true'
-                className={`absolute bottom-2 left-0 top-2 w-px transition-colors ${
-                  isActive
-                    ? "bg-l/tertiary dark:bg-d/accent"
-                    : "bg-l/primary/15 dark:bg-d/primary/15"
-                }`}
-              />
-              {heading.text}
-            </a>
-          </li>
-        )
-      })}
-    </ol>
-  )
+  const links = <TocLinks headings={headings} activeSlug={activeSlug} />
 
   return (
     <>

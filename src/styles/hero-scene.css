@@ -1,0 +1,166 @@
+.hero-scene {
+  padding-block: 2rem;
+}
+.hero-stage {
+  position: relative;
+}
+.hero-eyebrow {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+.hero-title {
+  max-width: 68rem;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  transform-origin: top left;
+}
+.hero-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.hero-project {
+  display: block;
+  min-width: 0;
+  border-radius: 0.75rem;
+  color: inherit;
+}
+.hero-project-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.9rem 0.25rem;
+}
+.hero-project-name {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.hero-project:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+  z-index: 5;
+}
+.hero-links {
+  margin-top: 2rem;
+  padding-bottom: 0;
+}
+.hero-scroll-cue {
+  display: none;
+}
+/* Enhancement is enabled only after the controller has measured the scene.
+   Without scripts, or with reduced motion, these are ordinary project links. */
+.hero-scene.is-kinetic {
+  padding-block: 0;
+  height: calc(var(--hero-height) + var(--hero-travel));
+}
+.is-kinetic .hero-stage {
+  position: sticky;
+  top: 16px;
+  height: var(--hero-height);
+  overflow: clip;
+  overflow-clip-margin: 12px;
+}
+.is-kinetic .hero-eyebrow {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  margin: 0;
+}
+.is-kinetic .hero-title {
+  position: absolute;
+  top: var(--hero-title-top);
+  left: 0;
+  width: 100%;
+}
+.is-kinetic .hero-projects {
+  display: block;
+  margin: 0;
+}
+.is-kinetic .hero-project {
+  position: absolute;
+  top: var(--hero-cards-top);
+  left: 0;
+  width: var(--hero-card-width);
+  transform-origin: center;
+}
+.is-kinetic .hero-links {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+}
+.is-kinetic .hero-scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-scroll-track {
+  width: 64px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+}
+.hero-scroll-track > span {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 16px;
+  height: 5px;
+  background: currentColor;
+}
+@media (max-width: 767px) {
+  .hero-projects {
+    display: none;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-eyebrow {
+    letter-spacing: 0.34em;
+  }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene.is-kinetic {
+    height: auto;
+    padding-top: 2rem;
+  }
+  .is-kinetic .hero-stage {
+    position: relative;
+    top: auto;
+    height: auto;
+    overflow: visible;
+  }
+  .is-kinetic .hero-title,
+  .is-kinetic .hero-eyebrow,
+  .is-kinetic .hero-project,
+  .is-kinetic .hero-links {
+    position: static;
+    transform: none !important;
+    width: auto;
+  }
+  .is-kinetic .hero-eyebrow {
+    margin-bottom: 2rem;
+  }
+  .is-kinetic .hero-projects {
+    display: grid;
+    margin-top: 2.5rem;
+  }
+  .is-kinetic .hero-links {
+    margin-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  .is-kinetic .hero-scroll-cue {
+    display: none;
+  }
+}

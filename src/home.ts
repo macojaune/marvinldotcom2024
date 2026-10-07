@@ -16,7 +16,7 @@ export const home = {
   },
   ctas: [
     {
-      href: "/projets",
+      href: "#projets",
       label: "Voir les projets"
     }
   ] satisfies HomeCTA[],
