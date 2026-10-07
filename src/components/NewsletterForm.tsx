@@ -294,8 +294,8 @@ export function NewsletterForm({ emphasized = false }: Props) {
             <div>
               <p className={styles.successLabel}>Inscription prise</p>
               <p className={styles.successBody}>
-                Merci pour ton inscription. Tu recevras bientôt un e-mail de
-                confirmation.
+                Merci pour ton inscription. Tu es sur la liste pour suivre
+                les prochains projets.
               </p>
             </div>
           )}
