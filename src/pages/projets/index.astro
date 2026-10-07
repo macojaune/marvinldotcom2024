@@ -35,13 +35,8 @@ const sortedClientProjects = clientProjects.sort(
   structuredData={breadcrumb}
 >
   <section class='grid gap-5 py-6 md:py-10'>
-    <p
-      class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-    >
-      Projets
-    </p>
     <h1
-      class='max-w-5xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6rem]'
+      class='max-w-5xl font-display text-6xl leading-[0.95] tracking-[-0.04em] text-l/primary dark:text-d/primary sm:text-7xl md:text-8xl xl:text-[6rem]'
     >
       Tous les projets.
     </h1>
@@ -57,14 +52,14 @@ const sortedClientProjects = clientProjects.sort(
       class='flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'
     >
       <h2
-        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl'
+        class='font-display text-3xl leading-[1.05] tracking-[-0.03em] text-l/primary dark:text-d/primary sm:text-4xl lg:text-5xl'
       >
         Projets personnels.
       </h2>
     </div>
 
     <div
-      class='grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-10'
+      class='grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-10'
     >
       {
         sortedPersonalProjects.map((project) => (
@@ -87,7 +82,7 @@ const sortedClientProjects = clientProjects.sort(
   <section class='grid gap-8 py-8'>
     <div class='flex flex-col gap-3'>
       <h2
-        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl'
+        class='font-display text-3xl leading-[1.05] tracking-[-0.03em] text-l/primary dark:text-d/primary sm:text-4xl lg:text-5xl'
       >
         Projets clients.
       </h2>

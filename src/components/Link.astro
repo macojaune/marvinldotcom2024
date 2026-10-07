@@ -23,7 +23,8 @@ const {
 
 <a
   class:list={[
-    "inline-flex w-fit items-center gap-x-2 outline-none transition duration-200 focus-visible:outline-none",
+    "motion-link inline-flex w-fit items-center gap-x-2 outline-none transition duration-200 focus-visible:outline-none",
+    variant === "button" && "motion-press",
     variant === "inline" &&
       "text-sm text-l/tertiary hover:text-l/primary focus:text-l/primary focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:text-d/accent dark:focus:text-d/accent dark:focus-visible:text-d/accent dark:active:text-d/accent",
     variant === "button" &&
@@ -32,7 +33,7 @@ const {
       "justify-center font-mono text-[0.72rem] uppercase tracking-[0.24em] text-l/secondary hover:text-l/tertiary focus-visible:text-l/tertiary dark:text-d/muted dark:hover:text-d/accent dark:focus-visible:text-d/accent",
     invert &&
       variant === "inline" &&
-      "text-l/bg hover:text-white dark:text-d/primary",
+      "text-l/bg hover:text-l/surface dark:text-d/primary",
     !noDecorate && invert && variant === "inline" && "decoration-l/tertiary",
     !noDecorate &&
       variant === "inline" &&
@@ -48,7 +49,9 @@ const {
   <slot />
   {
     (variant === "button" || variant === "subtle") && (
-      <span aria-hidden='true'>→</span>
+      <span class='motion-arrow' aria-hidden='true'>
+        →
+      </span>
     )
   }
   <slot name='after' />

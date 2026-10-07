@@ -44,6 +44,10 @@ const faqPage = buildFaqPage(home.faq.items)
     eyebrow={home.hero.eyebrow}
     title={home.hero.title}
     ctas={home.ctas}
+    projects={featuredProjects.map((project) => ({
+      slug: project.slug,
+      title: project.data.title
+    }))}
   />
 
   <MaggmaAnnouncement />
@@ -69,7 +73,7 @@ const faqPage = buildFaqPage(home.faq.items)
 
     {
       featuredProjects.length > 0 && (
-        <div class='grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:gap-10'>
+        <div class='grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-10'>
           {featuredProjects.map((project) => (
             <HomeProjectCard
               slug={project.slug}
@@ -102,7 +106,7 @@ const faqPage = buildFaqPage(home.faq.items)
               {moreProjects.map((project) => (
                 <a
                   href={`/projets/${project.slug}`}
-                  class='group -mx-3 flex min-w-0 flex-col gap-3 rounded-xl px-3 py-3 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-l/tertiary dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06] dark:focus-visible:ring-d/accent'
+                  class='group -mx-3 flex min-w-0 flex-col gap-3 rounded-xl px-3 py-3 transition duration-200 hover:translate-x-1 hover:bg-l/primary/[0.035] focus-visible:translate-x-1 focus-visible:bg-l/primary/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-l/tertiary dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06] dark:focus-visible:ring-d/accent'
                 >
                   <div class='flex items-start justify-between gap-3'>
                     <p class='font-mono text-[0.66rem] uppercase tracking-[0.25em] text-l/secondary dark:text-d/subtle'>
@@ -137,9 +141,9 @@ const faqPage = buildFaqPage(home.faq.items)
   <section
     class='grid gap-8 py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:gap-12'
   >
-    <div class='space-y-4'>
+    <div class='faq-title-container space-y-4'>
       <h2
-        class='max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
+        class='faq-title max-w-3xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
       >
         {home.faq.title}
       </h2>
@@ -162,10 +166,12 @@ const faqPage = buildFaqPage(home.faq.items)
   </section>
 
   <section
-    class='grid gap-10 py-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]'
+    aria-labelledby='home-writing-title'
+    class='grid gap-10 py-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16'
   >
     <div class='space-y-4'>
       <h2
+        id='home-writing-title'
         class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[5.8rem]'
       >
         {home.writing.title}
@@ -184,38 +190,64 @@ const faqPage = buildFaqPage(home.faq.items)
       }
     </div>
 
-    <div class='grid gap-3'>
-      {
-        recentArticles.length > 0 ? (
-          recentArticles.map((article) => (
-            <a
-              href={`/blog/${article.slug}`}
-              class='group -mx-3 flex flex-col gap-3 rounded-xl px-3 py-4 transition duration-200 hover:translate-x-1 hover:bg-black/[0.035] focus-visible:translate-x-1 focus-visible:bg-black/[0.035] focus-visible:outline-none dark:hover:bg-white/[0.06] dark:focus-visible:bg-white/[0.06]'
-            >
-              <p class='font-mono text-[0.66rem] uppercase tracking-[0.24em] text-l/secondary dark:text-d/accent'>
-                {article.data.createdAt.toLocaleDateString("fr-FR", {
-                  month: "long",
-                  year: "numeric"
-                })}
-              </p>
-              <h3 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary transition group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary'>
-                {article.data.title}
-              </h3>
-              {article.data.description && (
-                <p class='text-base leading-7 text-l/secondary dark:text-d/muted'>
-                  {article.data.description}
-                </p>
-              )}
-            </a>
-          ))
-        ) : (
-          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
-            Aucun nouvel article pour le moment.
-          </p>
-        )
-      }
-    </div>
+    {
+      recentArticles.length > 0 ? (
+        <ul class='divide-y divide-l/primary/15 border-y border-l/primary/15 dark:divide-d/primary/20 dark:border-d/primary/20'>
+          {recentArticles.map((article) => (
+            <li>
+              <a
+                href={`/blog/${article.slug}`}
+                class='motion-link group block py-6 outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-l/tertiary dark:focus-visible:ring-d/accent sm:py-7'
+              >
+                <div class='min-w-0 space-y-3'>
+                  <p class='font-mono text-[0.66rem] uppercase tracking-[0.2em] text-l/secondary dark:text-d/accent'>
+                    {article.data.createdAt.toLocaleDateString("fr-FR", {
+                      month: "long",
+                      year: "numeric"
+                    })}
+                  </p>
+                  <h3 class='font-body text-2xl font-semibold leading-[1.25] tracking-[-0.015em] text-l/primary transition-colors duration-150 group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/accent dark:group-focus-visible:text-d/accent md:text-[1.75rem]'>
+                    {article.data.title}
+                  </h3>
+                  {article.data.description && (
+                    <p class='max-w-prose text-base leading-7 text-l/secondary dark:text-d/muted'>
+                      {article.data.description}
+                    </p>
+                  )}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
+          Aucun nouvel article pour le moment.
+        </p>
+      )
+    }
   </section>
 
   <Footer />
 </Layout>
+
+<style>
+  .faq-title-container {
+    container-type: inline-size;
+  }
+  .faq-title {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    font-size: min(3rem, 16cqw);
+  }
+  @media (min-width: 768px) {
+    .faq-title {
+      font-size: min(4.5rem, 16cqw);
+    }
+  }
+  @media (min-width: 1280px) {
+    .faq-title {
+      font-size: min(5.8rem, 16cqw);
+    }
+  }
+</style>

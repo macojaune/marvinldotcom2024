@@ -1,0 +1,65 @@
+:root {
+  --motion-arrival: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-feedback: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-travel: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.font-display {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.motion-project {
+  transition: transform 160ms var(--motion-feedback);
+}
+.motion-arrow {
+  display: inline-block;
+  transition: transform 160ms var(--motion-feedback);
+}
+.motion-press {
+  transition:
+    transform 160ms var(--motion-feedback),
+    color 160ms ease,
+    background-color 160ms ease;
+}
+.motion-press:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: 120ms;
+}
+.toc-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 16px;
+  pointer-events: none;
+  transition:
+    transform 180ms var(--motion-travel),
+    opacity 180ms ease;
+}
+.toc-rail:has(:focus-visible) .toc-marker {
+  transition: opacity 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-project:hover {
+    transform: translateY(-3px);
+  }
+  .motion-link:hover .motion-arrow,
+  .motion-project:hover .motion-arrow,
+  .motion-press:hover .motion-arrow {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-project:hover,
+  .motion-link:hover .motion-arrow,
+  .motion-project:hover .motion-arrow,
+  .motion-press:hover .motion-arrow,
+  .motion-press:active:not(:disabled) {
+    transform: none;
+  }
+  .toc-marker {
+    transition: opacity 180ms ease;
+  }
+}
