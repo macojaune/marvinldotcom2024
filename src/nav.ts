@@ -3,13 +3,12 @@
 export const nav = [
   {
     title: "home",
-    url: "/",
+    url: "/"
   },
   {
     title: "projets",
-    url: "/projets",
-  },
-  {title: 'idées', url:"/ideas"}
+    url: "/projets"
+  }
   // {
   //   title: "blog",
   //   url: "/blog",
@@ -18,5 +17,4 @@ export const nav = [
   //   title: "open",
   //   url: "/data",
   // },
-];
-
+]

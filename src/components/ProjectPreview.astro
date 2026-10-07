@@ -1,0 +1,1246 @@
+---
+interface Props {
+  project:
+    | "kalot-municipales"
+    | "stay-connect"
+    | "o-mas-la"
+    | "pani-limye-pani-dlo"
+    | "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe"
+    | "extension-chrome-odesli"
+    | "days-since-scolo"
+    | "macojaune"
+    | "marvinl-point-com"
+    | "quilivreou"
+    | "sauve-ta-saint-valentin"
+}
+
+const { project } = Astro.props
+---
+
+<div
+  class:list={["project-preview", `project-preview--${project}`]}
+  aria-hidden='true'
+>
+  {
+    project === "kalot-municipales" && (
+      <div class='kalot-frame'>
+        <div class='kalot-title'>
+          <span>KALOT</span>
+          <strong>MUNICIPALES</strong>
+        </div>
+        <div class='kalot-duel'>
+          <span class='kalot-track kalot-track--one' />
+          <span class='kalot-vs'>VS</span>
+          <span class='kalot-track kalot-track--two' />
+        </div>
+        <div class='kalot-score'>
+          <>
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "stay-connect" && (
+      <div class='stay-frame'>
+        <div class='stay-brand'>#StayConnect</div>
+        <div class='stay-timeline'>
+          <span class='stay-line' />
+          <div class='stay-release stay-release--one'>
+            <span class='stay-cover' />
+            <span class='stay-copy' />
+          </div>
+          <div class='stay-release stay-release--two'>
+            <span class='stay-cover' />
+            <span class='stay-copy' />
+          </div>
+          <div class='stay-release stay-release--three'>
+            <span class='stay-cover' />
+            <span class='stay-copy' />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "o-mas-la" && (
+      <div class='omas-frame'>
+        <svg viewBox='0 0 360 220' role='presentation'>
+          <path class='omas-road' d='M-10 42C78 18 104 95 176 73s83-3 194-59' />
+          <path class='omas-road' d='M52 230c-9-65 60-64 56-123S74 41 91-10' />
+          <path
+            class='omas-road'
+            d='M178 230c15-69-13-98 35-131s87-12 101-109'
+          />
+          <path
+            class='omas-route'
+            d='M38 180c41-23 56-60 103-55s72 30 126-17'
+          />
+          <circle class='omas-point omas-point--start' cx='38' cy='180' r='7' />
+          <circle
+            class='omas-point omas-point--middle'
+            cx='142'
+            cy='125'
+            r='7'
+          />
+          <circle class='omas-point omas-point--end' cx='267' cy='108' r='10' />
+        </svg>
+        <div class='omas-label'>O MAS LA ?</div>
+      </div>
+    )
+  }
+
+  {
+    project === "pani-limye-pani-dlo" && (
+      <div class='pani-frame'>
+        <div class='pani-header'>
+          <strong>Pani limyè</strong>
+          <strong>Pani Dlo</strong>
+        </div>
+        <div class='pani-layout'>
+          <div class='pani-copy'>
+            <span class='pani-title'>Chez toi, c’est comment ?</span>
+            <span class='pani-button'>Activer ma localisation</span>
+          </div>
+          <div class='pani-map'>
+            <svg viewBox='0 0 220 150' role='presentation'>
+              <path d='M-8 35c45-20 70 22 114 7s66-9 123-37' />
+              <path d='M38 160c-9-50 35-56 31-98S51 25 67-8' />
+              <path d='M115 160c10-46-8-68 31-91s55-9 67-77' />
+            </svg>
+            <span class='pani-pulse pani-pulse--one' />
+            <span class='pani-pulse pani-pulse--two' />
+            <span class='pani-pulse pani-pulse--three' />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe" && (
+      <div class='juste-frame'>
+        <div class='juste-brand'>LeJusteCoin</div>
+        <div class='juste-game'>
+          <span class='juste-house' />
+          <div class='juste-copy'>
+            <strong>Quel est le loyer ?</strong>
+            <span>3 pièces · Guadeloupe</span>
+            <div class='juste-prices'>
+              <>
+                <i>850 €</i>
+                <i>1 150 €</i>
+                <i>1 400 €</i>
+              </>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "extension-chrome-odesli" && (
+      <div class='autosong-frame'>
+        <div class='autosong-browser'>
+          <>
+            <span />
+            <span />
+            <span />
+          </>
+        </div>
+        <div class='autosong-popup'>
+          <div class='autosong-source'>SPOTIFY</div>
+          <svg viewBox='0 0 52 24' role='presentation'>
+            <path d='M2 12h44M37 4l9 8-9 8' />
+          </svg>
+          <div class='autosong-target'>SONG.LINK</div>
+        </div>
+        <div class='autosong-label'>AutoSongLink</div>
+      </div>
+    )
+  }
+
+  {
+    project === "days-since-scolo" && (
+      <div class='scolo-frame'>
+        <span class='scolo-label'>DERNIÈRE RENCONTRE</span>
+        <strong>12</strong>
+        <span class='scolo-days'>jours sans scolopendre</span>
+        <div class='scolo-track'>
+          <>
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "macojaune" && (
+      <div class='maco-frame'>
+        <div class='maco-masthead'>
+          <strong>@MACOJAUNE</strong>
+          <span>LE SITE</span>
+        </div>
+        <div class='maco-gallery'>
+          {["portrait", "warm", "cool"].map((tone) => (
+            <div class={`maco-tile maco-tile--${tone}`}>
+              <svg
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='1.5'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <rect x='3' y='3' width='18' height='18' rx='2' />
+                <circle cx='8.5' cy='8.5' r='1.5' />
+                <path d='m21 15-5-5L5 21' />
+              </svg>
+            </div>
+          ))}
+          <div class='maco-caption'>
+            <span>JE SUIS</span>
+            <strong>MACOJAUNE.</strong>
+          </div>
+          <span class='maco-counter'>01—03</span>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "marvinl-point-com" && (
+      <div class='marvin-frame'>
+        <div class='marvin-browser'>
+          <>
+            <span />
+            <span />
+            <span />
+          </>
+        </div>
+        <strong>ML</strong>
+        <div class='marvin-lines'>
+          <>
+            <span />
+            <span />
+            <span />
+          </>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "quilivreou" && (
+      <div class='livre-frame'>
+        <div class='livre-hero'>
+          <strong>QUILIVREOÙ?</strong>
+          <div class='livre-search'>
+            <svg viewBox='0 0 20 20'>
+              <>
+                <circle cx='8' cy='8' r='5' />
+                <path d='m12 12 5 5' />
+              </>
+            </svg>
+            <span class='livre-input-line' />
+            <span class='livre-region'>Antilles / Guyane</span>
+            <span class='livre-submit'>→</span>
+          </div>
+        </div>
+        <div class='livre-shops'>
+          {["parcel", "bag", "shoe"].map((kind) => (
+            <div class='livre-shop'>
+              <svg viewBox='0 0 72 48'>
+                {kind === "parcel" && (
+                  <>
+                    <path d='m18 15 18-8 18 8v22l-18 8-18-8Z' />
+                    <path d='m18 15 18 8 18-8M36 23v22M27 11l18 8v9' />
+                  </>
+                )}
+                {kind === "bag" && (
+                  <>
+                    <path d='M19 17h34l3 27H16Z' />
+                    <path d='M28 22V13a8 8 0 0 1 16 0v9' />
+                  </>
+                )}
+                {kind === "shoe" && (
+                  <>
+                    <path d='M13 27 25 10l10 7 5 12 18 5q5 1 5 9H10v-8Z' />
+                    <path d='M12 36h45M30 22l9-3M34 28l9-3' />
+                  </>
+                )}
+              </svg>
+              <span class='livre-shop-line' />
+              <span class='livre-status'>
+                <svg viewBox='0 0 12 12'>
+                  <path d='m2 6 3 3 5-6' />
+                </svg>
+                LIVRE
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    project === "sauve-ta-saint-valentin" && (
+      <div class='valentin-frame'>
+        <div class='valentin-copy'>
+          <span>14 FÉVRIER</span>
+          <strong>
+            Sauve ta
+            <br />
+            Saint-Valentin
+          </strong>
+        </div>
+        <div class='valentin-heart'>♥</div>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .project-preview {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .project-preview--kalot-municipales {
+    background: #111211;
+    color: #f6f6f2;
+  }
+
+  .kalot-frame {
+    display: grid;
+    height: 100%;
+    grid-template-rows: auto 1fr auto;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .kalot-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  .kalot-title strong {
+    color: #91ff3c;
+  }
+
+  .kalot-duel {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .kalot-track {
+    height: 3.6rem;
+    border: 1px solid rgb(255 255 255 / 0.28);
+    border-radius: 0.55rem;
+    background:
+      linear-gradient(#91ff3c, #91ff3c) 0.7rem 0.7rem / 1.25rem 1.25rem
+        no-repeat,
+      linear-gradient(rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.78)) 2.35rem
+        0.8rem / calc(100% - 3rem) 0.35rem no-repeat,
+      linear-gradient(rgb(255 255 255 / 0.22), rgb(255 255 255 / 0.22)) 2.35rem
+        1.55rem / 42% 0.3rem no-repeat;
+    transition:
+      transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 250ms ease;
+  }
+
+  .kalot-track--two {
+    background:
+      linear-gradient(#58bdd9, #58bdd9) 0.7rem 0.7rem / 1.25rem 1.25rem
+        no-repeat,
+      linear-gradient(rgb(255 255 255 / 0.78), rgb(255 255 255 / 0.78)) 2.35rem
+        0.8rem / calc(100% - 3rem) 0.35rem no-repeat,
+      linear-gradient(rgb(255 255 255 / 0.22), rgb(255 255 255 / 0.22)) 2.35rem
+        1.55rem / 42% 0.3rem no-repeat;
+  }
+
+  .kalot-vs {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #91ff3c;
+    color: #111211;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 800;
+  }
+
+  .kalot-score {
+    display: flex;
+    height: 0.28rem;
+    gap: 0.25rem;
+  }
+
+  .kalot-score span {
+    flex: 1;
+    background: rgb(255 255 255 / 0.15);
+  }
+
+  .kalot-score span:nth-child(-n + 3) {
+    background: #91ff3c;
+  }
+
+  :global(a:hover) .kalot-track--one,
+  :global(a:focus-visible) .kalot-track--one {
+    transform: translateX(0.3rem);
+    border-color: #91ff3c;
+  }
+
+  :global(a:hover) .kalot-track--two,
+  :global(a:focus-visible) .kalot-track--two {
+    transform: translateX(-0.3rem);
+  }
+
+  .project-preview--stay-connect {
+    background: #f4f5f7;
+    color: #16171a;
+  }
+
+  .stay-frame {
+    height: 100%;
+    padding: 1.25rem;
+  }
+
+  .stay-brand {
+    color: #f15a29;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 650;
+  }
+
+  .stay-timeline {
+    position: relative;
+    display: grid;
+    margin-top: 1.15rem;
+    gap: 0.65rem;
+    padding-left: 1.35rem;
+  }
+
+  .stay-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.25rem;
+    width: 1px;
+    background: #f15a29;
+    transform-origin: top;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stay-release {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.35rem 1fr;
+    gap: 0.7rem;
+    padding: 0.55rem;
+    border: 1px solid #dedfe3;
+    border-radius: 0.5rem;
+    background: #fff;
+  }
+
+  .stay-release::before {
+    position: absolute;
+    top: 50%;
+    left: -1.55rem;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: #f15a29;
+    content: "";
+    transform: translateY(-50%);
+  }
+
+  .stay-cover {
+    aspect-ratio: 1;
+    border-radius: 0.25rem;
+    background: #ffd7c9;
+  }
+
+  .stay-release--two .stay-cover {
+    background: #cbdaf5;
+  }
+
+  .stay-release--three .stay-cover {
+    background: #d7e8d3;
+  }
+
+  .stay-copy {
+    background:
+      linear-gradient(#5d5f66, #5d5f66) 0 0.45rem / 68% 0.3rem no-repeat,
+      linear-gradient(#c8cad0, #c8cad0) 0 1.1rem / 44% 0.25rem no-repeat;
+  }
+
+  :global(a:hover) .stay-line,
+  :global(a:focus-visible) .stay-line {
+    animation: stay-trace 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-preview--o-mas-la {
+    background: #143a38;
+    color: #f5edda;
+  }
+
+  .omas-frame,
+  .omas-frame svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .omas-road,
+  .omas-route {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .omas-road {
+    stroke: rgb(245 237 218 / 0.16);
+    stroke-width: 2;
+  }
+
+  .omas-route {
+    stroke: #ff8f5b;
+    stroke-width: 4;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .omas-point {
+    fill: #ff8f5b;
+    stroke: #143a38;
+    stroke-width: 4;
+  }
+
+  .omas-point--end {
+    fill: #f5edda;
+  }
+
+  .omas-label {
+    position: absolute;
+    right: 1.1rem;
+    bottom: 0.9rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  :global(a:hover) .omas-route,
+  :global(a:focus-visible) .omas-route {
+    animation: route-trace 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-preview--pani-limye-pani-dlo {
+    background: #f7f7f4;
+    color: #131622;
+  }
+
+  .pani-frame {
+    height: 100%;
+  }
+
+  .pani-header {
+    display: flex;
+    height: 2.8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background: #141827;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.7rem;
+  }
+
+  .pani-header strong:first-child {
+    color: #ffc82e;
+  }
+
+  .pani-header strong:last-child {
+    color: #55c8ed;
+  }
+
+  .pani-layout {
+    display: grid;
+    height: calc(100% - 2.8rem);
+    grid-template-columns: 42% 58%;
+  }
+
+  .pani-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .pani-title {
+    font-size: 0.7rem;
+    font-weight: 650;
+  }
+
+  .pani-button {
+    padding: 0.55rem;
+    border: 1px solid #c7c8cd;
+    font-size: 0.52rem;
+    text-align: center;
+  }
+
+  .pani-map {
+    position: relative;
+    overflow: hidden;
+    background: #d9d9d7;
+  }
+
+  .pani-map svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pani-map path {
+    fill: none;
+    stroke: #b7b8b7;
+    stroke-width: 2;
+  }
+
+  .pani-pulse {
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 0.18rem solid #fff;
+    border-radius: 50%;
+    background: #ef5656;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pani-pulse--one {
+    top: 32%;
+    left: 26%;
+  }
+
+  .pani-pulse--two {
+    top: 55%;
+    left: 58%;
+  }
+
+  .pani-pulse--three {
+    top: 24%;
+    left: 76%;
+  }
+
+  :global(a:hover) .pani-pulse,
+  :global(a:focus-visible) .pani-pulse {
+    transform: scale(1.35);
+  }
+
+  .project-preview--lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe {
+    background: #ffe6d7;
+    color: #171717;
+  }
+
+  .juste-frame {
+    height: 100%;
+    padding: 1.1rem;
+  }
+
+  .juste-brand {
+    color: #de571d;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .juste-game {
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: 38% 62%;
+    overflow: hidden;
+    border-radius: 0.6rem;
+    background: #fff;
+    box-shadow: 0 0.5rem 1.4rem rgb(91 47 28 / 0.12);
+  }
+
+  .juste-house {
+    min-height: 6.7rem;
+    background:
+      linear-gradient(135deg, transparent 48%, #ffd1b5 49% 63%, transparent 64%)
+        40% 28% / 4.5rem 3.2rem no-repeat,
+      linear-gradient(#de571d, #de571d) 50% 68% / 3.2rem 2.3rem no-repeat,
+      #f6c7aa;
+  }
+
+  .juste-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.8rem;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .juste-copy strong {
+    font-size: 0.65rem;
+  }
+
+  .juste-copy > span {
+    color: #777;
+    font-size: 0.48rem;
+  }
+
+  .juste-prices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .juste-prices i {
+    padding: 0.25rem 0.35rem;
+    border: 1px solid #e3e3e3;
+    border-radius: 0.25rem;
+    font-size: 0.44rem;
+    font-style: normal;
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease;
+  }
+
+  :global(a:hover) .juste-prices i:nth-child(2),
+  :global(a:focus-visible) .juste-prices i:nth-child(2) {
+    border-color: #de571d;
+    background: #fff0e7;
+  }
+
+  .project-preview--extension-chrome-odesli {
+    background: #eef1f8;
+    color: #202124;
+  }
+
+  .autosong-frame {
+    height: 100%;
+    padding: 0.8rem;
+  }
+
+  .autosong-browser {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .autosong-browser span {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: #b9bfcc;
+  }
+
+  .autosong-popup {
+    display: grid;
+    margin: 1.15rem auto 0;
+    max-width: 15rem;
+    grid-template-columns: 1fr 2.7rem 1fr;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1.3rem 0.9rem;
+    border-radius: 0.65rem;
+    background: #fff;
+    box-shadow: 0 0.6rem 1.5rem rgb(50 58 84 / 0.14);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .autosong-source,
+  .autosong-target {
+    padding: 0.45rem 0.3rem;
+    border-radius: 0.3rem;
+  }
+
+  .autosong-source {
+    background: #1ed760;
+  }
+
+  .autosong-target {
+    background: #f0c55d;
+  }
+
+  .autosong-popup svg {
+    fill: none;
+    stroke: #202124;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .autosong-label {
+    margin-top: 0.8rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.58rem;
+    font-weight: 650;
+    text-align: center;
+  }
+
+  :global(a:hover) .autosong-popup svg,
+  :global(a:focus-visible) .autosong-popup svg {
+    transform: translateX(0.3rem);
+  }
+
+  .project-preview--days-since-scolo {
+    background: #e8ff67;
+    color: #151515;
+  }
+
+  .scolo-frame {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+
+  .scolo-label,
+  .scolo-days {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .scolo-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .scolo-frame strong {
+    margin-top: 0.25rem;
+    font-family: "Fraunces", serif;
+    font-size: clamp(4rem, 9vw, 6.5rem);
+    font-weight: 650;
+    line-height: 0.82;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scolo-days {
+    margin-top: 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  .scolo-track {
+    display: flex;
+    gap: 0.2rem;
+    margin-top: 0.85rem;
+  }
+
+  .scolo-track span {
+    width: 0.62rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: #151515;
+    transform: rotate(-8deg);
+  }
+
+  :global(a:hover) .scolo-frame strong,
+  :global(a:focus-visible) .scolo-frame strong {
+    transform: translateX(0.35rem);
+  }
+
+  .project-preview--macojaune {
+    background: #050505;
+    color: #f5c518;
+  }
+
+  .maco-frame {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.75rem;
+  }
+
+  .maco-masthead {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .maco-masthead strong {
+    font-size: clamp(0.62rem, 2.15vw, 1rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .maco-masthead span {
+    align-self: flex-end;
+    padding-bottom: 0.02rem;
+    font-size: clamp(0.22rem, 0.75vw, 0.38rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .maco-gallery {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.35rem;
+    flex: 1;
+    min-height: 0;
+    margin-top: 0.5rem;
+    overflow: hidden;
+  }
+
+  .maco-tile {
+    display: grid;
+    min-height: 0;
+    place-items: center;
+    color: #f2e9d6;
+  }
+
+  .maco-tile svg {
+    width: clamp(1rem, 3vw, 1.8rem);
+    height: auto;
+    opacity: 0.6;
+  }
+
+  .maco-tile--portrait {
+    grid-row: 1 / 3;
+    background: #352d35;
+  }
+
+  .maco-tile--warm {
+    background: #92583e;
+  }
+
+  .maco-tile--cool {
+    background: #384650;
+  }
+
+  .maco-caption {
+    position: absolute;
+    bottom: 0.45rem;
+    left: 0.45rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 0.4rem 0.34rem;
+    background: #050505;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(0.28rem, 0.95vw, 0.48rem);
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    line-height: 0.94;
+  }
+
+  .maco-caption strong {
+    font-size: 1.45em;
+  }
+
+  .maco-counter {
+    position: absolute;
+    right: 0.4rem;
+    bottom: 0.35rem;
+    padding: 0.12rem 0.22rem;
+    background: #f5c518;
+    color: #050505;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(0.22rem, 0.7vw, 0.36rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .project-preview--marvinl-point-com {
+    background: #741d12;
+    color: #fff4cf;
+  }
+
+  .marvin-frame {
+    position: relative;
+    height: 100%;
+    padding: 1rem;
+  }
+
+  .marvin-browser {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .marvin-browser span {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: #df5e37;
+  }
+
+  .marvin-frame strong {
+    position: absolute;
+    right: 1rem;
+    bottom: -0.25rem;
+    font-family: "Fraunces", serif;
+    font-size: 7rem;
+    font-weight: 650;
+    line-height: 0.8;
+    opacity: 0.22;
+    transition: opacity 250ms ease;
+  }
+
+  .marvin-lines {
+    display: grid;
+    width: 58%;
+    gap: 0.55rem;
+    margin-top: 2.3rem;
+  }
+
+  .marvin-lines span {
+    height: 0.4rem;
+    background: #fff4cf;
+  }
+
+  .marvin-lines span:nth-child(2) {
+    width: 74%;
+  }
+
+  .marvin-lines span:nth-child(3) {
+    width: 42%;
+    background: #df5e37;
+  }
+
+  :global(a:hover) .marvin-frame strong,
+  :global(a:focus-visible) .marvin-frame strong {
+    opacity: 0.4;
+  }
+
+  @font-face {
+    font-family: "QuiLivreOuTitle";
+    src: url("/fonts/quilivreou-title.woff") format("woff");
+    font-display: swap;
+  }
+
+  .project-preview--quilivreou {
+    background: #fceed8;
+    color: #080808;
+    container-type: inline-size;
+  }
+
+  .livre-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 5cqw;
+    height: 100%;
+    padding: 4cqw;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .livre-hero {
+    padding: 3cqw 4cqw;
+    border: 1px solid #080808;
+    background: #f48229;
+    box-shadow: -1cqw 1cqw 0 #080808;
+  }
+
+  .livre-hero > strong {
+    display: block;
+    margin-bottom: 2cqw;
+    font-family: "QuiLivreOuTitle", sans-serif;
+    font-size: 8cqw;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .livre-search {
+    display: flex;
+    align-items: center;
+    gap: 2cqw;
+    padding: 1.3cqw;
+    border: 1px solid #080808;
+    background: #fff;
+  }
+
+  .livre-search > svg {
+    width: 3cqw;
+    height: 3cqw;
+  }
+
+  .livre-frame svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .livre-input-line {
+    flex: 1;
+    height: 0.8cqw;
+    background: #b7b0a6;
+  }
+
+  .livre-region {
+    padding: 0.8cqw 1.4cqw;
+    border: 1px solid #080808;
+    background: #fceed8;
+    font-size: 2.1cqw;
+    white-space: nowrap;
+  }
+
+  .livre-submit {
+    padding: 0 2cqw;
+    border: 1px solid #080808;
+    background: #f48229;
+    font-size: 4cqw;
+    line-height: 1.2;
+  }
+
+  .livre-shops {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3cqw;
+  }
+
+  .livre-shop {
+    display: flex;
+    flex-direction: column;
+    gap: 2cqw;
+    min-height: 0;
+    padding: 2cqw;
+    border: 1px solid #080808;
+    background: #fff;
+    box-shadow: -0.7cqw 0.7cqw 0 #080808;
+  }
+
+  .livre-shop > svg {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    background: #fceed8;
+  }
+
+  .livre-shop-line {
+    width: 75%;
+    height: 1cqw;
+    background: #080808;
+  }
+
+  .livre-status {
+    display: flex;
+    align-items: center;
+    gap: 1cqw;
+    color: #285b32;
+    font-size: 2.2cqw;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .livre-status svg {
+    width: 2.5cqw;
+    height: 2.5cqw;
+  }
+
+  .project-preview--sauve-ta-saint-valentin {
+    background: #f7dfe4;
+    color: #841f37;
+  }
+
+  .valentin-frame {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    padding: 1.2rem;
+  }
+
+  .valentin-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .valentin-copy span {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .valentin-copy strong {
+    font-family: "Fraunces", serif;
+    font-size: 1.6rem;
+    line-height: 0.9;
+  }
+
+  .valentin-heart {
+    font-family: serif;
+    font-size: 6rem;
+    line-height: 1;
+    text-align: center;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(a:hover) .valentin-heart,
+  :global(a:focus-visible) .valentin-heart {
+    transform: scale(1.08) rotate(4deg);
+  }
+
+  @keyframes stay-trace {
+    from {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes route-trace {
+    from {
+      stroke-dashoffset: 300;
+    }
+  }
+
+  @keyframes parcel-route {
+    from {
+      stroke-dashoffset: 350;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kalot-track,
+    .stay-line,
+    .omas-route,
+    .pani-pulse,
+    .juste-prices i,
+    .autosong-popup svg,
+    .scolo-frame strong,
+    .marvin-frame strong,
+    .livre-frame path,
+    .valentin-heart {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

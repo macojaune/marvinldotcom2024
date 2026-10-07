@@ -1,11 +1,11 @@
+import { type FC } from "react"
 import { twMerge } from "tailwind-merge"
 import type { Project } from "../db/schema"
-import { type FC } from "react"
 import PitchPlayer from "./PitchPlayer"
 
 const ProjectCard: FC<{
   project: Project
-  isCurrent?: boolean
+  label?: string
   onVote?: () => void
   className?: string
   isPlaying?: boolean
@@ -14,10 +14,10 @@ const ProjectCard: FC<{
   updateAudioProgress?: (progress: number) => void
 }> = ({
   project,
-  onVote = () => {},
+  label,
+  onVote,
   isPlaying = false,
   onPlayToggle = () => {},
-  isCurrent = false,
   className = "",
   audioProgress = 0,
   updateAudioProgress = () => {}
@@ -25,69 +25,54 @@ const ProjectCard: FC<{
   if (!project) return null
 
   return (
-    <div
+    <article
       className={twMerge(
-        "my-2 flex w-full flex-col justify-stretch gap-4 border border-l/primary p-4 dark:border-d/primary",
-        isCurrent && "w-full sm:mx-auto sm:w-5/6",
+        "flex min-h-full w-full flex-col rounded-xl border border-[#fff4cf]/25 bg-[#fff4cf]/[0.04] p-5 text-[#fff4cf] md:p-7",
         className
       )}
     >
-      <div
-        className={twMerge(
-          "flex items-center justify-between",
-          isCurrent ? "flex-row" : "flex-col gap-2"
-        )}
-      >
-        {isCurrent && (
-          <>
-            <div className='flex flex-col'>
-              <h3 className='text-2xl font-semibold text-l/primary dark:text-d/primary md:text-3xl'>
-                {project.title}
-              </h3>
-              <p className='text-base text-l/primary dark:text-d/primary'>
-                {project.description}
-              </p>
-            </div>
-            <a
-              href={"/projets/" + project.slug}
-              className='px-1 py-1 text-sm text-l/tertiary underline underline-offset-8 hover:bg-l/tertiary hover:text-l/bg hover:no-underline focus:text-l/primary focus-visible:text-l/primary active:text-l/primary dark:text-d/primary dark:hover:bg-d/tertiary dark:hover:text-d/secondary dark:focus:text-d/primary dark:focus-visible:text-d/primary dark:active:text-d/primary md:px-2'
-            >
-              Voir l'avancée
-            </a>
-          </>
-        )}
-        {!isCurrent && (
-          <>
-            <h3 className='mb-2 text-3xl font-semibold dark:text-d/primary'>
-              {project.title}
-            </h3>
-            <p className='text-base dark:text-d/primary'>
-              {project.description}
-            </p>
-            <PitchPlayer
-              project={project}
-              isPlaying={isPlaying}
-              onPlayToggle={onPlayToggle}
-              updateAudioProgress={updateAudioProgress}
-            />
-          </>
+      {label && (
+        <p className='font-mono text-[0.65rem] uppercase tracking-[0.28em] text-[#dfc59a]'>
+          {label}
+        </p>
+      )}
+
+      <div className='mt-5 lg:min-h-28'>
+        <h3 className='font-display text-4xl leading-[0.92] tracking-[-0.03em] md:text-5xl'>
+          {project.title}
+        </h3>
+
+        {project.description && (
+          <p className='mt-4 text-base leading-7 text-[#f0dfb6]'>
+            {project.description}
+          </p>
         )}
       </div>
-      {!isCurrent && (
-        <button
-          onClick={() => {
-            if (onVote) onVote()
-          }}
-          className='relative mt-auto w-full overflow-hidden rounded border border-l/primary bg-l/primary px-4 py-2 text-l/bg transition-all hover:border-l/tertiary hover:bg-l/tertiary dark:border-d/primary dark:bg-transparent dark:text-d/primary dark:hover:border-d/tertiary dark:hover:bg-d/tertiary'
-        >
-          <span className='relative z-10'>Voter</span>
-          <div
-            className='absolute left-0 top-0 h-full bg-l/tertiary transition-all duration-300 ease-in-out dark:bg-d/tertiary'
-            style={{ width: `${audioProgress * 100}%` }}
-          ></div>
-        </button>
+
+      {project.audioUrl && (
+        <PitchPlayer
+          project={project}
+          isPlaying={isPlaying}
+          onPlayToggle={onPlayToggle}
+          updateAudioProgress={updateAudioProgress}
+          className='mt-7 text-[#fff4cf] [&_button]:text-[#fff4cf] [&_span]:text-[#f3bf86]'
+        />
       )}
-    </div>
+
+      <button
+        type='button'
+        onClick={onVote}
+        className='relative mt-auto min-h-12 w-full overflow-hidden rounded-full bg-[#df5e37] px-5 py-3 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#fff4cf] outline-none transition hover:bg-[#fff4cf] hover:text-[#2a0d3e] focus-visible:ring-2 focus-visible:ring-[#fff4cf] focus-visible:ring-offset-4 focus-visible:ring-offset-[#2a0d3e]'
+      >
+        <span
+          aria-hidden='true'
+          className='absolute inset-y-0 left-0 bg-[#f3bf86]/35 transition-[width] duration-300'
+          style={{ width: `${audioProgress * 100}%` }}
+        />
+        <span className='relative'>Voter pour cette idée</span>
+      </button>
+    </article>
   )
 }
+
 export default ProjectCard

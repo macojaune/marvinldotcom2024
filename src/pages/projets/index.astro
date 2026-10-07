@@ -3,9 +3,8 @@ import { getCollection } from "astro:content"
 import Layout from "../../layouts/Layout.astro"
 import List from "../../components/List.astro"
 import ListItem from "../../components/ListItem.astro"
-import Section from "../../components/Section.astro"
-import SectionTitle from "../../components/SectionTitle.astro"
-import ContentFooter from "../../components/ContentFooter.astro"
+import HomeProjectCard from "../../components/HomeProjectCard.astro"
+import MaggmaAnnouncement from "../../components/MaggmaAnnouncement.astro"
 import { persona } from "../../persona"
 import { buildBreadcrumbList } from "../../seo"
 
@@ -21,6 +20,12 @@ const breadcrumb = buildBreadcrumbList([
   { name: "Accueil", url: "/" },
   { name: "Projets", url: "/projets/" }
 ])
+const sortedPersonalProjects = myProjects.sort(
+  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime()
+)
+const sortedClientProjects = clientProjects.sort(
+  (a, b) => b.data.updatedAt.getTime() - a.data.updatedAt.getTime()
+)
 ---
 
 <Layout
@@ -29,7 +34,7 @@ const breadcrumb = buildBreadcrumbList([
   desc={persona.seo.projectDesc}
   structuredData={breadcrumb}
 >
-  <section class='grid gap-5 py-6'>
+  <section class='grid gap-5 py-6 md:py-10'>
     <p
       class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
     >
@@ -38,48 +43,66 @@ const breadcrumb = buildBreadcrumbList([
     <h1
       class='max-w-5xl font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl xl:text-[6rem]'
     >
-      Projets web client, expérimentations produits et outils publiés.
+      Tous les projets.
     </h1>
     <p
       class='max-w-3xl text-base leading-8 text-l/secondary dark:text-d/muted md:text-[1.18rem]'
     >
-      Une sélection de projets réalisés en freelance ou lancés en indépendant,
-      avec le contexte, les choix techniques et ce qu’ils ont réellement donné.
+      Produits personnels et réalisations client.
     </p>
   </section>
-  <Section>
-    <SectionTitle title='Projets clients' As='h2' />
+
+  <section class='grid gap-10 py-8'>
+    <div
+      class='flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'
+    >
+      <h2
+        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl'
+      >
+        Projets personnels.
+      </h2>
+    </div>
+
+    <div
+      class='grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-10'
+    >
+      {
+        sortedPersonalProjects.map((project) => (
+          <HomeProjectCard
+            slug={project.slug}
+            title={project.data.title}
+            desc={project.data.description}
+            date={project.data.createdAt}
+            types={project.data.types}
+            status={project.data.status}
+            url={`/projets/${project.slug}`}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <MaggmaAnnouncement />
+
+  <section class='grid gap-8 py-8'>
+    <div class='flex flex-col gap-3'>
+      <h2
+        class='font-display text-5xl leading-[0.9] tracking-[-0.04em] text-l/primary dark:text-d/primary md:text-7xl'
+      >
+        Projets clients.
+      </h2>
+    </div>
     <List>
       {
-        clientProjects
-          .sort((a, b) => b.data.createdAt - a.data.createdAt)
-          .map((cp) => (
-            <ListItem
-              title={cp.data.title}
-              desc={cp.data.description}
-              date={cp.data.createdAt}
-              url={`/projets/${cp.slug}`}
-            />
-          ))
+        sortedClientProjects.map((project) => (
+          <ListItem
+            title={project.data.title}
+            desc={project.data.description}
+            date={project.data.createdAt}
+            url={`/projets/${project.slug}`}
+          />
+        ))
       }
     </List>
-  </Section>
-  <Section>
-    <SectionTitle title='Projets personnels' As='h2' />
-    <List>
-      {
-        myProjects
-          .sort((a, b) => b.data.createdAt - a.data.createdAt)
-          .map((cp) => (
-            <ListItem
-              title={cp.data.title}
-              desc={cp.data.description}
-              date={cp.data.createdAt}
-              url={`/projets/${cp.slug}`}
-            />
-          ))
-      }
-    </List>
-  </Section>
-  <ContentFooter isRoot />
+  </section>
 </Layout>

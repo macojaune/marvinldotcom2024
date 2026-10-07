@@ -5,48 +5,24 @@ interface Props {
   isRoot?: boolean
 }
 const { isRoot = false } = Astro.props
-const slots = 3
 ---
 
 <footer class='my-12 max-w-[46rem] lg:my-16'>
   {
     !isRoot && (
       <h2 class='font-display text-4xl leading-[0.92] tracking-[-0.03em] text-l/primary dark:text-d/primary md:mb-3 md:text-5xl'>
-        Une idée, un projet similaire ?
+        Un nouveau projet client ?
       </h2>
     )
   }
   <div class='mt-4 grid gap-4'>
-    <p
-      class='font-mono text-[0.68rem] uppercase tracking-[0.3em] text-l/tertiary dark:text-d/accent'
-    >
-      J'ai actuellement {slots}/3 slots disponibles
+    <p class='w-full text-base leading-8 text-l/secondary dark:text-d/muted'>
+      Les missions solo, c’est fini. Pour construire un site, une application ou
+      un outil IA avec l’équipe, direction
+      <Link target='_blank' url='https://maggma.studio/#contact'>
+        MAGGMA Studio
+      </Link>.
     </p>
-    {
-      slots === 0 ? (
-        <>
-          <p class='mb-2 w-full text-base leading-8 text-l/secondary dark:text-d/muted md:mb-4'>
-            Il faudra patienter pour qu'on travaille ensemble.
-          </p>
-
-          <p class='text-base leading-8 text-l/secondary dark:text-d/muted'>
-            En attendant tu peux m'envoyer un message :
-            <Link target='_self' url={`mailto:${persona.email}`}>
-              {persona.email.replace("@", "[@]")}
-            </Link>
-          </p>
-        </>
-      ) : (
-        <>
-          <p class='mb-2 w-full text-base leading-8 text-l/secondary dark:text-d/muted md:mb-4'>
-            Parle moi de ton projet :
-            <Link url='#tally-open=m6RJ0B&tally-layout=modal&tally-width=440&tally-overlay=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=1000'>
-              en cliquant ici
-            </Link>
-          </p>
-        </>
-      )
-    }
     <p class='w-full text-sm text-l/secondary dark:text-d/muted'>
       Ou me retrouver ici :
       {

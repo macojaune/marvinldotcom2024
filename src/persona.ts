@@ -1,13 +1,13 @@
 export const persona = {
   brandName: "MarvinL.com",
-  name: "Marvin",
+  name: "Marvin Londinfer",
   handle: "macojaune",
   firstName: "MarvinL.com",
   secondName: "",
-  description: "Développeur fullstack indépendant",
+  description: "Développeur web fullstack et entrepreneur",
   shortDescription:
-    "Développeur fullstack indépendant basé en Guadeloupe. Je conçois des projets web, des prototypes utiles et des expériences sur mesure pour le web.",
-  jobTitle: "Développeur fullstack indépendant",
+    "Développeur web fullstack et entrepreneur basé en Guadeloupe. Je construis des produits numériques, je teste des idées et je partage ce que j’apprends en chemin.",
+  jobTitle: "Développeur web fullstack et entrepreneur",
   email: "contact@marvinl.com",
   location: {
     locality: "Petit-Bourg",
@@ -15,13 +15,6 @@ export const persona = {
     postalCode: "97170",
     countryCode: "GP"
   },
-  serviceAreas: ["Guadeloupe", "Martinique", "France", "Remote"],
-  serviceTypes: [
-    "Développement web sur mesure",
-    "Prototype produit",
-    "Architecture frontend",
-    "Conception d'outils web"
-  ],
   knowsAbout: [
     "Développement web",
     "Frontend",
@@ -29,7 +22,7 @@ export const persona = {
     "Astro",
     "React",
     "Prototypage produit",
-    "Freelance",
+    "Entrepreneuriat",
     "Guadeloupe"
   ],
   sameAs: [
@@ -59,17 +52,18 @@ export const persona = {
     }
   ],
   seo: {
-    title: "MarvinL.com − Développement Web en Freelance depuis la Guadeloupe",
+    title:
+      "MarvinL.com − Développeur web fullstack et entrepreneur en Guadeloupe",
     description:
-      "Développeur fullstack freelance basé en Guadeloupe. Je partage ici mes projets web, mes retours d'expérience et les idées qui prennent une vraie forme en ligne.",
+      "Développeur web fullstack et entrepreneur basé en Guadeloupe. Je partage ici mes produits, mes retours d’expérience et les idées qui prennent une vraie forme en ligne.",
     blogTitle:
-      "Blog développement web, freelance et projets depuis la Guadeloupe − MarvinL.com",
+      "Blog développement web, produits et entrepreneuriat depuis la Guadeloupe − MarvinL.com",
     blogDescription:
-      "Articles sur le développement web, les projets produits, le freelance et la vie de créateur web depuis la Guadeloupe.",
+      "Articles sur le développement web, la construction de produits et l’entrepreneuriat depuis la Guadeloupe.",
     projectTitle:
-      "Projets web freelance et expérimentations produits − MarvinL.com",
+      "Produits web, applications et expérimentations − MarvinL.com",
     projectDesc:
-      "Portfolio de projets web réalisés pour des clients ou construits en indépendant, avec un angle produit, technique et contexte local depuis la Guadeloupe."
+      "Produits personnels, applications et réalisations client, avec leur contexte, leurs choix techniques et leur lien avec la Guadeloupe."
   }
 }
 
