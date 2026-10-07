@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
+import AutoSongLinkArt from "../components/AutoSongLinkArt"
 import type { previewProjects } from "../project-previews"
 
 type Art = (typeof previewProjects)[number]
@@ -360,35 +361,7 @@ export function ProjectArt({ project }: { project: Art }) {
         </Frame>
       )
     case "extension-chrome-odesli":
-      return (
-        <Frame background='#e5edff' color='#244377'>
-          <BrowserBar color='#98aed5' />
-          <div
-            style={{
-              ...row,
-              flex: 1,
-              justifyContent: "center",
-              gap: 20,
-              background: "#fff",
-              borderRadius: 14,
-              padding: 22
-            }}
-          >
-            <span style={{ color: "#197947", fontSize: 26 }}>SPOTIFY</span>
-            <svg width='64' height='32' viewBox='0 0 64 32' fill='none'>
-              <path
-                d='M2 16h56M45 5l13 11-13 11'
-                stroke='#244377'
-                strokeWidth='3'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-            <span style={{ fontSize: 24 }}>SONG.LINK</span>
-          </div>
-          <span style={{ fontSize: 32, marginTop: 25 }}>AutoSongLink</span>
-        </Frame>
-      )
+      return <AutoSongLinkArt />
     case "days-since-scolo":
       return (
         <Frame background='#fbf2c8' color='#212819'>
