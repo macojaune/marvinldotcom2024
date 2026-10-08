@@ -9,7 +9,7 @@ interface Props {
     | "o-mas-la"
     | "pani-limye-pani-dlo"
     | "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe"
-    | "extension-chrome-odesli"
+    | "autosonglink"
     | "days-since-scolo"
     | "macojaune"
     | "marvinl-point-com"
@@ -205,7 +205,7 @@ const { project } = Astro.props
   }
 
   {
-    project === "extension-chrome-odesli" && (
+    project === "autosonglink" && (
       <div class='autosong-canvas'>
         <AutoSongLinkArt web />
       </div>
@@ -379,7 +379,7 @@ const { project } = Astro.props
       { threshold: 0.5 }
     )
     document
-      .querySelectorAll(".project-preview--extension-chrome-odesli")
+      .querySelectorAll(".project-preview--autosonglink")
       .forEach((preview) => observer.observe(preview))
   }
 </script>
@@ -1035,7 +1035,7 @@ const { project } = Astro.props
     background: #fff0e7;
   }
 
-  .project-preview--extension-chrome-odesli {
+  .project-preview--autosonglink {
     background: #e1e6cd;
   }
 
@@ -1047,50 +1047,44 @@ const { project } = Astro.props
     container-type: inline-size;
   }
 
-  .project-preview--extension-chrome-odesli :global(.autosong-copied) {
+  .project-preview--autosonglink :global(.autosong-copied) {
     opacity: 0;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .project-preview--extension-chrome-odesli :global(.autosong-ready),
-    .project-preview--extension-chrome-odesli :global(.autosong-copied) {
+    .project-preview--autosonglink :global(.autosong-ready),
+    .project-preview--autosonglink :global(.autosong-copied) {
       transition: opacity 160ms ease;
     }
 
-    .project-preview--extension-chrome-odesli[data-autosong-motion]
+    .project-preview--autosonglink[data-autosong-motion]
       :global(.autosong-ready),
-    .project-preview--extension-chrome-odesli:hover :global(.autosong-ready),
-    :global(a:hover)
-      .project-preview--extension-chrome-odesli
-      :global(.autosong-ready),
+    .project-preview--autosonglink:hover :global(.autosong-ready),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-ready),
     :global(a:focus-visible)
-      .project-preview--extension-chrome-odesli
+      .project-preview--autosonglink
       :global(.autosong-ready) {
       opacity: 0;
       transition-delay: 450ms;
     }
 
-    .project-preview--extension-chrome-odesli[data-autosong-motion]
+    .project-preview--autosonglink[data-autosong-motion]
       :global(.autosong-copied),
-    .project-preview--extension-chrome-odesli:hover :global(.autosong-copied),
-    :global(a:hover)
-      .project-preview--extension-chrome-odesli
-      :global(.autosong-copied),
+    .project-preview--autosonglink:hover :global(.autosong-copied),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-copied),
     :global(a:focus-visible)
-      .project-preview--extension-chrome-odesli
+      .project-preview--autosonglink
       :global(.autosong-copied) {
       opacity: 1;
       transition-delay: 450ms;
     }
 
-    .project-preview--extension-chrome-odesli[data-autosong-motion]
+    .project-preview--autosonglink[data-autosong-motion]
       :global(.autosong-result),
-    .project-preview--extension-chrome-odesli:hover :global(.autosong-result),
-    :global(a:hover)
-      .project-preview--extension-chrome-odesli
-      :global(.autosong-result),
+    .project-preview--autosonglink:hover :global(.autosong-result),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-result),
     :global(a:focus-visible)
-      .project-preview--extension-chrome-odesli
+      .project-preview--autosonglink
       :global(.autosong-result) {
       animation: autosong-prepare 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }

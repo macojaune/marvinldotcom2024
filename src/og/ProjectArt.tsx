@@ -360,7 +360,7 @@ export function ProjectArt({ project }: { project: Art }) {
           </div>
         </Frame>
       )
-    case "extension-chrome-odesli":
+    case "autosonglink":
       return <AutoSongLinkArt />
     case "days-since-scolo":
       return (
