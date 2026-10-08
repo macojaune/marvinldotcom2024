@@ -148,7 +148,13 @@ const { project } = Astro.props
     )
   }
 
-  {project === "extension-chrome-odesli" && <AutoSongLinkArt web />}
+  {
+    project === "extension-chrome-odesli" && (
+      <div class='autosong-canvas'>
+        <AutoSongLinkArt web />
+      </div>
+    )
+  }
 
   {
     project === "days-since-scolo" && (
@@ -748,7 +754,14 @@ const { project } = Astro.props
   }
 
   .project-preview--extension-chrome-odesli {
-    aspect-ratio: 25 / 17;
+    background: #e1e6cd;
+  }
+
+  .autosong-canvas {
+    /* Fit the complete 500 × 340 drawing inside the shared 16:10 frame. */
+    width: calc(100% * 125 / 136);
+    height: 100%;
+    margin-inline: auto;
     container-type: inline-size;
   }
 
