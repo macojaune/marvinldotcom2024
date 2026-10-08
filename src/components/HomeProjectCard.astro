@@ -1,4 +1,5 @@
 ---
+import LinkMark from "./LinkMark"
 import ProjectPreview from "./ProjectPreview.astro"
 import { previewProjects } from "../project-previews"
 
@@ -70,6 +71,6 @@ const formattedDate = date.toLocaleDateString("fr-FR", {
     class='mt-auto inline-flex min-h-11 items-center gap-2 pt-1 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-l/primary transition-colors group-hover:text-l/tertiary group-focus-visible:text-l/tertiary dark:text-d/primary dark:group-hover:text-d/tertiary dark:group-focus-visible:text-d/tertiary sm:text-[0.7rem] sm:tracking-[0.22em]'
   >
     Voir le projet
-    <span class='motion-arrow' aria-hidden='true'>→</span>
+    <LinkMark />
   </span>
 </a>

@@ -1,3 +1,7 @@
+---
+import LinkMark from "./LinkMark"
+---
+
 <section
   data-motion-panel
   aria-labelledby='maggma-announcement-title'
@@ -38,17 +42,7 @@
         class='maggma-link mt-8 inline-flex min-h-12 items-center gap-4 rounded-full bg-[#f05a24] px-6 py-3 font-maggma text-sm font-semibold text-[#171615] outline-none transition-colors hover:bg-[#ff6b35] focus-visible:ring-2 focus-visible:ring-[#f7f3ea] focus-visible:ring-offset-4 focus-visible:ring-offset-[#171615]'
       >
         Découvrir MAGGMA Studio
-        <svg
-          aria-hidden='true'
-          viewBox='0 0 20 20'
-          class='maggma-arrow size-4 fill-none stroke-current'
-        >
-          <path
-            d='M4 10h11M11 5l5 5-5 5'
-            stroke-width='1.8'
-            stroke-linecap='round'
-            stroke-linejoin='round'></path>
-        </svg>
+        <LinkMark />
         <span class='sr-only'>(nouvel onglet)</span>
       </a>
     </div>
@@ -84,15 +78,6 @@
     /* Revealed on entry by the shared motion controller. */
   }
 
-  .maggma-arrow {
-    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .maggma-link:hover .maggma-arrow,
-  .maggma-link:focus-visible .maggma-arrow {
-    transform: translateX(0.2rem);
-  }
-
   @keyframes magma-line {
     from {
       transform: scaleX(0);
@@ -102,10 +87,6 @@
   @media (prefers-reduced-motion: reduce) {
     .maggma-glow {
       animation: none;
-    }
-
-    .maggma-arrow {
-      transition: none;
     }
   }
 </style>

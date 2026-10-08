@@ -26,7 +26,11 @@ export default defineConfig({
     robotsTxt(),
     react(),
     mdx(),
-    sitemap()
+    sitemap({
+      filter: (page) =>
+        new URL(page).pathname.replace(/\/$/, "") !==
+        "/projets/extension-chrome-odesli"
+    })
   ],
   output: "hybrid",
   adapter: node({ mode: "standalone" }),

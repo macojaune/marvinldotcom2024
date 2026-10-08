@@ -1,13 +1,11 @@
 ---
-title: "Meet Pause"
-description: "Le rappel Chrome que je n’aurais probablement pas pris le temps de coder sans l’IA."
+title: "Extension Chrome : Meet Pause"
+description: "Trois heures de réunion, aucune pause. Une petite idée devenue une extension en cinq minutes."
 technos:
-  - Manifest V3
   - JavaScript
-  - HTML
-  - CSS
+  - Chrome
 isClient: false
-isDraft: true
+isDraft: false
 status: "En cours"
 types:
   - Extension navigateur
@@ -15,22 +13,34 @@ createdAt: 2026-10-06T00:00:00.000Z
 updatedAt: 2026-10-07T00:00:00.000Z
 ---
 
+import MeetPauseTweet from "../../components/MeetPauseTweet.astro"
+
 # Meet Pause
 
-> Article préparé avec Glob, l’agent blogueur IA de Marvin, à partir de son récit, du dépôt et de ses tweets.
+> Article préparé avec Glob, l’agent blogueur IA de Marvin, à partir de son récit et de son tweet.
 
-Je savais déjà créer des extensions Chrome. Ce qui m’aurait retenu, c’est le temps pour replonger dans les API, gérer les alarmes et les états d’un appel, puis soigner l’interface. Pour un petit irritant personnel, on a vite d’autres choses à faire. L’idée reste dans un coin.
+On venait de passer trois heures en réunion. Pas parce que c’était interminable, au contraire : la discussion était intéressante, on a divergé sur plein de sujets, et personne n’a vu le temps passer. Zéro pause.
 
-Meet Pause me rappelle de penser à une pause pendant Google Meet. J’ai vu [le tweet de Theo](https://x.com/theo/status/2107218462657712153) sur une autre petite extension Chrome, créée pour corriger un détail pénible de GitHub. Je me suis reconnu dans ce déclic et je l’ai formulé dans [mon tweet](https://x.com/macojaune/status/2107238844709945499) : l’IA rend assez rapide une idée qu’on n’aurait probablement jamais priorisée.
+Quand je suis concentré, j’ai tendance à oublier le reste. Ce jour-là, je n’ai pas bu d’eau, je ne suis pas allé aux toilettes, je n’ai même pas changé de position. Le call était chouette. Pour mon corps, un peu moins.
 
-## Un rappel, pas un chef de réunion
+Avec l’équipe, on essaie de prévoir des réunions courtes. Mais on a beaucoup de choses à se raconter, et interrompre une bonne discussion juste pour annoncer une pause n’est pas toujours évident. Après ce call, fatigué et pas du tout dans l’état d’attaquer un nouveau chantier, je me suis demandé s’il n’existait pas un moyen simple de me rappeler de lever le nez.
 
-Par défaut, le rappel arrive après 120 minutes dans un appel ; la durée est réglable. Une notification et un encart dans Meet proposent de prendre une pause ou de reporter le rappel de cinq minutes, délai lui aussi réglable. C’est moi qui confirme la pause ; l’extension ne coupe ni le micro ni la caméra et n’envoie rien aux autres participants.
+## Cinq minutes plus tard
 
-Le choix technique reste volontairement léger : Manifest V3, JavaScript, HTML et CSS, sans serveur ni dépendance de production. Réglages et compteurs restent dans Chrome. L’extension ne lit ni audio, ni vidéo, ni chat, ni transcription. Le panneau compact reprend un fond papier et un vert « pause » ; le rappel ne vole pas le focus de la réunion.
+J’en ai parlé à un agent IA. Il m’a proposé une extension Chrome. Je lui ai dit, en gros : « Vas-y, fais-moi ça. Je veux régler la durée et recevoir une notification sur mon ordinateur quand un appel Meet dure trop longtemps. »
 
-## Où j’en suis
+Meet Pause démarre son compteur quand je rejoins un appel. Au bout du délai choisi, elle me suggère une pause. Si on est au milieu d’un sujet important, je peux reporter le rappel de cinq minutes plutôt que de couper la parole à tout le monde. Si je prends la pause, les rappels s’arrêtent jusqu’à ce que je reprenne. Elle ne décide rien à la place de l’équipe : elle me donne juste le petit coup de coude que je n’ai pas pensé à me donner moi-même.
 
-La version 0.1.1 est installable en local et un ZIP est généré, mais rien n’est publié sur le Chrome Web Store. Les 21 tests automatisés et les 28 assertions du simulateur couvrent le comportement avec des API Chrome et des appels simulés. La recette documentée n’inclut pas encore une installation dans Chrome et un appel Meet réel. La détection dépend de l’interface de Google Meet, qui peut changer, et les alarmes Chrome ne réveillent pas un ordinateur en veille. La prochaine vérification est de charger l’extension dans Chrome et de la tester pendant un vrai appel.
+En cinq minutes environ, l’extension était prête. Je l’ai installée localement en deux clics et testée pendant un appel : le rappel a fonctionné. Elle n’est pas publiée sur le Chrome Web Store. Pour l’instant, c’est un petit outil pour moi, qui répond à un problème très précis.
 
-{/* Piste d’illustration animée : un minuteur avance à côté d’un appel Meet illustré, puis un encart discret apparaît avec « Prendre une pause » et « Reporter » ; ne pas suggérer que l’extension coupe l’appel ou observe les participants. */}
+## Les idées qu’on laisse passer
+
+Après ça, comme souvent, je suis allé traîner sur Twitter. Je suis tombé sur un tweet à propos d’une autre petite extension créée très vite. La mienne était déjà faite, mais cette coïncidence m’a fait réfléchir à ce qui venait de se passer.
+
+<MeetPauseTweet />
+
+Avant, j’aurais dû arrêter ce que je faisais, rechercher comment créer l’extension, coder le rappel, vérifier les fenêtres et les notifications, lui donner une allure correcte. Même si je sais faire tout ça, j’aurais probablement remis l’idée à plus tard. Et pour une idée aussi passagère, « plus tard », ça veut souvent dire jamais.
+
+Là, je sortais d’un call de trois heures. Je n’avais plus l’énergie de me lancer dans un projet. J’ai juste pu dire ce dont j’avais besoin, essayer le résultat, et passer à autre chose. Le problème était réglé et je n’avais plus à garder l’idée dans un coin de ma tête.
+
+Je repense à tous ces petits « tiens, il faudrait un truc pour ça » que je n’ai même pas pris la peine de noter. Pas des startups. Pas des grandes idées. Juste des outils qu’on aurait aimés avoir une fois, et qui deviennent soudain assez rapides à fabriquer pour qu’on les fasse vraiment.

@@ -20,7 +20,7 @@ export type SocialCard = {
 }
 
 // Bump when the layout, fonts or project illustrations change.
-const designVersion = "3"
+const designVersion = "4"
 const published = ({ data }: { data: { isDraft: boolean } }) =>
   import.meta.env.PROD ? !data.isDraft : true
 

@@ -1,12 +1,15 @@
 ---
+import AutoSongLinkArt from "./AutoSongLinkArt"
+
 interface Props {
   project:
+    | "meet-pause"
     | "kalot-municipales"
     | "stay-connect"
     | "o-mas-la"
     | "pani-limye-pani-dlo"
     | "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe"
-    | "extension-chrome-odesli"
+    | "autosonglink"
     | "days-since-scolo"
     | "macojaune"
     | "marvinl-point-com"
@@ -21,6 +24,61 @@ const { project } = Astro.props
   class:list={["project-preview", `project-preview--${project}`]}
   aria-hidden='true'
 >
+  {
+    project === "meet-pause" && (
+      <div class='meet-scene'>
+        <div class='meet-bar'>
+          <span class='meet-pause-icon'>
+            <>
+              <i />
+              <i />
+            </>
+          </span>
+          <strong>Meet Pause</strong>
+          <span class='meet-signal'>
+            <>
+              <i />
+              <i />
+              <i />
+            </>
+          </span>
+        </div>
+        <div class='meet-settings meet-panel'>
+          <span class='meet-caption'>MES RAPPELS</span>
+          <div class='meet-setting'>
+            Proposer une pause après <strong>75 min</strong>
+          </div>
+          <span class='meet-meter'>
+            <i />
+          </span>
+          <span class='meet-small'>Le compteur démarre avec ton appel.</span>
+        </div>
+        <div class='meet-reminder meet-panel'>
+          <span class='meet-caption'>ÇA FAIT UN MOMENT</span>
+          <strong>Une pause pour l’équipe ?</strong>
+          <div class='meet-actions'>
+            <>
+              <span>Prendre une pause</span>
+              <span>Dans 5 min</span>
+            </>
+          </div>
+        </div>
+        <div class='meet-break meet-panel'>
+          <span class='meet-caption'>SOUFFLE UN COUP</span>
+          <strong>Pause en cours</strong>
+          <span class='meet-small'>Les rappels sont suspendus.</span>
+          <span class='meet-resume'>Reprendre</span>
+        </div>
+        <div class='meet-footer'>
+          <>
+            <span>● EN APPEL</span>
+            <span>UN RAPPEL, PAS UNE INTERRUPTION</span>
+          </>
+        </div>
+      </div>
+    )
+  }
+
   {
     project === "kalot-municipales" && (
       <div class='kalot-frame'>
@@ -147,23 +205,9 @@ const { project } = Astro.props
   }
 
   {
-    project === "extension-chrome-odesli" && (
-      <div class='autosong-frame'>
-        <div class='autosong-browser'>
-          <>
-            <span />
-            <span />
-            <span />
-          </>
-        </div>
-        <div class='autosong-popup'>
-          <div class='autosong-source'>SPOTIFY</div>
-          <svg viewBox='0 0 52 24' role='presentation'>
-            <path d='M2 12h44M37 4l9 8-9 8' />
-          </svg>
-          <div class='autosong-target'>SONG.LINK</div>
-        </div>
-        <div class='autosong-label'>AutoSongLink</div>
+    project === "autosonglink" && (
+      <div class='autosong-canvas'>
+        <AutoSongLinkArt web />
       </div>
     )
   }
@@ -258,7 +302,7 @@ const { project } = Astro.props
             </svg>
             <span class='livre-input-line' />
             <span class='livre-region'>Antilles / Guyane</span>
-            <span class='livre-submit'>→</span>
+            <span class='livre-submit'>OK</span>
           </div>
         </div>
         <div class='livre-shops'>
@@ -315,12 +359,263 @@ const { project } = Astro.props
   }
 </div>
 
+<script>
+  // Touch screens get the same preparation/copy sequence on first visibility.
+  if (
+    window.matchMedia("(max-width: 767px), (hover: none), (pointer: coarse)")
+      .matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const preview = entry.target as HTMLElement
+          preview.dataset.autosongMotion = "playing"
+          window.setTimeout(() => delete preview.dataset.autosongMotion, 2200)
+          observer.unobserve(preview)
+        }
+      },
+      { threshold: 0.5 }
+    )
+    document
+      .querySelectorAll(".project-preview--autosonglink")
+      .forEach((preview) => observer.observe(preview))
+  }
+</script>
+
 <style>
   .project-preview {
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border-radius: 0.75rem;
+  }
+
+  .project-preview--meet-pause {
+    container-type: inline-size;
+    background: #152a25;
+    color: #222b27;
+  }
+
+  .meet-scene {
+    position: relative;
+    height: 100%;
+    padding: 7% 8%;
+    background: radial-gradient(circle at 85% 15%, #416d57 0, transparent 43%),
+      #152a25;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .meet-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: #f8f9f4;
+    font-size: clamp(0.8rem, 3cqw, 1.35rem);
+    letter-spacing: -0.04em;
+  }
+
+  .meet-pause-icon {
+    display: flex;
+    width: 1.65em;
+    height: 1.65em;
+    align-items: center;
+    justify-content: center;
+    gap: 0.16em;
+    border-radius: 0.35em;
+    background: #f8f9f4;
+  }
+
+  .meet-pause-icon i {
+    width: 0.17em;
+    height: 0.8em;
+    border-radius: 0.1em;
+    background: #255c46;
+  }
+
+  .meet-signal {
+    display: flex;
+    gap: 0.2em;
+    margin-left: auto;
+  }
+
+  .meet-signal i {
+    width: 0.28em;
+    height: 0.28em;
+    border-radius: 50%;
+    background: #aee4ba;
+    animation: meet-blink 1.5s infinite alternate;
+  }
+
+  .meet-signal i:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .meet-signal i:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .meet-panel {
+    position: absolute;
+    top: 31%;
+    right: 8%;
+    left: 8%;
+    display: flex;
+    min-height: 48%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45em;
+    padding: 6%;
+    border-radius: 0.85em;
+    background: #fbfaf4;
+    box-shadow:
+      0 0.55em 0 #0e1c18,
+      0 1em 1.5em rgb(0 0 0 / 0.17);
+    font-size: clamp(0.62rem, 2.3cqw, 0.95rem);
+  }
+
+  .meet-caption {
+    color: #3a7357;
+    font-size: 0.68em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  .meet-setting {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+  }
+  .meet-setting strong {
+    white-space: nowrap;
+    color: #255c46;
+  }
+  .meet-meter {
+    height: 0.35em;
+    overflow: hidden;
+    border-radius: 1em;
+    background: #dce7dd;
+  }
+  .meet-meter i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #255c46;
+    transform-origin: left;
+    animation: meet-time 12s linear infinite;
+  }
+  .meet-small {
+    color: #586660;
+    font-size: 0.75em;
+  }
+  .meet-reminder,
+  .meet-break {
+    opacity: 0;
+  }
+  .meet-settings {
+    animation: meet-settings 12s infinite;
+  }
+  .meet-reminder {
+    animation: meet-reminder 12s infinite;
+  }
+  .meet-break {
+    animation: meet-break 12s infinite;
+  }
+  .meet-reminder strong,
+  .meet-break strong {
+    font-size: 1.45em;
+    line-height: 1.1;
+  }
+  .meet-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  .meet-actions span,
+  .meet-resume {
+    padding: 0.55em 0.7em;
+    border-radius: 0.45em;
+    background: #255c46;
+    color: white;
+  }
+  .meet-actions span + span {
+    border: 1px solid #aebfb2;
+    background: transparent;
+    color: #255c46;
+  }
+  .meet-resume {
+    align-self: flex-start;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  .meet-footer {
+    position: absolute;
+    right: 8%;
+    bottom: 7%;
+    left: 8%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    color: #d5e9d9;
+    font-size: clamp(0.42rem, 1.4cqw, 0.6rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  @keyframes meet-settings {
+    0%,
+    28% {
+      opacity: 1;
+    }
+    34%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-reminder {
+    0%,
+    29% {
+      opacity: 0;
+    }
+    35%,
+    62% {
+      opacity: 1;
+    }
+    68%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-break {
+    0%,
+    63% {
+      opacity: 0;
+    }
+    69%,
+    95% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-time {
+    0% {
+      transform: scaleX(0.06);
+    }
+    34%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes meet-blink {
+    to {
+      opacity: 0.35;
+    }
   }
 
   .project-preview--kalot-municipales {
@@ -740,79 +1035,71 @@ const { project } = Astro.props
     background: #fff0e7;
   }
 
-  .project-preview--extension-chrome-odesli {
-    background: #eef1f8;
-    color: #202124;
+  .project-preview--autosonglink {
+    background: #e1e6cd;
   }
 
-  .autosong-frame {
+  .autosong-canvas {
+    /* Fit the complete 500 × 340 drawing inside the shared 16:10 frame. */
+    width: calc(100% * 125 / 136);
     height: 100%;
-    padding: 0.8rem;
+    margin-inline: auto;
+    container-type: inline-size;
   }
 
-  .autosong-browser {
-    display: flex;
-    gap: 0.25rem;
+  .project-preview--autosonglink :global(.autosong-copied) {
+    opacity: 0;
   }
 
-  .autosong-browser span {
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: #b9bfcc;
+  @media (prefers-reduced-motion: no-preference) {
+    .project-preview--autosonglink :global(.autosong-ready),
+    .project-preview--autosonglink :global(.autosong-copied) {
+      transition: opacity 160ms ease;
+    }
+
+    .project-preview--autosonglink[data-autosong-motion]
+      :global(.autosong-ready),
+    .project-preview--autosonglink:hover :global(.autosong-ready),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-ready),
+    :global(a:focus-visible)
+      .project-preview--autosonglink
+      :global(.autosong-ready) {
+      opacity: 0;
+      transition-delay: 450ms;
+    }
+
+    .project-preview--autosonglink[data-autosong-motion]
+      :global(.autosong-copied),
+    .project-preview--autosonglink:hover :global(.autosong-copied),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-copied),
+    :global(a:focus-visible)
+      .project-preview--autosonglink
+      :global(.autosong-copied) {
+      opacity: 1;
+      transition-delay: 450ms;
+    }
+
+    .project-preview--autosonglink[data-autosong-motion]
+      :global(.autosong-result),
+    .project-preview--autosonglink:hover :global(.autosong-result),
+    :global(a:hover) .project-preview--autosonglink :global(.autosong-result),
+    :global(a:focus-visible)
+      .project-preview--autosonglink
+      :global(.autosong-result) {
+      animation: autosong-prepare 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
   }
 
-  .autosong-popup {
-    display: grid;
-    margin: 1.15rem auto 0;
-    max-width: 15rem;
-    grid-template-columns: 1fr 2.7rem 1fr;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 1.3rem 0.9rem;
-    border-radius: 0.65rem;
-    background: #fff;
-    box-shadow: 0 0.6rem 1.5rem rgb(50 58 84 / 0.14);
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 0.5rem;
-    font-weight: 700;
-    text-align: center;
-  }
-
-  .autosong-source,
-  .autosong-target {
-    padding: 0.45rem 0.3rem;
-    border-radius: 0.3rem;
-  }
-
-  .autosong-source {
-    background: #1ed760;
-  }
-
-  .autosong-target {
-    background: #f0c55d;
-  }
-
-  .autosong-popup svg {
-    fill: none;
-    stroke: #202124;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2;
-    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .autosong-label {
-    margin-top: 0.8rem;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 0.58rem;
-    font-weight: 650;
-    text-align: center;
-  }
-
-  :global(a:hover) .autosong-popup svg,
-  :global(a:focus-visible) .autosong-popup svg {
-    transform: translateX(0.3rem);
+  @keyframes autosong-prepare {
+    from {
+      filter: blur(2px);
+      transform: translateY(3px);
+      color: #dbf878;
+    }
+    to {
+      filter: blur(0);
+      transform: translateY(0);
+    }
   }
 
   .project-preview--days-since-scolo {
@@ -1114,8 +1401,8 @@ const { project } = Astro.props
     padding: 0 2cqw;
     border: 1px solid #080808;
     background: #f48229;
-    font-size: 4cqw;
-    line-height: 1.2;
+    font-size: 3cqw;
+    line-height: 1.6;
   }
 
   .livre-shops {
@@ -1229,12 +1516,24 @@ const { project } = Astro.props
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .meet-settings,
+    .meet-reminder,
+    .meet-break,
+    .meet-meter i,
+    .meet-signal i {
+      animation: none;
+    }
+    .meet-settings {
+      opacity: 0;
+    }
+    .meet-reminder {
+      opacity: 1;
+    }
     .kalot-track,
     .stay-line,
     .omas-route,
     .pani-pulse,
     .juste-prices i,
-    .autosong-popup svg,
     .scolo-frame strong,
     .marvin-frame strong,
     .livre-frame path,
