@@ -157,7 +157,20 @@ const faqPage = buildFaqPage(home.faq.items)
               {item.question}
             </h3>
             <p class='max-w-2xl text-base leading-8 text-l/secondary dark:text-d/muted'>
-              {item.answer}
+              {"answerLink" in item ? (
+                <>
+                  {item.answer.split(item.answerLink.label)[0]}
+                  <a
+                    href={item.answerLink.href}
+                    class='rounded-sm underline decoration-l/tertiary underline-offset-4 hover:text-l/primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 dark:decoration-d/accent dark:hover:text-d/primary'
+                  >
+                    {item.answerLink.label}
+                  </a>
+                  {item.answer.split(item.answerLink.label)[1]}
+                </>
+              ) : (
+                item.answer
+              )}
             </p>
           </article>
         ))
