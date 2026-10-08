@@ -3,6 +3,7 @@ import AutoSongLinkArt from "./AutoSongLinkArt"
 
 interface Props {
   project:
+    | "meet-pause"
     | "kalot-municipales"
     | "stay-connect"
     | "o-mas-la"
@@ -23,6 +24,61 @@ const { project } = Astro.props
   class:list={["project-preview", `project-preview--${project}`]}
   aria-hidden='true'
 >
+  {
+    project === "meet-pause" && (
+      <div class='meet-scene'>
+        <div class='meet-bar'>
+          <span class='meet-pause-icon'>
+            <>
+              <i />
+              <i />
+            </>
+          </span>
+          <strong>Meet Pause</strong>
+          <span class='meet-signal'>
+            <>
+              <i />
+              <i />
+              <i />
+            </>
+          </span>
+        </div>
+        <div class='meet-settings meet-panel'>
+          <span class='meet-caption'>MES RAPPELS</span>
+          <div class='meet-setting'>
+            Proposer une pause après <strong>75 min</strong>
+          </div>
+          <span class='meet-meter'>
+            <i />
+          </span>
+          <span class='meet-small'>Le compteur démarre avec ton appel.</span>
+        </div>
+        <div class='meet-reminder meet-panel'>
+          <span class='meet-caption'>ÇA FAIT UN MOMENT</span>
+          <strong>Une pause pour l’équipe ?</strong>
+          <div class='meet-actions'>
+            <>
+              <span>Prendre une pause</span>
+              <span>Dans 5 min</span>
+            </>
+          </div>
+        </div>
+        <div class='meet-break meet-panel'>
+          <span class='meet-caption'>SOUFFLE UN COUP</span>
+          <strong>Pause en cours</strong>
+          <span class='meet-small'>Les rappels sont suspendus.</span>
+          <span class='meet-resume'>Reprendre</span>
+        </div>
+        <div class='meet-footer'>
+          <>
+            <span>● EN APPEL</span>
+            <span>UN RAPPEL, PAS UNE INTERRUPTION</span>
+          </>
+        </div>
+      </div>
+    )
+  }
+
   {
     project === "kalot-municipales" && (
       <div class='kalot-frame'>
@@ -334,6 +390,232 @@ const { project } = Astro.props
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border-radius: 0.75rem;
+  }
+
+  .project-preview--meet-pause {
+    container-type: inline-size;
+    background: #152a25;
+    color: #222b27;
+  }
+
+  .meet-scene {
+    position: relative;
+    height: 100%;
+    padding: 7% 8%;
+    background: radial-gradient(circle at 85% 15%, #416d57 0, transparent 43%),
+      #152a25;
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .meet-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: #f8f9f4;
+    font-size: clamp(0.8rem, 3cqw, 1.35rem);
+    letter-spacing: -0.04em;
+  }
+
+  .meet-pause-icon {
+    display: flex;
+    width: 1.65em;
+    height: 1.65em;
+    align-items: center;
+    justify-content: center;
+    gap: 0.16em;
+    border-radius: 0.35em;
+    background: #f8f9f4;
+  }
+
+  .meet-pause-icon i {
+    width: 0.17em;
+    height: 0.8em;
+    border-radius: 0.1em;
+    background: #255c46;
+  }
+
+  .meet-signal {
+    display: flex;
+    gap: 0.2em;
+    margin-left: auto;
+  }
+
+  .meet-signal i {
+    width: 0.28em;
+    height: 0.28em;
+    border-radius: 50%;
+    background: #aee4ba;
+    animation: meet-blink 1.5s infinite alternate;
+  }
+
+  .meet-signal i:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .meet-signal i:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .meet-panel {
+    position: absolute;
+    top: 31%;
+    right: 8%;
+    left: 8%;
+    display: flex;
+    min-height: 48%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45em;
+    padding: 6%;
+    border-radius: 0.85em;
+    background: #fbfaf4;
+    box-shadow:
+      0 0.55em 0 #0e1c18,
+      0 1em 1.5em rgb(0 0 0 / 0.17);
+    font-size: clamp(0.62rem, 2.3cqw, 0.95rem);
+  }
+
+  .meet-caption {
+    color: #3a7357;
+    font-size: 0.68em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  .meet-setting {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+  }
+  .meet-setting strong {
+    white-space: nowrap;
+    color: #255c46;
+  }
+  .meet-meter {
+    height: 0.35em;
+    overflow: hidden;
+    border-radius: 1em;
+    background: #dce7dd;
+  }
+  .meet-meter i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #255c46;
+    transform-origin: left;
+    animation: meet-time 12s linear infinite;
+  }
+  .meet-small {
+    color: #586660;
+    font-size: 0.75em;
+  }
+  .meet-reminder,
+  .meet-break {
+    opacity: 0;
+  }
+  .meet-settings {
+    animation: meet-settings 12s infinite;
+  }
+  .meet-reminder {
+    animation: meet-reminder 12s infinite;
+  }
+  .meet-break {
+    animation: meet-break 12s infinite;
+  }
+  .meet-reminder strong,
+  .meet-break strong {
+    font-size: 1.45em;
+    line-height: 1.1;
+  }
+  .meet-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  .meet-actions span,
+  .meet-resume {
+    padding: 0.55em 0.7em;
+    border-radius: 0.45em;
+    background: #255c46;
+    color: white;
+  }
+  .meet-actions span + span {
+    border: 1px solid #aebfb2;
+    background: transparent;
+    color: #255c46;
+  }
+  .meet-resume {
+    align-self: flex-start;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+  .meet-footer {
+    position: absolute;
+    right: 8%;
+    bottom: 7%;
+    left: 8%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    color: #d5e9d9;
+    font-size: clamp(0.42rem, 1.4cqw, 0.6rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  @keyframes meet-settings {
+    0%,
+    28% {
+      opacity: 1;
+    }
+    34%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-reminder {
+    0%,
+    29% {
+      opacity: 0;
+    }
+    35%,
+    62% {
+      opacity: 1;
+    }
+    68%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-break {
+    0%,
+    63% {
+      opacity: 0;
+    }
+    69%,
+    95% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes meet-time {
+    0% {
+      transform: scaleX(0.06);
+    }
+    34%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes meet-blink {
+    to {
+      opacity: 0.35;
+    }
   }
 
   .project-preview--kalot-municipales {
@@ -1234,6 +1516,19 @@ const { project } = Astro.props
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .meet-settings,
+    .meet-reminder,
+    .meet-break,
+    .meet-meter i,
+    .meet-signal i {
+      animation: none;
+    }
+    .meet-settings {
+      opacity: 0;
+    }
+    .meet-reminder {
+      opacity: 1;
+    }
     .kalot-track,
     .stay-line,
     .omas-route,
