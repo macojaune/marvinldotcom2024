@@ -6,6 +6,10 @@ export type HomeCTA = {
 export type HomeFAQItem = {
   answer: string
   question: string
+  answerLink?: {
+    label: string
+    href: string
+  }
 }
 
 export const home = {
@@ -30,7 +34,11 @@ export const home = {
       {
         question: "Qui est derrière MarvinL.com ?",
         answer:
-          "MarvinL.com est le site personnel de Marvin Londinfer, développeur web fullstack et entrepreneur basé en Guadeloupe."
+          "MarvinL.com est le site personnel de Marvin Londinfer, développeur web fullstack et entrepreneur basé en Guadeloupe. Vous le connaissez sûrement sous le pseudo @macojaune sur les réseaux.",
+        answerLink: {
+          label: "@macojaune",
+          href: "https://macojaune.com"
+        }
       },
       {
         question: "Quel type de projets sont présentés ici ?",
