@@ -4,7 +4,7 @@ export const previewProjects = [
   "o-mas-la",
   "pani-limye-pani-dlo",
   "lejustecoin-jeu-en-ligne-sur-l-immobilier-en-guadeloupe",
-  "extension-chrome-odesli",
+  "autosonglink",
   "days-since-scolo",
   "macojaune",
   "marvinl-point-com",
